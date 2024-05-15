@@ -1,0 +1,1710 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.5">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="BZT Generated Test Plan" enabled="true">
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <stringProp name="TestPlan.comments"></stringProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="WIL_CreateTrouble" enabled="false">
+        <stringProp name="ThreadGroup.on_sample_error">startnextloop</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <stringProp name="ThreadGroup.start_time"></stringProp>
+        <stringProp name="ThreadGroup.end_time"></stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration">0</stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">false</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <CacheManager guiclass="CacheManagerGui" testclass="CacheManager" testname="Cache" enabled="true">
+          <boolProp name="clearEachIteration">false</boolProp>
+          <boolProp name="useExpires">false</boolProp>
+          <boolProp name="CacheManager.controlledByThread">false</boolProp>
+        </CacheManager>
+        <hashTree/>
+        <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="Cookies" enabled="true">
+          <collectionProp name="CookieManager.cookies"/>
+          <boolProp name="CookieManager.clearEachIteration">false</boolProp>
+          <boolProp name="CookieManager.controlledByThreadGroup">false</boolProp>
+        </CookieManager>
+        <hashTree/>
+        <DNSCacheManager guiclass="DNSCachePanel" testclass="DNSCacheManager" testname="DNS Cache Manager" enabled="true">
+          <collectionProp name="DNSCacheManager.servers"/>
+          <boolProp name="DNSCacheManager.clearEachIteration">false</boolProp>
+          <boolProp name="DNSCacheManager.isCustomResolver">false</boolProp>
+        </DNSCacheManager>
+        <hashTree/>
+        <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="Defaults" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="user_defined" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path"></stringProp>
+          <boolProp name="HTTPSampler.image_parser">true</boolProp>
+          <boolProp name="HTTPSampler.concurrentDwn">true</boolProp>
+          <stringProp name="HTTPSampler.concurrentPool">4</stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </ConfigTestElement>
+        <hashTree/>
+        <AuthManager guiclass="AuthPanel" testclass="AuthManager" testname="HTTP Authorization Manager" enabled="true">
+          <collectionProp name="AuthManager.auth_list">
+            <elementProp name="" elementType="Authorization">
+              <stringProp name="Authorization.url">soa-mp-rmsk-is01.tsl.telus.com:443</stringProp>
+              <stringProp name="Authorization.username">APP_RENDEZVOUS</stringProp>
+              <stringProp name="Authorization.password">soaorgid</stringProp>
+              <stringProp name="Authorization.domain"></stringProp>
+              <stringProp name="Authorization.realm"></stringProp>
+            </elementProp>
+          </collectionProp>
+          <boolProp name="AuthManager.controlledByThreadGroup">false</boolProp>
+        </AuthManager>
+        <hashTree/>
+        <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+          <collectionProp name="Arguments.arguments">
+            <elementProp name="appointmentEndDate" elementType="Argument">
+              <stringProp name="Argument.name">appointmentEndDate</stringProp>
+              <stringProp name="Argument.value">${__timeShift(yyyy-MM-dd,,P2D,,)}T${__timeShift(HH:mm:ss.SSS,,,,)}Z</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="appointmentStartDate" elementType="Argument">
+              <stringProp name="Argument.name">appointmentStartDate</stringProp>
+              <stringProp name="Argument.value">${__timeShift(yyyy-MM-dd,,P1D,,)}T${__timeShift(HH:mm:ss.SSS,,,,)}Z</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="dueDate" elementType="Argument">
+              <stringProp name="Argument.name">dueDate</stringProp>
+              <stringProp name="Argument.value">${__timeShift(yyyy-MM-dd,,P22D,,)}T${__timeShift(HH:mm:ss.SSS,,,,)}Z</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+              <stringProp name="Argument.desc">not present</stringProp>
+            </elementProp>
+            <elementProp name="earlyStartDate" elementType="Argument">
+              <stringProp name="Argument.name">earlyStartDate</stringProp>
+              <stringProp name="Argument.value">${__timeShift(yyyy-MM-dd,,P17D,,)}T${__timeShift(HH:mm:ss.SSS,,,,)}Z</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+              <stringProp name="Argument.desc">not present</stringProp>
+            </elementProp>
+            <elementProp name="originatingSystemCreateDate" elementType="Argument">
+              <stringProp name="Argument.name">originatingSystemCreateDate</stringProp>
+              <stringProp name="Argument.value">${__timeShift(yyyy-MM-dd,,,,)}T${__timeShift(HH:mm:ss.SSS,,,,)}Z</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="requestDate" elementType="Argument">
+              <stringProp name="Argument.name">requestDate</stringProp>
+              <stringProp name="Argument.value">${__timeShift(yyyy-MM-dd,,,,)}T${__timeShift(HH:mm:ss.SSS,,,,)}Z</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="counter" elementType="Argument">
+              <stringProp name="Argument.name">counter</stringProp>
+              <stringProp name="Argument.value">00${__Random(11000,11500,)}</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+          </collectionProp>
+        </Arguments>
+        <hashTree/>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV wil_createtrouble_estimatedDuration.dat.csv" enabled="true">
+          <stringProp name="filename">wil_createtrouble_estimatedDuration.dat.csv</stringProp>
+          <stringProp name="delimiter">,</stringProp>
+          <boolProp name="quotedData">true</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="variableNames">estimatedDuration</stringProp>
+          <stringProp name="fileEncoding"></stringProp>
+          <boolProp name="ignoreFirstLine">true</boolProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV wil_createtrouble_originatingSystemWoId.dat.csv" enabled="true">
+          <stringProp name="filename">wil_createtrouble_originatingSystemWoId.dat.csv</stringProp>
+          <stringProp name="delimiter">,</stringProp>
+          <boolProp name="quotedData">true</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="variableNames">originatingSystemWoId</stringProp>
+          <stringProp name="fileEncoding"></stringProp>
+          <boolProp name="ignoreFirstLine">true</boolProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV wil_createtrouble_Address.dat.csv" enabled="true">
+          <stringProp name="filename">wil_createtrouble_Address.dat.csv</stringProp>
+          <stringProp name="delimiter">,</stringProp>
+          <boolProp name="quotedData">true</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="variableNames">fmsAddressId,apartmentNumber,houseNumber,suffix,vector,street,city,provinceCode,postalCode,fmsCoid,clli,country</stringProp>
+          <stringProp name="fileEncoding"></stringProp>
+          <boolProp name="ignoreFirstLine">true</boolProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV wil_createtrouble_Product.dat.csv" enabled="true">
+          <stringProp name="filename">wil_createtrouble_Product.dat.csv</stringProp>
+          <stringProp name="delimiter">,</stringProp>
+          <boolProp name="quotedData">true</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="variableNames">productCategory,productTechnology,jobType,workGroupCode</stringProp>
+          <stringProp name="fileEncoding"></stringProp>
+          <boolProp name="ignoreFirstLine">true</boolProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV wil_createtrouble_originatingSystemWoInternalId.dat.csv" enabled="true">
+          <stringProp name="filename">wil_createtrouble_originatingSystemWoInternalId.dat.csv</stringProp>
+          <stringProp name="delimiter">,</stringProp>
+          <boolProp name="quotedData">true</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="variableNames">originatingSystemWoInternalId</stringProp>
+          <stringProp name="fileEncoding"></stringProp>
+          <boolProp name="ignoreFirstLine">true</boolProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Action" enabled="true"/>
+        <hashTree>
+          <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="Iteration Start Time" enabled="true">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="script">def ItrStartTime = new Date() 
+use(groovy.time.TimeCategory) {
+    vars.put(&quot;ItrStartTime&quot;, ItrStartTime.getTime() as String)
+}</stringProp>
+          </JSR223Sampler>
+          <hashTree/>
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="WIL_Create_Trouble" enabled="true">
+            <boolProp name="TransactionController.parent">true</boolProp>
+            <boolProp name="TransactionController.includeTimers">false</boolProp>
+          </TransactionController>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">X-dynaTrace</stringProp>
+                  <stringProp name="Header.value">NA=WIL_Create_Trouble;PC=${__samplerName()};VU=-${__threadNum()};ID=${__time()}</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="SOAP Request" enabled="true">
+              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">&lt;S:Envelope xmlns:env=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;&#xd;
+&#xd;
+              xmlns:S=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;&gt;&#xd;
+&#xd;
+              &lt;S:Header xmlns:S=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; /&gt;&#xd;
+&#xd;
+              &lt;S:Body&#xd;
+&#xd;
+                             xmlns:wsu=&quot;http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd&quot;&#xd;
+&#xd;
+                             wsu:Id=&quot;id-1797998605&quot;&gt;&#xd;
+&#xd;
+                             &lt;ns5:createWorkOrder&#xd;
+&#xd;
+                                           xmlns:ns5=&quot;http://xmlschema.tmi.telus.com/srv/RMO/ProcessMgmt/FieldWorkAssignmentMgmtServiceRequestResponse_v3&quot;&#xd;
+&#xd;
+                                           xmlns:ns2=&quot;http://xmlschema.tmi.telus.com/xsd/Enterprise/BaseTypes/Exceptions_v3&quot;&#xd;
+&#xd;
+                                           xmlns:ns3=&quot;http://xmlschema.tmi.telus.com/xsd/Enterprise/BaseTypes/EnterpriseCommonTypes_v9&quot;&#xd;
+&#xd;
+                                           xmlns:ns4=&quot;http://xmlschema.tmi.telus.com/xsd/Enterprise/BaseTypes/types/ping_v1&quot;&gt;&#xd;
+&#xd;
+                                           &lt;ns5:inputHeader&gt;&#xd;
+&#xd;
+                                                          &lt;systemSourceCd&gt;8517&lt;/systemSourceCd&gt;&#xd;
+&#xd;
+                                                          &lt;userId&gt;T856407&lt;/userId&gt;&#xd;
+&#xd;
+                                                          &lt;requestDate&gt;${__timeShift(yyyy-MM-dd,,,,)}T${__timeShift(HH:mm:ss.SSS,,,,)}Z&lt;/requestDate&gt;&#xd;
+&#xd;
+                                           &lt;/ns5:inputHeader&gt;&#xd;
+&#xd;
+                                           &lt;ns5:workOrder&gt;&#xd;
+&#xd;
+                                                         &lt;originatingSystemId&gt;3259&lt;/originatingSystemId&gt;&#xd;
+&#xd;
+                                                         &lt;originatingSystemWorkOrderId&gt;${__time()}&lt;/originatingSystemWorkOrderId&gt;&#xd;
+&#xd;
+                                                         &lt;originatingSystemWorkOrderInternalId&gt;${__time()}&lt;/originatingSystemWorkOrderInternalId&gt;&#xd;
+&#xd;
+                                                          &lt;classificationCd&gt;TROUBLE&lt;/classificationCd&gt;&#xd;
+&#xd;
+                                                          &lt;serviceClassCd&gt;R&lt;/serviceClassCd&gt;&#xd;
+&#xd;
+                                                         &lt;productCategoryCd&gt;${productCategory}&lt;/productCategoryCd&gt;&#xd;
+&#xd;
+                                                         &lt;productTechnologyCd&gt;${productTechnology}&lt;/productTechnologyCd&gt;&#xd;
+&#xd;
+                                                          &lt;workGroupCd&gt;${workGroupCode}&lt;/workGroupCd&gt;&#xd;
+&#xd;
+                                                         &lt;workOrderActionCd&gt;R&lt;/workOrderActionCd&gt;&#xd;
+&#xd;
+                                                          &lt;jobTypeCd&gt;${jobType}&lt;/jobTypeCd&gt;&#xd;
+&#xd;
+                                                          &lt;outofServiceInd&gt;true&lt;/outofServiceInd&gt;&#xd;
+&#xd;
+                                                         &lt;hostReadyForDispatchInd&gt;false&lt;/hostReadyForDispatchInd&gt;&#xd;
+&#xd;
+                                                          &lt;overrideInd&gt;false&lt;/overrideInd&gt;&#xd;
+&#xd;
+                                                          &lt;appointmentStartDate&gt;${__timeShift(yyyy-MM-dd,,P1D,,)}T${__timeShift(HH:mm:ss.SSS,,,,)}Z&lt;/appointmentStartDate&gt;&#xd;
+&#xd;
+                                                          &lt;appointmentEndDate&gt;${__timeShift(yyyy-MM-dd,,P2D,,)}T${__timeShift(HH:mm:ss.SSS,,,,)}Z&lt;/appointmentEndDate&gt;&#xd;
+&#xd;
+                                                         &lt;estimatedDurationNum&gt;${estimatedDuration}&lt;/estimatedDurationNum&gt;&#xd;
+&#xd;
+                                                         &lt;estimatedDurationUnitCd&gt;HOURS&lt;/estimatedDurationUnitCd&gt;&#xd;
+&#xd;
+                                                          &lt;location&gt;&#xd;
+&#xd;
+                                                                        &lt;locationList&gt;&#xd;
+&#xd;
+                                                                                      &lt;typeCode&gt;SERVICE&lt;/typeCode&gt;&#xd;
+&#xd;
+                                                                                      &lt;dispatchLocationInd&gt;true&lt;/dispatchLocationInd&gt;&#xd;
+&#xd;
+                                                                                      &lt;fmsAddress&gt;&#xd;
+&#xd;
+                                                                                                    &lt;houseNumber&gt;${houseNumber}&lt;/houseNumber&gt;&#xd;
+&#xd;
+                                                                                                     &lt;streetName&gt;${street}&lt;/streetName&gt;&#xd;
+&#xd;
+                                                                                                    &lt;cityName&gt;${city}&lt;/cityName&gt;&#xd;
+&#xd;
+                                                                                                    &lt;provinceCode&gt;${provinceCode}&lt;/provinceCode&gt;&#xd;
+&#xd;
+                                                                                                    &lt;postalCode&gt;${postalCode}&lt;/postalCode&gt;&#xd;
+&#xd;
+                                                                                                    &lt;fmsCoId&gt;${fmsCoid}&lt;/fmsCoId&gt;&#xd;
+&#xd;
+                                                                                                    &lt;countryCode&gt;${country}&lt;/countryCode&gt;&#xd;
+&#xd;
+                                                                                      &lt;/fmsAddress&gt;&#xd;
+&#xd;
+                                                                        &lt;/locationList&gt;&#xd;
+&#xd;
+                                                          &lt;/location&gt;&#xd;
+&#xd;
+                                                          &lt;customerName&gt;MANIRAHO JEAN&lt;/customerName&gt;&#xd;
+&#xd;
+                                                          &lt;customerRatingCd&gt;C&lt;/customerRatingCd&gt;&#xd;
+&#xd;
+                                                         &lt;customerTypeCd&gt;CUSTOMER&lt;/customerTypeCd&gt;&#xd;
+&#xd;
+                                                          &lt;contactList&gt;&#xd;
+&#xd;
+                                                                        &lt;name&gt;Jean&lt;/name&gt;&#xd;
+&#xd;
+                                                                        &lt;typeCd&gt;CBR&lt;/typeCd&gt;&#xd;
+&#xd;
+                                                                        &lt;phoneNumber&gt;7807297761&lt;/phoneNumber&gt;&#xd;
+&#xd;
+                                                                        &lt;phoneLocationCd&gt;AUT&lt;/phoneLocationCd&gt;&#xd;
+&#xd;
+                                                          &lt;/contactList&gt;&#xd;
+&#xd;
+                                                          &lt;originatingSystemCreateDate&gt;${__timeShift(yyyy-MM-dd,,,,)}T${__timeShift(HH:mm:ss.SSS,,,,)}Z&#xd;
+&#xd;
+                                                          &lt;/originatingSystemCreateDate&gt;&#xd;
+&#xd;
+                                                          &lt;workOrderAttributeList&gt;&#xd;
+&#xd;
+                                                                        &lt;typeCode&gt;&#xd;
+&#xd;
+                                                                                      &lt;typeCd&gt;NOTIFICATION_IND&lt;/typeCd&gt;&#xd;
+&#xd;
+                                                                                      &lt;descriptionTxt&gt;false&lt;/descriptionTxt&gt;&#xd;
+&#xd;
+                                                                        &lt;/typeCode&gt;&#xd;
+&#xd;
+                                                          &lt;/workOrderAttributeList&gt;&#xd;
+&#xd;
+                                                          &lt;remarkList&gt;&#xd;
+&#xd;
+                                                                        &lt;typeCode&gt;&#xd;
+&#xd;
+                                                                                      &lt;typeCd&gt;GENERAL&lt;/typeCd&gt;&#xd;
+&#xd;
+                                                                                      &lt;descriptionTxt&gt;&#xd;
+&#xd;
+                                                                                      &lt;/descriptionTxt&gt;&#xd;
+&#xd;
+                                                                        &lt;/typeCode&gt;&#xd;
+&#xd;
+                                                                        &lt;typeCode&gt;&#xd;
+&#xd;
+                                                                                      &lt;typeCd&gt;FOR_TECHNICIAN&lt;/typeCd&gt;&#xd;
+&#xd;
+                                                                                      &lt;descriptionTxt&gt;Perf Test&lt;/descriptionTxt&gt;&#xd;
+&#xd;
+                                                                        &lt;/typeCode&gt;&#xd;
+&#xd;
+                                                          &lt;/remarkList&gt;&#xd;
+&#xd;
+                                                          &lt;workOrderDetailList&gt;&#xd;
+&#xd;
+                                                                        &lt;typeCode&gt;&#xd;
+&#xd;
+                                                                                      &lt;typeCd&gt;Activity&lt;/typeCd&gt;&#xd;
+&#xd;
+                                                                                      &lt;descriptionTxt&gt;Perf Test&lt;/descriptionTxt&gt;&#xd;
+&#xd;
+                                                                        &lt;/typeCode&gt;&#xd;
+&#xd;
+                                                          &lt;/workOrderDetailList&gt;&#xd;
+&#xd;
+                                           &lt;/ns5:workOrder&gt;&#xd;
+&#xd;
+                             &lt;/ns5:createWorkOrder&gt;&#xd;
+&#xd;
+              &lt;/S:Body&gt;&#xd;
+&#xd;
+&lt;/S:Envelope&gt;</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">soa-mp-rmsk-is01.tsl.telus.com</stringProp>
+              <stringProp name="HTTPSampler.port">443</stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">RMO/ProcessMgmt/FieldWorkAssignmentMgmtService_v3_0_vs0</stringProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <boolProp name="HTTPSampler.image_parser">true</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout">0</stringProp>
+              <stringProp name="HTTPSampler.response_timeout">0</stringProp>
+              <stringProp name="TestPlan.comments">002500${__Random(11000,11500,)}</stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Headers" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="Authorization" elementType="Header">
+                    <stringProp name="Header.name">Authorization</stringProp>
+                    <stringProp name="Header.value">Basic QVBQX1JFTkRFWlZPVVM6c29hb3JnaWQ=</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+              <DurationAssertion guiclass="DurationAssertionGui" testclass="DurationAssertion" testname="Timeout Check" enabled="false">
+                <stringProp name="DurationAssertion.duration">0</stringProp>
+              </DurationAssertion>
+              <hashTree/>
+              <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223PostProcessor" enabled="false">
+                <stringProp name="filename"></stringProp>
+                <stringProp name="script">vars.putObject(&apos;count&apos;, 0)</stringProp>
+                <stringProp name="parameters"></stringProp>
+                <stringProp name="scriptLanguage">groovy</stringProp>
+                <stringProp name="cacheKey">false</stringProp>
+              </JSR223PostProcessor>
+              <hashTree/>
+              <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223PostProcessor" enabled="false">
+                <stringProp name="filename"></stringProp>
+                <stringProp name="script">vars.put(&apos;authorizationValue&apos;, org.apache.jmeter.protocol.http.util.Base64Encoder.encode(&apos;APP_RENDEZVOUS&apos; + &apos;:&apos; + lr_decrypt))</stringProp>
+                <stringProp name="parameters"></stringProp>
+                <stringProp name="scriptLanguage">groovy</stringProp>
+                <stringProp name="cacheKey">false</stringProp>
+              </JSR223PostProcessor>
+              <hashTree/>
+              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="workOrderId" enabled="true">
+                <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+                <stringProp name="RegexExtractor.refname">workOrderId</stringProp>
+                <stringProp name="RegexExtractor.regex">&lt;workOrderId&gt;([^&quot;]+)&lt;/workOrderId&gt;</stringProp>
+                <stringProp name="RegexExtractor.template">$1$</stringProp>
+                <stringProp name="RegexExtractor.default"></stringProp>
+                <stringProp name="RegexExtractor.match_number">1</stringProp>
+                <boolProp name="RegexExtractor.default_empty_value">true</boolProp>
+              </RegexExtractor>
+              <hashTree/>
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+                <collectionProp name="Asserion.test_strings">
+                  <stringProp name="2432586">OPEN</stringProp>
+                </collectionProp>
+                <stringProp name="Assertion.custom_message"></stringProp>
+                <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+                <boolProp name="Assertion.assume_success">false</boolProp>
+                <intProp name="Assertion.test_type">16</intProp>
+              </ResponseAssertion>
+              <hashTree/>
+            </hashTree>
+            <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Flow Control Action" enabled="true">
+              <intProp name="ActionProcessor.action">1</intProp>
+              <intProp name="ActionProcessor.target">0</intProp>
+              <stringProp name="ActionProcessor.duration">3000</stringProp>
+            </TestAction>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="WIL_Cancel_Trouble" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">&lt;soapenv:Envelope xmlns:soapenv=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; xmlns:fiel=&quot;http://xmlschema.tmi.telus.com/srv/RMO/ProcessMgmt/FieldWorkAssignmentMgmtServiceRequestResponse_v3&quot;&gt;&lt;soapenv:Header/&gt;&lt;soapenv:Body&gt;   &lt;fiel:cancelWorkOrder&gt;      &lt;fiel:inputHeader&gt;         &lt;systemSourceCd&gt;3259&lt;/systemSourceCd&gt;         &lt;userId&gt;T942653&lt;/userId&gt;         &lt;requestDate&gt;${__timeShift(yyyy-MM-dd,,,,)}T${__timeShift(HH:mm:ss.SSS,,,,)}Z&lt;/requestDate&gt;      &lt;/fiel:inputHeader&gt;      &lt;fiel:workOrder&gt;         &lt;workOrderId&gt;${workOrderId}&lt;/workOrderId&gt;      &lt;/fiel:workOrder&gt;   &lt;/fiel:cancelWorkOrder&gt;&lt;/soapenv:Body&gt;&lt;/soapenv:Envelope&gt;</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">soa-mp-rmsk-is01.tsl.telus.com</stringProp>
+            <stringProp name="HTTPSampler.port">443</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/RMO/ProcessMgmt/FieldWorkAssignmentMgmtService_v3_0_vs0</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout">0</stringProp>
+            <stringProp name="HTTPSampler.response_timeout">0</stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Headers" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value"> text/xml; charset=utf-8</stringProp>
+                </elementProp>
+                <elementProp name="Authorization" elementType="Header">
+                  <stringProp name="Header.name">Authorization</stringProp>
+                  <stringProp name="Header.value">Basic QVBQX1JFTkRFWlZPVVM6c29hb3JnaWQ=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+            <DurationAssertion guiclass="DurationAssertionGui" testclass="DurationAssertion" testname="Timeout Check" enabled="true">
+              <stringProp name="DurationAssertion.duration">0</stringProp>
+            </DurationAssertion>
+            <hashTree/>
+            <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223PostProcessor" enabled="true">
+              <stringProp name="filename"></stringProp>
+              <stringProp name="script">import org.apache.jmeter.assertions.AssertionResult
+import org.apache.jmeter.assertions.XPathAssertion
+
+def isSoapFault(result) {
+    if (result.responseCode != &apos;500&apos;) {
+        return false
+    }
+    def assertion = new XPathAssertion()
+    assertion.setXPathString(&quot;//*[local-name()=&apos;Envelope&apos;]/*[local-name()=&apos;Body&apos;]/*[local-name()=&apos;Fault&apos;]&quot;)
+    def assertResult = assertion.getResult(result)
+    return !assertResult.isFailure() &amp;&amp; !assertResult.isError()
+}
+
+if (isSoapFault(prev)) {
+    prev.setSuccessful(true)
+}</stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="scriptLanguage">groovy</stringProp>
+              <stringProp name="cacheKey">false</stringProp>
+            </JSR223PostProcessor>
+            <hashTree/>
+            <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223PostProcessor" enabled="true">
+              <stringProp name="filename"></stringProp>
+              <stringProp name="script">vars.put(&quot;response&quot;, prev.getResponseDataAsString());</stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="scriptLanguage">groovy</stringProp>
+              <stringProp name="cacheKey">false</stringProp>
+            </JSR223PostProcessor>
+            <hashTree/>
+          </hashTree>
+          <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="Iteration End Time" enabled="true">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="script">def ItrEndTime = new Date()
+
+use(groovy.time.TimeCategory) {
+    vars.put(&quot;ItrEndTime&quot;, ItrEndTime.getTime() as String)
+}
+
+String Pacing = ((vars.get(&apos;ItrStartTime&apos;) as long) + 17800) - (vars.get(&apos;ItrEndTime&apos;) as long)
+
+vars.put(&apos;Pacing&apos;, Pacing)</stringProp>
+            <stringProp name="TestPlan.comments">give fixed pacing value here in place of the integer number</stringProp>
+          </JSR223Sampler>
+          <hashTree/>
+          <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Pacing" enabled="true">
+            <intProp name="ActionProcessor.action">1</intProp>
+            <intProp name="ActionProcessor.target">0</intProp>
+            <stringProp name="ActionProcessor.duration">${Pacing}</stringProp>
+          </TestAction>
+          <hashTree/>
+        </hashTree>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="CheckAvailability_ReqTech1plus" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">startnextloop</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">20</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <stringProp name="ThreadGroup.start_time"></stringProp>
+        <stringProp name="ThreadGroup.end_time"></stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration">0</stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">false</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <CacheManager guiclass="CacheManagerGui" testclass="CacheManager" testname="Cache" enabled="true">
+          <boolProp name="clearEachIteration">false</boolProp>
+          <boolProp name="useExpires">false</boolProp>
+          <boolProp name="CacheManager.controlledByThread">false</boolProp>
+        </CacheManager>
+        <hashTree/>
+        <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="Cookies" enabled="true">
+          <collectionProp name="CookieManager.cookies"/>
+          <boolProp name="CookieManager.clearEachIteration">false</boolProp>
+          <boolProp name="CookieManager.controlledByThreadGroup">false</boolProp>
+        </CookieManager>
+        <hashTree/>
+        <DNSCacheManager guiclass="DNSCachePanel" testclass="DNSCacheManager" testname="DNS Cache Manager" enabled="true">
+          <collectionProp name="DNSCacheManager.servers"/>
+          <boolProp name="DNSCacheManager.clearEachIteration">false</boolProp>
+          <boolProp name="DNSCacheManager.isCustomResolver">false</boolProp>
+        </DNSCacheManager>
+        <hashTree/>
+        <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="Defaults" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="user_defined" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path"></stringProp>
+          <boolProp name="HTTPSampler.image_parser">true</boolProp>
+          <boolProp name="HTTPSampler.concurrentDwn">true</boolProp>
+          <stringProp name="HTTPSampler.concurrentPool">4</stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </ConfigTestElement>
+        <hashTree/>
+        <AuthManager guiclass="AuthPanel" testclass="AuthManager" testname="HTTP Authorization Manager" enabled="true">
+          <collectionProp name="AuthManager.auth_list">
+            <elementProp name="" elementType="Authorization">
+              <stringProp name="Authorization.url">apigw-soap-st.tsl.telus.com:443</stringProp>
+              <stringProp name="Authorization.username">APP_RENDEZVOUS</stringProp>
+              <stringProp name="Authorization.password">soaorgid</stringProp>
+              <stringProp name="Authorization.domain"></stringProp>
+              <stringProp name="Authorization.realm"></stringProp>
+            </elementProp>
+          </collectionProp>
+          <boolProp name="AuthManager.controlledByThreadGroup">false</boolProp>
+        </AuthManager>
+        <hashTree/>
+        <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+          <collectionProp name="Arguments.arguments">
+            <elementProp name="appointmentEndDate" elementType="Argument">
+              <stringProp name="Argument.name">appointmentEndDate</stringProp>
+              <stringProp name="Argument.value">${__timeShift(yyyy-MM-dd,,P15D,,)}T${__timeShift(HH:mm:ss.SSS,,,,)}Z</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="appointmentStartDate" elementType="Argument">
+              <stringProp name="Argument.name">appointmentStartDate</stringProp>
+              <stringProp name="Argument.value">${__time(yyyy-MM-dd&apos;T&apos;hh:mm:ss.SSS&apos;Z&apos;)}</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="dueDate" elementType="Argument">
+              <stringProp name="Argument.name">dueDate</stringProp>
+              <stringProp name="Argument.value">${__timeShift(yyyy-MM-dd,,P22D,,)}T${__timeShift(HH:mm:ss.SSS,,,,)}Z</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+              <stringProp name="Argument.desc">not present</stringProp>
+            </elementProp>
+            <elementProp name="earlyStartDate" elementType="Argument">
+              <stringProp name="Argument.name">earlyStartDate</stringProp>
+              <stringProp name="Argument.value">${__timeShift(yyyy-MM-dd,,P17D,,)}T${__timeShift(HH:mm:ss.SSS,,,,)}Z</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+              <stringProp name="Argument.desc">not present</stringProp>
+            </elementProp>
+            <elementProp name="originatingSystemCreateDate" elementType="Argument">
+              <stringProp name="Argument.name">originatingSystemCreateDate</stringProp>
+              <stringProp name="Argument.value">${__timeShift(yyyy-MM-dd,,,,)}T${__timeShift(HH:mm:ss.SSS,,,,)}Z</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="requestDate" elementType="Argument">
+              <stringProp name="Argument.name">requestDate</stringProp>
+              <stringProp name="Argument.value">${__timeShift(yyyy-MM-dd,,,,)}T${__timeShift(HH:mm:ss.SSS,,,,)}Z</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="counter" elementType="Argument">
+              <stringProp name="Argument.name">counter</stringProp>
+              <stringProp name="Argument.value">00${__Random(11000,11500,)}</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="Pacing" elementType="Argument">
+              <stringProp name="Argument.name">Pacing</stringProp>
+              <stringProp name="Argument.value">${__P(propPIpacing,180)}</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+          </collectionProp>
+        </Arguments>
+        <hashTree/>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV wil_createtrouble_estimatedDuration.dat.csv" enabled="false">
+          <stringProp name="filename">wil_createtrouble_estimatedDuration.dat.csv</stringProp>
+          <stringProp name="delimiter">,</stringProp>
+          <boolProp name="quotedData">true</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="variableNames">estimatedDuration</stringProp>
+          <stringProp name="fileEncoding"></stringProp>
+          <boolProp name="ignoreFirstLine">true</boolProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV wil_createtrouble_originatingSystemWoId.dat.csv" enabled="false">
+          <stringProp name="filename">wil_createtrouble_originatingSystemWoId.dat.csv</stringProp>
+          <stringProp name="delimiter">,</stringProp>
+          <boolProp name="quotedData">true</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="variableNames">originatingSystemWoId</stringProp>
+          <stringProp name="fileEncoding"></stringProp>
+          <boolProp name="ignoreFirstLine">true</boolProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV wil_createtrouble_Address.dat.csv" enabled="false">
+          <stringProp name="filename">wil_createtrouble_Address.dat.csv</stringProp>
+          <stringProp name="delimiter">,</stringProp>
+          <boolProp name="quotedData">true</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="variableNames">fmsAddressId,apartmentNumber,houseNumber,suffix,vector,street,city,provinceCode,postalCode,fmsCoid,clli,country</stringProp>
+          <stringProp name="fileEncoding"></stringProp>
+          <boolProp name="ignoreFirstLine">true</boolProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV wil_createtrouble_Product.dat.csv" enabled="false">
+          <stringProp name="filename">wil_createtrouble_Product.dat.csv</stringProp>
+          <stringProp name="delimiter">,</stringProp>
+          <boolProp name="quotedData">true</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="variableNames">productCategory,productTechnology,jobType,workGroupCode</stringProp>
+          <stringProp name="fileEncoding"></stringProp>
+          <boolProp name="ignoreFirstLine">true</boolProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV wil_createtrouble_originatingSystemWoInternalId.dat.csv" enabled="false">
+          <stringProp name="filename">wil_createtrouble_originatingSystemWoInternalId.dat.csv</stringProp>
+          <stringProp name="delimiter">,</stringProp>
+          <boolProp name="quotedData">true</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="variableNames">originatingSystemWoInternalId</stringProp>
+          <stringProp name="fileEncoding"></stringProp>
+          <boolProp name="ignoreFirstLine">true</boolProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="LocationID" enabled="true">
+          <stringProp name="filename">LocationID.txt</stringProp>
+          <stringProp name="delimiter">,</stringProp>
+          <boolProp name="quotedData">true</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="variableNames">LocationID</stringProp>
+          <stringProp name="fileEncoding"></stringProp>
+          <boolProp name="ignoreFirstLine">true</boolProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="endTime" enabled="true">
+          <stringProp name="scriptLanguage">groovy</stringProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="filename"></stringProp>
+          <stringProp name="cacheKey">true</stringProp>
+          <stringProp name="script">def dateobj= new Date();
+def endTime = dateobj.getTime();
+vars.put(&quot;endTime&quot;,endTime.toString())
+log.info(&quot;Current date in the specified format: &quot; + endTime);
+SampleResult.setIgnore();
+</stringProp>
+        </JSR223Sampler>
+        <hashTree/>
+        <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If Controller" enabled="true">
+          <stringProp name="IfController.condition">&quot;${__jm__EnterpriseTMF676__idx}&quot; != &quot;0&quot;</stringProp>
+          <boolProp name="IfController.evaluateAll">false</boolProp>
+        </IfController>
+        <hashTree>
+          <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Pacing Timer" enabled="true">
+            <intProp name="ActionProcessor.action">1</intProp>
+            <intProp name="ActionProcessor.target">0</intProp>
+            <stringProp name="ActionProcessor.duration">${myDelay}</stringProp>
+          </TestAction>
+          <hashTree>
+            <JSR223Timer guiclass="TestBeanGUI" testclass="JSR223Timer" testname="JSR223 Timer" enabled="true">
+              <stringProp name="scriptLanguage">groovy</stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="script">Long pacingInput = Long.valueOf(vars.get(&apos;Pacing&apos;))*1000;
+Long elapsed = Long.valueOf(vars.get(&apos;endTime&apos;)) - Long.valueOf(vars.get(&apos;startTime&apos;))
+Long pacing = pacingInput-elapsed;
+if ( pacing &gt; 0 ) 
+{
+	vars.put(&quot;myDelay&quot;, String.valueOf(pacing));
+	return 0;
+}
+else 
+{
+	vars.put(&quot;myDelay&quot;, &quot;0&quot;);
+	return 0; 
+}
+</stringProp>
+            </JSR223Timer>
+            <hashTree/>
+          </hashTree>
+        </hashTree>
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="startTime" enabled="true">
+          <stringProp name="scriptLanguage">groovy</stringProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="filename"></stringProp>
+          <stringProp name="cacheKey">true</stringProp>
+          <stringProp name="script">def dateobj= new Date();
+def startTime = dateobj.getTime();
+log.info(&quot;Current date in the specified format: &quot; + startTime);
+vars.put(&quot;startTime&quot;,startTime.toString())
+SampleResult.setIgnore();</stringProp>
+        </JSR223Sampler>
+        <hashTree/>
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CheckAvailability_ReqTech1plus" enabled="true">
+          <boolProp name="TransactionController.parent">true</boolProp>
+          <boolProp name="TransactionController.includeTimers">false</boolProp>
+        </TransactionController>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">X-dynaTrace</stringProp>
+                <stringProp name="Header.value">NA=WIL_Create_Trouble;PC=${__samplerName()};VU=-${__threadNum()};ID=${__time()}</stringProp>
+              </elementProp>
+              <elementProp name="Content-Type" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">text/xml</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="SOAP Request" enabled="false">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">&lt;S:Envelope&#xd;
+	xmlns:env=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;&#xd;
+	xmlns:S=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;&gt;&#xd;
+	&lt;S:Header/&gt;&#xd;
+	&lt;S:Body&#xd;
+		xmlns:S=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;&#xd;
+		xmlns:wsu=&quot;http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd&quot; wsu:Id=&quot;body_ef8cc4b3-a910-441e-8fd0-ddeda471d217&quot;&gt;&#xd;
+		&lt;ns3:searchAvailableAppointmentList&#xd;
+			xmlns:ns3=&quot;http://xmlschema.tmi.telus.com/srv/RMO/ProcessMgmt/FieldWorkAppointmentServiceRequestResponse_v3&quot;&gt;&#xd;
+			&lt;ns3:inputHeader&gt;&#xd;
+				&lt;systemSourceCd&gt;3369&lt;/systemSourceCd&gt;&#xd;
+				&lt;userId&gt;EXTERNAL CUSTOMER&lt;/userId&gt;&#xd;
+				&lt;requestDate&gt;${requestDate}&lt;/requestDate&gt;&#xd;
+			&lt;/ns3:inputHeader&gt;&#xd;
+			&lt;ns3:workOrder&gt;&#xd;
+				&lt;workOrderId&gt;100034082745&lt;/workOrderId&gt;&#xd;
+				&lt;originatingSystemId&gt;6161&lt;/originatingSystemId&gt;&#xd;
+				&lt;originatingSystemWorkOrderGroupId&gt;OR-01324989.0001&lt;/originatingSystemWorkOrderGroupId&gt;&#xd;
+				&lt;originatingSystemWorkOrderId&gt;8028Z000003KDWWQAQ&lt;/originatingSystemWorkOrderId&gt;&#xd;
+				&lt;originatingSystemWorkOrderInternalId&gt;22112370389123313174&lt;/originatingSystemWorkOrderInternalId&gt;&#xd;
+				&lt;secondarySystemId&gt;6161&lt;/secondarySystemId&gt;&#xd;
+				&lt;callId&gt;100034082745&lt;/callId&gt;&#xd;
+				&lt;classificationCd&gt;ORDER&lt;/classificationCd&gt;&#xd;
+				&lt;serviceClassCd&gt;B&lt;/serviceClassCd&gt;&#xd;
+				&lt;productCategoryCd&gt;BUSINESS&lt;/productCategoryCd&gt;&#xd;
+				&lt;productTechnologyCd&gt;OTT&lt;/productTechnologyCd&gt;&#xd;
+				&lt;jobTypeCd&gt;BUSINESS&lt;/jobTypeCd&gt;&#xd;
+				&lt;outofServiceInd&gt;false&lt;/outofServiceInd&gt;&#xd;
+				&lt;priorityCd&gt;3&lt;/priorityCd&gt;&#xd;
+				&lt;serviceIdentification&gt;&#xd;
+					&lt;typeCd&gt;ACCOUNT&lt;/typeCd&gt;&#xd;
+					&lt;descriptionTxt&gt;3172257&lt;/descriptionTxt&gt;&#xd;
+				&lt;/serviceIdentification&gt;&#xd;
+				&lt;hostReadyForDispatchInd&gt;true&lt;/hostReadyForDispatchInd&gt;&#xd;
+				&lt;overrideInd&gt;false&lt;/overrideInd&gt;&#xd;
+				&lt;scheduleRemarkInd&gt;false&lt;/scheduleRemarkInd&gt;&#xd;
+				&lt;appointmentStartDate&gt;${appointmentStartDate}&lt;/appointmentStartDate&gt;&#xd;
+				&lt;appointmentEndDate&gt;${appointmentEndDate}&lt;/appointmentEndDate&gt;&#xd;
+				&lt;dueDate&gt;${appointmentEndDate}&lt;/dueDate&gt;&#xd;
+				&lt;estimatedDurationNum&gt;9.0&lt;/estimatedDurationNum&gt;&#xd;
+				&lt;estimatedDurationUnitCd&gt;HOURS&lt;/estimatedDurationUnitCd&gt;&#xd;
+				&lt;location&gt;&#xd;
+					&lt;locationList&gt;&#xd;
+						&lt;typeCode&gt;SERVICE&lt;/typeCode&gt;&#xd;
+						&lt;dispatchLocationInd&gt;true&lt;/dispatchLocationInd&gt;&#xd;
+						&lt;locationAddress&gt;&#xd;
+							&lt;locationId&gt;${LocationID}&lt;/locationId&gt;&#xd;
+						&lt;/locationAddress&gt;&#xd;
+					&lt;/locationList&gt;&#xd;
+				&lt;/location&gt;&#xd;
+				&lt;customerName&gt;SEMPRE UNO HOLDINGS LTD&lt;/customerName&gt;&#xd;
+				&lt;customerRatingCd&gt;S1&lt;/customerRatingCd&gt;&#xd;
+				&lt;customerTypeCd&gt;CUSTOMER&lt;/customerTypeCd&gt;&#xd;
+				&lt;contactList&gt;&#xd;
+					&lt;name&gt;SEMPRE UNO HOLDINGS LTD&lt;/name&gt;&#xd;
+					&lt;typeCd&gt;CLT&lt;/typeCd&gt;&#xd;
+					&lt;phoneNumber&gt;(604) 737-2018&lt;/phoneNumber&gt;&#xd;
+					&lt;phoneLocationCd&gt;AUT&lt;/phoneLocationCd&gt;&#xd;
+				&lt;/contactList&gt;&#xd;
+				&lt;contactList&gt;&#xd;
+					&lt;name&gt;Michelle Hackett&lt;/name&gt;&#xd;
+					&lt;typeCd&gt;CBR&lt;/typeCd&gt;&#xd;
+					&lt;phoneNumber&gt;(604) 737-2018&lt;/phoneNumber&gt;&#xd;
+					&lt;phoneLocationCd&gt;AUT&lt;/phoneLocationCd&gt;&#xd;
+				&lt;/contactList&gt;&#xd;
+				&lt;customerId&gt;104372970&lt;/customerId&gt;&#xd;
+				&lt;customerIdTypeCd&gt;CUSTOMER_ID&lt;/customerIdTypeCd&gt;&#xd;
+				&lt;originatingSystemCreateDate&gt;2022-11-15T18:07:53.000Z&lt;/originatingSystemCreateDate&gt;&#xd;
+				&lt;workOrderAttributeList&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;REMARK_THRESHOLD&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt&gt;3&lt;/descriptionTxt&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;MANAGE_DISPATCH_IND&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt&gt;1&lt;/descriptionTxt&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;OBD_FLAG&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt&gt;false&lt;/descriptionTxt&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;DATA_LANGUAGE&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt&gt;EN&lt;/descriptionTxt&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;NOTIFICATION_IND&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt&gt;false&lt;/descriptionTxt&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+				&lt;/workOrderAttributeList&gt;&#xd;
+				&lt;workOrderDetailList&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;ORDER_EQUIPMENT&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt&gt;[{&quot;id&quot;:&quot;9157544019113022056&quot;,&quot;name&quot;:&quot;Indoor Camera - Easy Pay 36 mos&quot;,&quot;categoryName&quot;:&quot;Home Security Equipment&quot;,&quot;categoryId&quot;:&quot;9150451420813201788&quot;,&quot;characteristics&quot;:[{&quot;id&quot;:&quot;9152509233513494893&quot;,&quot;name&quot;:&quot;Acquisition Type&quot;,&quot;value&quot;:&quot;Purchased&quot;},{&quot;id&quot;:&quot;9152509347813495011&quot;,&quot;name&quot;:&quot;SKU&quot;,&quot;value&quot;:&quot;2396785&quot;}]},{&quot;id&quot;:&quot;9157544019113022056&quot;,&quot;name&quot;:&quot;Indoor Camera - Easy Pay 36 mos&quot;,&quot;categoryName&quot;:&quot;Home Security Equipment&quot;,&quot;categoryId&quot;:&quot;9150451420813201788&quot;,&quot;characteristics&quot;:[{&quot;id&quot;:&quot;9152509233513494893&quot;,&quot;name&quot;:&quot;Acquisition Type&quot;,&quot;value&quot;:&quot;Purchased&quot;},{&quot;id&quot;:&quot;9152509347813495011&quot;,&quot;name&quot;:&quot;SKU&quot;,&quot;value&quot;:&quot;2396785&quot;}]},{&quot;id&quot;:&quot;9157544019113022056&quot;,&quot;name&quot;:&quot;Indoor Camera - Easy Pay 36 mos&quot;,&quot;categoryName&quot;:&quot;Home Security Equipment&quot;,&quot;categoryId&quot;:&quot;9150451420813201788&quot;,&quot;characteristics&quot;:[{&quot;id&quot;:&quot;9152509233513494893&quot;,&quot;name&quot;:&quot;Acquisition Type&quot;,&quot;value&quot;:&quot;Purchased&quot;},{&quot;id&quot;:&quot;9152509347813495011&quot;,&quot;name&quot;:&quot;SKU&quot;,&quot;value&quot;:&quot;2396785&quot;}]},{&quot;id&quot;:&quot;9157544019113022056&quot;,&quot;name&quot;:&quot;Indoor Camera - Easy Pay 36 mos&quot;,&quot;categoryName&quot;:&quot;Home Security Equipment&quot;,&quot;categoryId&quot;:&quot;9150451420813201788&quot;,&quot;characteristics&quot;:[{&quot;id&quot;:&quot;9152509233513494893&quot;,&quot;name&quot;:&quot;Acquisition Type&quot;,&quot;value&quot;:&quot;Purchased&quot;},{&quot;id&quot;:&quot;9152509347813495011&quot;,&quot;name&quot;:&quot;SKU&quot;,&quot;value&quot;:&quot;2396785&quot;}]},{&quot;id&quot;:&quot;9157544019113022056&quot;,&quot;name&quot;:&quot;Indoor Camera - Easy Pay 36 mos&quot;,&quot;categoryName&quot;:&quot;Home Security Equipment&quot;,&quot;categoryId&quot;:&quot;9150451420813201788&quot;,&quot;characteristics&quot;:[{&quot;id&quot;:&quot;9152509233513494893&quot;,&quot;name&quot;:&quot;Acquisition Type&quot;,&quot;value&quot;:&quot;Purchased&quot;},{&quot;id&quot;:&quot;9152509347813495011&quot;,&quot;name&quot;:&quot;SKU&quot;,&quot;value&quot;:&quot;2396785&quot;}]},{&quot;id&quot;:&quot;9151834050113639329&quot;,&quot;name&quot;:&quot;Outdoor Camera - wireless with night vision \u0026 fixed IP&quot;,&quot;categoryName&quot;:&quot;Home Security Equipment&quot;,&quot;categoryId&quot;:&quot;9150451420813201788&quot;,&quot;characteristics&quot;:[{&quot;id&quot;:&quot;9152509233513494893&quot;,&quot;name&quot;:&quot;Acquisition Type&quot;,&quot;value&quot;:&quot;Purchased&quot;},{&quot;id&quot;:&quot;9152509347813495011&quot;,&quot;name&quot;:&quot;SKU&quot;,&quot;value&quot;:&quot;2383109&quot;}]},{&quot;id&quot;:&quot;9151834050113639329&quot;,&quot;name&quot;:&quot;Outdoor Camera - wireless with night vision \u0026 fixed IP&quot;,&quot;categoryName&quot;:&quot;Home Security Equipment&quot;,&quot;categoryId&quot;:&quot;9150451420813201788&quot;,&quot;characteristics&quot;:[{&quot;id&quot;:&quot;9152509233513494893&quot;,&quot;name&quot;:&quot;Acquisition Type&quot;,&quot;value&quot;:&quot;Purchased&quot;},{&quot;id&quot;:&quot;9152509347813495011&quot;,&quot;name&quot;:&quot;SKU&quot;,&quot;value&quot;:&quot;2383109&quot;}]},{&quot;id&quot;:&quot;9151834050113639329&quot;,&quot;name&quot;:&quot;Outdoor Camera - wireless with night vision \u0026 fixed IP&quot;,&quot;categoryName&quot;:&quot;Home Security Equipment&quot;,&quot;categoryId&quot;:&quot;9150451420813201788&quot;,&quot;characteristics&quot;:[{&quot;id&quot;:&quot;9152509233513494893&quot;,&quot;name&quot;:&quot;Acquisition Type&quot;,&quot;value&quot;:&quot;Purchased&quot;},{&quot;id&quot;:&quot;9152509347813495011&quot;,&quot;name&quot;:&quot;SKU&quot;,&quot;value&quot;:&quot;2383109&quot;}]},{&quot;id&quot;:&quot;9161040270513546831&quot;,&quot;name&quot;:&quot;2TB Stream Video Recorder&quot;,&quot;categoryName&quot;:&quot;Home Security Equipment&quot;,&quot;categoryId&quot;:&quot;9150451420813201788&quot;,&quot;characteristics&quot;:[{&quot;id&quot;:&quot;9152509233513494893&quot;,&quot;name&quot;:&quot;Acquisition Type&quot;,&quot;value&quot;:&quot;Rented&quot;},{&quot;id&quot;:&quot;9152509347813495011&quot;,&quot;name&quot;:&quot;SKU&quot;,&quot;value&quot;:&quot;CSVR126-2TB&quot;}]},{&quot;id&quot;:&quot;9152760789313647032&quot;,&quot;name&quot;:&quot;Door/Window Sensor&quot;,&quot;categoryName&quot;:&quot;Home Security Equipment&quot;,&quot;categoryId&quot;:&quot;9150451420813201788&quot;,&quot;characteristics&quot;:[{&quot;id&quot;:&quot;9152509233513494893&quot;,&quot;name&quot;:&quot;Acquisition Type&quot;,&quot;value&quot;:&quot;Rented&quot;},{&quot;id&quot;:&quot;9152509347813495011&quot;,&quot;name&quot;:&quot;SKU&quot;,&quot;value&quot;:&quot;2387286&quot;}]},{&quot;id&quot;:&quot;9152760789313647032&quot;,&quot;name&quot;:&quot;Door/Window Sensor&quot;,&quot;categoryName&quot;:&quot;Home Security Equipment&quot;,&quot;categoryId&quot;:&quot;9150451420813201788&quot;,&quot;characteristics&quot;:[{&quot;id&quot;:&quot;9152509233513494893&quot;,&quot;name&quot;:&quot;Acquisition Type&quot;,&quot;value&quot;:&quot;Rented&quot;},{&quot;id&quot;:&quot;9152509347813495011&quot;,&quot;name&quot;:&quot;SKU&quot;,&quot;value&quot;:&quot;2387286&quot;}]},{&quot;id&quot;:&quot;9152760789313647032&quot;,&quot;name&quot;:&quot;Door/Window Sensor&quot;,&quot;categoryName&quot;:&quot;Home Security Equipment&quot;,&quot;categoryId&quot;:&quot;9150451420813201788&quot;,&quot;characteristics&quot;:[{&quot;id&quot;:&quot;9152509233513494893&quot;,&quot;name&quot;:&quot;Acquisition Type&quot;,&quot;value&quot;:&quot;Rented&quot;},{&quot;id&quot;:&quot;9152509347813495011&quot;,&quot;name&quot;:&quot;SKU&quot;,&quot;value&quot;:&quot;2387286&quot;}]},{&quot;id&quot;:&quot;9152767539613655083&quot;,&quot;name&quot;:&quot;Main Control panel&quot;,&quot;categoryName&quot;:&quot;Home Security Equipment&quot;,&quot;categoryId&quot;:&quot;9150451420813201788&quot;,&quot;characteristics&quot;:[{&quot;id&quot;:&quot;9152509233513494893&quot;,&quot;name&quot;:&quot;Acquisition Type&quot;,&quot;value&quot;:&quot;Rented&quot;},{&quot;id&quot;:&quot;9152509347813495011&quot;,&quot;name&quot;:&quot;SKU&quot;,&quot;value&quot;:&quot;2391987&quot;}]},{&quot;id&quot;:&quot;9152768207513657842&quot;,&quot;name&quot;:&quot;Motion Sensor&quot;,&quot;categoryName&quot;:&quot;Home Security Equipment&quot;,&quot;categoryId&quot;:&quot;9150451420813201788&quot;,&quot;characteristics&quot;:[{&quot;id&quot;:&quot;9152509233513494893&quot;,&quot;name&quot;:&quot;Acquisition Type&quot;,&quot;value&quot;:&quot;Rented&quot;},{&quot;id&quot;:&quot;9152509347813495011&quot;,&quot;name&quot;:&quot;SKU&quot;,&quot;value&quot;:&quot;2387287&quot;}]},{&quot;id&quot;:&quot;9152768207513657842&quot;,&quot;name&quot;:&quot;Motion Sensor&quot;,&quot;categoryName&quot;:&quot;Home Security Equipment&quot;,&quot;categoryId&quot;:&quot;9150451420813201788&quot;,&quot;characteristics&quot;:[{&quot;id&quot;:&quot;9152509233513494893&quot;,&quot;name&quot;:&quot;Acquisition Type&quot;,&quot;value&quot;:&quot;Rented&quot;},{&quot;id&quot;:&quot;9152509347813495011&quot;,&quot;name&quot;:&quot;SKU&quot;,&quot;value&quot;:&quot;2387287&quot;}]}]&lt;/descriptionTxt&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;ORDERED_PRODUCTS&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt&gt;[{&quot;characteristics&quot;:[],&quot;name&quot;:&quot;Control&quot;,&quot;id&quot;:&quot;9159897980013604769&quot;,&quot;category&quot;:&quot;SHS/MC&quot;}]&lt;/descriptionTxt&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+				&lt;/workOrderDetailList&gt;&#xd;
+				&lt;remarkList&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;FOR_TECHNICIAN&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt&gt;&amp;lt;tables&amp;gt;  &amp;lt;table&amp;gt;&#xd;
+      &amp;lt;caption&amp;gt;Customer Information : Customer Information&amp;lt;/caption&amp;gt;&#xd;
+      &amp;lt;thead&amp;gt;&#xd;
+         &amp;lt;tr&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Name&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Contact Numbers&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Email&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Business Operating Name&amp;lt;/th&amp;gt;&#xd;
+         &amp;lt;/tr&amp;gt;&#xd;
+      &amp;lt;/thead&amp;gt;&#xd;
+      &amp;lt;tbody&amp;gt;&#xd;
+         &amp;lt;tr&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;SEMPRE UNO HOLDINGS LTD&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;(604) 737-2018&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;mich101010@hotmail.com&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;SEMPRE UNO HOLDINGS LTD O/A N/A&amp;lt;/td&amp;gt;&#xd;
+         &amp;lt;/tr&amp;gt;&#xd;
+      &amp;lt;/tbody&amp;gt;&#xd;
+   &amp;lt;/table&amp;gt;&#xd;
+   &amp;lt;table&amp;gt;&#xd;
+      &amp;lt;caption&amp;gt;Customer Information : Account Type&amp;lt;/caption&amp;gt;&#xd;
+      &amp;lt;thead&amp;gt;&#xd;
+         &amp;lt;tr&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Business Or Consumer Account&amp;lt;/th&amp;gt;&#xd;
+         &amp;lt;/tr&amp;gt;&#xd;
+      &amp;lt;/thead&amp;gt;&#xd;
+      &amp;lt;tbody&amp;gt;&#xd;
+         &amp;lt;tr&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;Business&amp;lt;/td&amp;gt;&#xd;
+         &amp;lt;/tr&amp;gt;&#xd;
+      &amp;lt;/tbody&amp;gt;&#xd;
+   &amp;lt;/table&amp;gt;&#xd;
+   &amp;lt;table&amp;gt;&#xd;
+      &amp;lt;caption&amp;gt;Customer Information : Product Information&amp;lt;/caption&amp;gt;&#xd;
+      &amp;lt;thead&amp;gt;&#xd;
+         &amp;lt;tr&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Ordered Product&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Existing Products&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;All Products&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Additional Comments&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Remarks&amp;lt;/th&amp;gt;&#xd;
+         &amp;lt;/tr&amp;gt;&#xd;
+      &amp;lt;/thead&amp;gt;&#xd;
+      &amp;lt;tbody&amp;gt;&#xd;
+         &amp;lt;tr&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;Control, Control (9165214714913684197)&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;Control, Business Work Offer&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+         &amp;lt;/tr&amp;gt;&#xd;
+      &amp;lt;/tbody&amp;gt;&#xd;
+   &amp;lt;/table&amp;gt;&amp;lt;/tables&amp;gt;&lt;/descriptionTxt&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;GENERAL&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt&gt;OPERATING NAME=SEMPRE UNO HOLDINGS LTD O/A N/A&#xd;
+EMAIL = mich101010@hotmail.com, mich101010@hotmail.com&#xd;
+ORDERED PRODUCTS = Control&#xd;
+ALL PRODUCTS = Business Work Offer, Control&#xd;
+Home Phone 2 Go = No&#xd;
+CUSTOMER COMMENTS = customer request&#xd;
+CLASS OF SERVICE = Business&#xd;
+Access Information for Technician :&#xd;
+Installation Business Security Component = PLEASE CALL CS 1 HOUR BEFORE THE INSTALLATION Michelle Hackett 6047372018&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+&lt;/descriptionTxt&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+				&lt;/remarkList&gt;&#xd;
+				&lt;internalTeamWorkerRequiredInd&gt;false&lt;/internalTeamWorkerRequiredInd&gt;&#xd;
+				&lt;requiredTeamWorkerList/&gt;&#xd;
+				&lt;prohibitedTeamWorkerList/&gt;&#xd;
+				&lt;preferredTeamWorkerList/&gt;&#xd;
+				&lt;statusCd&gt;OPEN&lt;/statusCd&gt;&#xd;
+				&lt;jobList&gt;&#xd;
+					&lt;job&gt;&#xd;
+						&lt;jobIdent&gt;&#xd;
+							&lt;jobId&gt;46871036&lt;/jobId&gt;&#xd;
+							&lt;externalJobGroupingId&gt;100034082745&lt;/externalJobGroupingId&gt;&#xd;
+							&lt;externalJobId&gt;0&lt;/externalJobId&gt;&#xd;
+						&lt;/jobIdent&gt;&#xd;
+						&lt;statusCd&gt;TENTATIVE&lt;/statusCd&gt;&#xd;
+						&lt;assignment&gt;&#xd;
+							&lt;jobAssignmentId&gt;125073525&lt;/jobAssignmentId&gt;&#xd;
+							&lt;teamWorkerId&gt;X200891&lt;/teamWorkerId&gt;&#xd;
+							&lt;statusCd&gt;TENTATIVE&lt;/statusCd&gt;&#xd;
+							&lt;startDate&gt;2022-12-01T20:05:00.000Z&lt;/startDate&gt;&#xd;
+							&lt;endDate&gt;2022-12-01T23:50:00.000Z&lt;/endDate&gt;&#xd;
+							&lt;execution&gt;&#xd;
+								&lt;executionDate&gt;2022-11-24T09:29:04.000Z&lt;/executionDate&gt;&#xd;
+							&lt;/execution&gt;&#xd;
+						&lt;/assignment&gt;&#xd;
+					&lt;/job&gt;&#xd;
+				&lt;/jobList&gt;&#xd;
+				&lt;requiredTeamWorkerNum&gt;2&lt;/requiredTeamWorkerNum&gt;&#xd;
+				&lt;customerPremiseEquipmentList/&gt;&#xd;
+				&lt;componentList&gt;&#xd;
+					&lt;component&gt;&#xd;
+						&lt;componentId&gt;63709036&lt;/componentId&gt;&#xd;
+						&lt;originatingSystemWorkOrderId&gt;8028Z000003KDWXQAQ&lt;/originatingSystemWorkOrderId&gt;&#xd;
+						&lt;hostReadyForDispatchInd&gt;true&lt;/hostReadyForDispatchInd&gt;&#xd;
+						&lt;productCategoryCd&gt;SECURITY&lt;/productCategoryCd&gt;&#xd;
+						&lt;jobTypeCd&gt;SECURITY&lt;/jobTypeCd&gt;&#xd;
+						&lt;workOrderActionCd&gt;PR&lt;/workOrderActionCd&gt;&#xd;
+						&lt;productTechnologyCd&gt;OTT&lt;/productTechnologyCd&gt;&#xd;
+						&lt;installationTypeCd&gt;FW&lt;/installationTypeCd&gt;&#xd;
+						&lt;estimatedDurationNum&gt;3.0&lt;/estimatedDurationNum&gt;&#xd;
+						&lt;estimatedDurationUnitCd&gt;HOURS&lt;/estimatedDurationUnitCd&gt;&#xd;
+						&lt;componentAttributeList&gt;&#xd;
+							&lt;typeCode&gt;&#xd;
+								&lt;typeCd&gt;SUBDEMANDTYPE&lt;/typeCd&gt;&#xd;
+								&lt;descriptionTxt&gt;INSTALL&lt;/descriptionTxt&gt;&#xd;
+							&lt;/typeCode&gt;&#xd;
+							&lt;typeCode&gt;&#xd;
+								&lt;typeCd&gt;PRIORITY&lt;/typeCd&gt;&#xd;
+								&lt;descriptionTxt&gt;8&lt;/descriptionTxt&gt;&#xd;
+							&lt;/typeCode&gt;&#xd;
+						&lt;/componentAttributeList&gt;&#xd;
+						&lt;componentDetailList/&gt;&#xd;
+						&lt;remarkList&gt;&#xd;
+							&lt;typeCode&gt;&#xd;
+								&lt;typeCd&gt;DST&lt;/typeCd&gt;&#xd;
+								&lt;descriptionTxt&gt;Remark included by 245185 On 2022-11-23 10:05 PST:&#xd;
+&#xd;
+&#xd;
+We detected the following provisioned services at this address:&#xd;
+Voice: n/a&#xd;
+HSIA &amp;amp;amp; BTV: Fibre 1640&#xd;
+TSB &amp;amp;amp; Smart Home: n/a&#xd;
+Managed: 10xManaged Service&#xd;
+NaaS: n/a&#xd;
+BConn: n/a&#xd;
+&#xd;
+This customer address qualifies for the following services and/or upgrades:&#xd;
+HSIA: Fibre - 2.5 GbpsFixed wireless: Unavailable&#xd;
+Addr. remarks: n/a&#xd;
+Voice: Fibre (26 ports) available; Copper available&#xd;
+BConn (min. 25 Mbps): Available&#xd;
+TSB (min. 25 Mbps): Available&#xd;
+TV: Available&#xd;
+ &#xd;
+&#xd;
+----------&#xd;
+&#xd;
+ Remark included by 201870 On 2022-11-21 10:00 PST:&#xd;
+&#xd;
+ATTN TECH: Please call Michelle Hackett at 604-737-2018 prior arrival.&#xd;
+ &#xd;
+ &#xd;
+&#xd;
+----------&#xd;
+&#xd;
+ &lt;/descriptionTxt&gt;&#xd;
+							&lt;/typeCode&gt;&#xd;
+							&lt;typeCode&gt;&#xd;
+								&lt;typeCd&gt;FOR_TECHNICIAN&lt;/typeCd&gt;&#xd;
+								&lt;descriptionTxt&gt;&amp;lt;tables&amp;gt;&amp;lt;/tables&amp;gt;&lt;/descriptionTxt&gt;&#xd;
+							&lt;/typeCode&gt;&#xd;
+						&lt;/remarkList&gt;&#xd;
+						&lt;statusCd&gt;OPEN&lt;/statusCd&gt;&#xd;
+					&lt;/component&gt;&#xd;
+				&lt;/componentList&gt;&#xd;
+			&lt;/ns3:workOrder&gt;&#xd;
+			&lt;ns3:startDate&gt;2022-12-02T20:00:00.000Z&lt;/ns3:startDate&gt;&#xd;
+			&lt;ns3:endDate&gt;2022-12-16T20:00:00.000Z&lt;/ns3:endDate&gt;&#xd;
+			&lt;ns3:gradeAppointmentInd&gt;true&lt;/ns3:gradeAppointmentInd&gt;&#xd;
+			&lt;ns3:fullSearchInd&gt;true&lt;/ns3:fullSearchInd&gt;&#xd;
+		&lt;/ns3:searchAvailableAppointmentList&gt;&#xd;
+	&lt;/S:Body&gt;&#xd;
+&lt;/S:Envelope&gt;</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">apigw-soap-st.tsl.telus.com</stringProp>
+            <stringProp name="HTTPSampler.port">443</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">soap/is01/RMO/ProcessMgmt/FieldWorkAppointmentService_v3_0_RP</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <boolProp name="HTTPSampler.image_parser">true</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout">0</stringProp>
+            <stringProp name="HTTPSampler.response_timeout">0</stringProp>
+            <stringProp name="TestPlan.comments">002500${__Random(11000,11500,)}</stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Headers" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Authorization" elementType="Header">
+                  <stringProp name="Header.name">Authorization</stringProp>
+                  <stringProp name="Header.value">Basic QVBQX1JFTkRFWlZPVVM6c29hb3JnaWQ=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+            <DurationAssertion guiclass="DurationAssertionGui" testclass="DurationAssertion" testname="Timeout Check" enabled="false">
+              <stringProp name="DurationAssertion.duration">0</stringProp>
+            </DurationAssertion>
+            <hashTree/>
+            <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223PostProcessor" enabled="false">
+              <stringProp name="filename"></stringProp>
+              <stringProp name="script">vars.putObject(&apos;count&apos;, 0)</stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="scriptLanguage">groovy</stringProp>
+              <stringProp name="cacheKey">false</stringProp>
+            </JSR223PostProcessor>
+            <hashTree/>
+            <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223PostProcessor" enabled="false">
+              <stringProp name="filename"></stringProp>
+              <stringProp name="script">vars.put(&apos;authorizationValue&apos;, org.apache.jmeter.protocol.http.util.Base64Encoder.encode(&apos;APP_RENDEZVOUS&apos; + &apos;:&apos; + lr_decrypt))</stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="scriptLanguage">groovy</stringProp>
+              <stringProp name="cacheKey">false</stringProp>
+            </JSR223PostProcessor>
+            <hashTree/>
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="workOrderId" enabled="true">
+              <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+              <stringProp name="RegexExtractor.refname">workOrderId</stringProp>
+              <stringProp name="RegexExtractor.regex">&lt;workOrderId&gt;([^&quot;]+)&lt;/workOrderId&gt;</stringProp>
+              <stringProp name="RegexExtractor.template">$1$</stringProp>
+              <stringProp name="RegexExtractor.default"></stringProp>
+              <stringProp name="RegexExtractor.match_number">1</stringProp>
+              <boolProp name="RegexExtractor.default_empty_value">true</boolProp>
+            </RegexExtractor>
+            <hashTree/>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="2432586">OPEN</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.custom_message"></stringProp>
+              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">16</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="SOAP Request_v2" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">&lt;S:Envelope&#xd;
+	xmlns:env=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;&#xd;
+	xmlns:S=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;&gt;&#xd;
+	&lt;S:Header/&gt;&#xd;
+	&lt;S:Body&#xd;
+		xmlns:S=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;&#xd;
+		xmlns:wsu=&quot;http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd&quot; wsu:Id=&quot;body_ef8cc4b3-a910-441e-8fd0-ddeda471d217&quot;&gt;&#xd;
+		&lt;ns3:searchAvailableAppointmentList&#xd;
+			xmlns:ns3=&quot;http://xmlschema.tmi.telus.com/srv/RMO/ProcessMgmt/FieldWorkAppointmentServiceRequestResponse_v3&quot;&gt;&#xd;
+			&lt;ns3:inputHeader&gt;&#xd;
+				&lt;systemSourceCd&gt;3369&lt;/systemSourceCd&gt;&#xd;
+				&lt;userId&gt;EXTERNAL CUSTOMER&lt;/userId&gt;&#xd;
+				&lt;requestDate&gt;${requestDate}&lt;/requestDate&gt;&#xd;
+			&lt;/ns3:inputHeader&gt;&#xd;
+			&lt;ns3:workOrder&gt;&#xd;
+				&lt;workOrderId&gt;100034482458&lt;/workOrderId&gt;&#xd;
+				&lt;originatingSystemId&gt;3259&lt;/originatingSystemId&gt;&#xd;
+				&lt;originatingSystemWorkOrderGroupId&gt;OR-01324989.0001&lt;/originatingSystemWorkOrderGroupId&gt;&#xd;
+				&lt;originatingSystemWorkOrderId&gt;00250011348&lt;/originatingSystemWorkOrderId&gt;&#xd;
+				&lt;originatingSystemWorkOrderInternalId&gt;00250011114&lt;/originatingSystemWorkOrderInternalId&gt;&#xd;
+				&lt;secondarySystemId&gt;6161&lt;/secondarySystemId&gt;&#xd;
+				&lt;callId&gt;100034082745&lt;/callId&gt;&#xd;
+				&lt;classificationCd&gt;ORDER&lt;/classificationCd&gt;&#xd;
+				&lt;serviceClassCd&gt;B&lt;/serviceClassCd&gt;&#xd;
+				&lt;productCategoryCd&gt;BUSINESS&lt;/productCategoryCd&gt;&#xd;
+				&lt;productTechnologyCd&gt;OTT&lt;/productTechnologyCd&gt;&#xd;
+				&lt;jobTypeCd&gt;BUSINESS&lt;/jobTypeCd&gt;&#xd;
+				&lt;outofServiceInd&gt;false&lt;/outofServiceInd&gt;&#xd;
+				&lt;priorityCd&gt;3&lt;/priorityCd&gt;&#xd;
+				&lt;serviceIdentification&gt;&#xd;
+					&lt;typeCd&gt;ACCOUNT&lt;/typeCd&gt;&#xd;
+					&lt;descriptionTxt&gt;3172257&lt;/descriptionTxt&gt;&#xd;
+				&lt;/serviceIdentification&gt;&#xd;
+				&lt;hostReadyForDispatchInd&gt;true&lt;/hostReadyForDispatchInd&gt;&#xd;
+				&lt;overrideInd&gt;false&lt;/overrideInd&gt;&#xd;
+				&lt;scheduleRemarkInd&gt;false&lt;/scheduleRemarkInd&gt;&#xd;
+				&lt;appointmentStartDate&gt;${appointmentStartDate}&lt;/appointmentStartDate&gt;&#xd;
+				&lt;appointmentEndDate&gt;${appointmentEndDate}&lt;/appointmentEndDate&gt;&#xd;
+				&lt;dueDate&gt;${appointmentEndDate}&lt;/dueDate&gt;&#xd;
+				&lt;estimatedDurationNum&gt;9.0&lt;/estimatedDurationNum&gt;&#xd;
+				&lt;estimatedDurationUnitCd&gt;HOURS&lt;/estimatedDurationUnitCd&gt;&#xd;
+				&lt;location&gt;&#xd;
+					&lt;locationList&gt;&#xd;
+						&lt;typeCode&gt;SERVICE&lt;/typeCode&gt;&#xd;
+						&lt;dispatchLocationInd&gt;true&lt;/dispatchLocationInd&gt;&#xd;
+						&lt;locationAddress&gt;&#xd;
+							&lt;locationId&gt;${LocationID}&lt;/locationId&gt;&#xd;
+						&lt;/locationAddress&gt;&#xd;
+					&lt;/locationList&gt;&#xd;
+				&lt;/location&gt;&#xd;
+				&lt;customerName&gt;SEMPRE UNO HOLDINGS LTD&lt;/customerName&gt;&#xd;
+				&lt;customerRatingCd&gt;S1&lt;/customerRatingCd&gt;&#xd;
+				&lt;customerTypeCd&gt;CUSTOMER&lt;/customerTypeCd&gt;&#xd;
+				&lt;contactList&gt;&#xd;
+					&lt;name&gt;SEMPRE UNO HOLDINGS LTD&lt;/name&gt;&#xd;
+					&lt;typeCd&gt;CLT&lt;/typeCd&gt;&#xd;
+					&lt;phoneNumber&gt;(604) 737-2018&lt;/phoneNumber&gt;&#xd;
+					&lt;phoneLocationCd&gt;AUT&lt;/phoneLocationCd&gt;&#xd;
+				&lt;/contactList&gt;&#xd;
+				&lt;contactList&gt;&#xd;
+					&lt;name&gt;Michelle Hackett&lt;/name&gt;&#xd;
+					&lt;typeCd&gt;CBR&lt;/typeCd&gt;&#xd;
+					&lt;phoneNumber&gt;(604) 737-2018&lt;/phoneNumber&gt;&#xd;
+					&lt;phoneLocationCd&gt;AUT&lt;/phoneLocationCd&gt;&#xd;
+				&lt;/contactList&gt;&#xd;
+				&lt;customerId&gt;104372970&lt;/customerId&gt;&#xd;
+				&lt;customerIdTypeCd&gt;CUSTOMER_ID&lt;/customerIdTypeCd&gt;&#xd;
+				&lt;originatingSystemCreateDate&gt;2022-11-15T18:07:53.000Z&lt;/originatingSystemCreateDate&gt;&#xd;
+				&lt;workOrderAttributeList&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;REMARK_THRESHOLD&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt&gt;3&lt;/descriptionTxt&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;MANAGE_DISPATCH_IND&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt&gt;1&lt;/descriptionTxt&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;OBD_FLAG&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt&gt;false&lt;/descriptionTxt&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;DATA_LANGUAGE&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt&gt;EN&lt;/descriptionTxt&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;NOTIFICATION_IND&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt&gt;false&lt;/descriptionTxt&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+				&lt;/workOrderAttributeList&gt;&#xd;
+				&lt;workOrderDetailList&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;ORDER_EQUIPMENT&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt&gt;[{&quot;id&quot;:&quot;9157544019113022056&quot;,&quot;name&quot;:&quot;Indoor Camera - Easy Pay 36 mos&quot;,&quot;categoryName&quot;:&quot;Home Security Equipment&quot;,&quot;categoryId&quot;:&quot;9150451420813201788&quot;,&quot;characteristics&quot;:[{&quot;id&quot;:&quot;9152509233513494893&quot;,&quot;name&quot;:&quot;Acquisition Type&quot;,&quot;value&quot;:&quot;Purchased&quot;},{&quot;id&quot;:&quot;9152509347813495011&quot;,&quot;name&quot;:&quot;SKU&quot;,&quot;value&quot;:&quot;2396785&quot;}]},{&quot;id&quot;:&quot;9157544019113022056&quot;,&quot;name&quot;:&quot;Indoor Camera - Easy Pay 36 mos&quot;,&quot;categoryName&quot;:&quot;Home Security Equipment&quot;,&quot;categoryId&quot;:&quot;9150451420813201788&quot;,&quot;characteristics&quot;:[{&quot;id&quot;:&quot;9152509233513494893&quot;,&quot;name&quot;:&quot;Acquisition Type&quot;,&quot;value&quot;:&quot;Purchased&quot;},{&quot;id&quot;:&quot;9152509347813495011&quot;,&quot;name&quot;:&quot;SKU&quot;,&quot;value&quot;:&quot;2396785&quot;}]},{&quot;id&quot;:&quot;9157544019113022056&quot;,&quot;name&quot;:&quot;Indoor Camera - Easy Pay 36 mos&quot;,&quot;categoryName&quot;:&quot;Home Security Equipment&quot;,&quot;categoryId&quot;:&quot;9150451420813201788&quot;,&quot;characteristics&quot;:[{&quot;id&quot;:&quot;9152509233513494893&quot;,&quot;name&quot;:&quot;Acquisition Type&quot;,&quot;value&quot;:&quot;Purchased&quot;},{&quot;id&quot;:&quot;9152509347813495011&quot;,&quot;name&quot;:&quot;SKU&quot;,&quot;value&quot;:&quot;2396785&quot;}]},{&quot;id&quot;:&quot;9157544019113022056&quot;,&quot;name&quot;:&quot;Indoor Camera - Easy Pay 36 mos&quot;,&quot;categoryName&quot;:&quot;Home Security Equipment&quot;,&quot;categoryId&quot;:&quot;9150451420813201788&quot;,&quot;characteristics&quot;:[{&quot;id&quot;:&quot;9152509233513494893&quot;,&quot;name&quot;:&quot;Acquisition Type&quot;,&quot;value&quot;:&quot;Purchased&quot;},{&quot;id&quot;:&quot;9152509347813495011&quot;,&quot;name&quot;:&quot;SKU&quot;,&quot;value&quot;:&quot;2396785&quot;}]},{&quot;id&quot;:&quot;9157544019113022056&quot;,&quot;name&quot;:&quot;Indoor Camera - Easy Pay 36 mos&quot;,&quot;categoryName&quot;:&quot;Home Security Equipment&quot;,&quot;categoryId&quot;:&quot;9150451420813201788&quot;,&quot;characteristics&quot;:[{&quot;id&quot;:&quot;9152509233513494893&quot;,&quot;name&quot;:&quot;Acquisition Type&quot;,&quot;value&quot;:&quot;Purchased&quot;},{&quot;id&quot;:&quot;9152509347813495011&quot;,&quot;name&quot;:&quot;SKU&quot;,&quot;value&quot;:&quot;2396785&quot;}]},{&quot;id&quot;:&quot;9151834050113639329&quot;,&quot;name&quot;:&quot;Outdoor Camera - wireless with night vision \u0026 fixed IP&quot;,&quot;categoryName&quot;:&quot;Home Security Equipment&quot;,&quot;categoryId&quot;:&quot;9150451420813201788&quot;,&quot;characteristics&quot;:[{&quot;id&quot;:&quot;9152509233513494893&quot;,&quot;name&quot;:&quot;Acquisition Type&quot;,&quot;value&quot;:&quot;Purchased&quot;},{&quot;id&quot;:&quot;9152509347813495011&quot;,&quot;name&quot;:&quot;SKU&quot;,&quot;value&quot;:&quot;2383109&quot;}]},{&quot;id&quot;:&quot;9151834050113639329&quot;,&quot;name&quot;:&quot;Outdoor Camera - wireless with night vision \u0026 fixed IP&quot;,&quot;categoryName&quot;:&quot;Home Security Equipment&quot;,&quot;categoryId&quot;:&quot;9150451420813201788&quot;,&quot;characteristics&quot;:[{&quot;id&quot;:&quot;9152509233513494893&quot;,&quot;name&quot;:&quot;Acquisition Type&quot;,&quot;value&quot;:&quot;Purchased&quot;},{&quot;id&quot;:&quot;9152509347813495011&quot;,&quot;name&quot;:&quot;SKU&quot;,&quot;value&quot;:&quot;2383109&quot;}]},{&quot;id&quot;:&quot;9151834050113639329&quot;,&quot;name&quot;:&quot;Outdoor Camera - wireless with night vision \u0026 fixed IP&quot;,&quot;categoryName&quot;:&quot;Home Security Equipment&quot;,&quot;categoryId&quot;:&quot;9150451420813201788&quot;,&quot;characteristics&quot;:[{&quot;id&quot;:&quot;9152509233513494893&quot;,&quot;name&quot;:&quot;Acquisition Type&quot;,&quot;value&quot;:&quot;Purchased&quot;},{&quot;id&quot;:&quot;9152509347813495011&quot;,&quot;name&quot;:&quot;SKU&quot;,&quot;value&quot;:&quot;2383109&quot;}]},{&quot;id&quot;:&quot;9161040270513546831&quot;,&quot;name&quot;:&quot;2TB Stream Video Recorder&quot;,&quot;categoryName&quot;:&quot;Home Security Equipment&quot;,&quot;categoryId&quot;:&quot;9150451420813201788&quot;,&quot;characteristics&quot;:[{&quot;id&quot;:&quot;9152509233513494893&quot;,&quot;name&quot;:&quot;Acquisition Type&quot;,&quot;value&quot;:&quot;Rented&quot;},{&quot;id&quot;:&quot;9152509347813495011&quot;,&quot;name&quot;:&quot;SKU&quot;,&quot;value&quot;:&quot;CSVR126-2TB&quot;}]},{&quot;id&quot;:&quot;9152760789313647032&quot;,&quot;name&quot;:&quot;Door/Window Sensor&quot;,&quot;categoryName&quot;:&quot;Home Security Equipment&quot;,&quot;categoryId&quot;:&quot;9150451420813201788&quot;,&quot;characteristics&quot;:[{&quot;id&quot;:&quot;9152509233513494893&quot;,&quot;name&quot;:&quot;Acquisition Type&quot;,&quot;value&quot;:&quot;Rented&quot;},{&quot;id&quot;:&quot;9152509347813495011&quot;,&quot;name&quot;:&quot;SKU&quot;,&quot;value&quot;:&quot;2387286&quot;}]},{&quot;id&quot;:&quot;9152760789313647032&quot;,&quot;name&quot;:&quot;Door/Window Sensor&quot;,&quot;categoryName&quot;:&quot;Home Security Equipment&quot;,&quot;categoryId&quot;:&quot;9150451420813201788&quot;,&quot;characteristics&quot;:[{&quot;id&quot;:&quot;9152509233513494893&quot;,&quot;name&quot;:&quot;Acquisition Type&quot;,&quot;value&quot;:&quot;Rented&quot;},{&quot;id&quot;:&quot;9152509347813495011&quot;,&quot;name&quot;:&quot;SKU&quot;,&quot;value&quot;:&quot;2387286&quot;}]},{&quot;id&quot;:&quot;9152760789313647032&quot;,&quot;name&quot;:&quot;Door/Window Sensor&quot;,&quot;categoryName&quot;:&quot;Home Security Equipment&quot;,&quot;categoryId&quot;:&quot;9150451420813201788&quot;,&quot;characteristics&quot;:[{&quot;id&quot;:&quot;9152509233513494893&quot;,&quot;name&quot;:&quot;Acquisition Type&quot;,&quot;value&quot;:&quot;Rented&quot;},{&quot;id&quot;:&quot;9152509347813495011&quot;,&quot;name&quot;:&quot;SKU&quot;,&quot;value&quot;:&quot;2387286&quot;}]},{&quot;id&quot;:&quot;9152767539613655083&quot;,&quot;name&quot;:&quot;Main Control panel&quot;,&quot;categoryName&quot;:&quot;Home Security Equipment&quot;,&quot;categoryId&quot;:&quot;9150451420813201788&quot;,&quot;characteristics&quot;:[{&quot;id&quot;:&quot;9152509233513494893&quot;,&quot;name&quot;:&quot;Acquisition Type&quot;,&quot;value&quot;:&quot;Rented&quot;},{&quot;id&quot;:&quot;9152509347813495011&quot;,&quot;name&quot;:&quot;SKU&quot;,&quot;value&quot;:&quot;2391987&quot;}]},{&quot;id&quot;:&quot;9152768207513657842&quot;,&quot;name&quot;:&quot;Motion Sensor&quot;,&quot;categoryName&quot;:&quot;Home Security Equipment&quot;,&quot;categoryId&quot;:&quot;9150451420813201788&quot;,&quot;characteristics&quot;:[{&quot;id&quot;:&quot;9152509233513494893&quot;,&quot;name&quot;:&quot;Acquisition Type&quot;,&quot;value&quot;:&quot;Rented&quot;},{&quot;id&quot;:&quot;9152509347813495011&quot;,&quot;name&quot;:&quot;SKU&quot;,&quot;value&quot;:&quot;2387287&quot;}]},{&quot;id&quot;:&quot;9152768207513657842&quot;,&quot;name&quot;:&quot;Motion Sensor&quot;,&quot;categoryName&quot;:&quot;Home Security Equipment&quot;,&quot;categoryId&quot;:&quot;9150451420813201788&quot;,&quot;characteristics&quot;:[{&quot;id&quot;:&quot;9152509233513494893&quot;,&quot;name&quot;:&quot;Acquisition Type&quot;,&quot;value&quot;:&quot;Rented&quot;},{&quot;id&quot;:&quot;9152509347813495011&quot;,&quot;name&quot;:&quot;SKU&quot;,&quot;value&quot;:&quot;2387287&quot;}]}]&lt;/descriptionTxt&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;ORDERED_PRODUCTS&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt&gt;[{&quot;characteristics&quot;:[],&quot;name&quot;:&quot;Control&quot;,&quot;id&quot;:&quot;9159897980013604769&quot;,&quot;category&quot;:&quot;SHS/MC&quot;}]&lt;/descriptionTxt&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+				&lt;/workOrderDetailList&gt;&#xd;
+				&lt;remarkList&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;FOR_TECHNICIAN&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt&gt;&amp;lt;tables&amp;gt;  &amp;lt;table&amp;gt;&#xd;
+      &amp;lt;caption&amp;gt;Customer Information : Customer Information&amp;lt;/caption&amp;gt;&#xd;
+      &amp;lt;thead&amp;gt;&#xd;
+         &amp;lt;tr&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Name&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Contact Numbers&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Email&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Business Operating Name&amp;lt;/th&amp;gt;&#xd;
+         &amp;lt;/tr&amp;gt;&#xd;
+      &amp;lt;/thead&amp;gt;&#xd;
+      &amp;lt;tbody&amp;gt;&#xd;
+         &amp;lt;tr&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;SEMPRE UNO HOLDINGS LTD&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;(604) 737-2018&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;mich101010@hotmail.com&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;SEMPRE UNO HOLDINGS LTD O/A N/A&amp;lt;/td&amp;gt;&#xd;
+         &amp;lt;/tr&amp;gt;&#xd;
+      &amp;lt;/tbody&amp;gt;&#xd;
+   &amp;lt;/table&amp;gt;&#xd;
+   &amp;lt;table&amp;gt;&#xd;
+      &amp;lt;caption&amp;gt;Customer Information : Account Type&amp;lt;/caption&amp;gt;&#xd;
+      &amp;lt;thead&amp;gt;&#xd;
+         &amp;lt;tr&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Business Or Consumer Account&amp;lt;/th&amp;gt;&#xd;
+         &amp;lt;/tr&amp;gt;&#xd;
+      &amp;lt;/thead&amp;gt;&#xd;
+      &amp;lt;tbody&amp;gt;&#xd;
+         &amp;lt;tr&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;Business&amp;lt;/td&amp;gt;&#xd;
+         &amp;lt;/tr&amp;gt;&#xd;
+      &amp;lt;/tbody&amp;gt;&#xd;
+   &amp;lt;/table&amp;gt;&#xd;
+   &amp;lt;table&amp;gt;&#xd;
+      &amp;lt;caption&amp;gt;Customer Information : Product Information&amp;lt;/caption&amp;gt;&#xd;
+      &amp;lt;thead&amp;gt;&#xd;
+         &amp;lt;tr&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Ordered Product&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Existing Products&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;All Products&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Additional Comments&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Remarks&amp;lt;/th&amp;gt;&#xd;
+         &amp;lt;/tr&amp;gt;&#xd;
+      &amp;lt;/thead&amp;gt;&#xd;
+      &amp;lt;tbody&amp;gt;&#xd;
+         &amp;lt;tr&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;Control, Control (9165214714913684197)&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;Control, Business Work Offer&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+         &amp;lt;/tr&amp;gt;&#xd;
+      &amp;lt;/tbody&amp;gt;&#xd;
+   &amp;lt;/table&amp;gt;&amp;lt;/tables&amp;gt;&lt;/descriptionTxt&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;GENERAL&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt&gt;OPERATING NAME=SEMPRE UNO HOLDINGS LTD O/A N/A&#xd;
+EMAIL = mich101010@hotmail.com, mich101010@hotmail.com&#xd;
+ORDERED PRODUCTS = Control&#xd;
+ALL PRODUCTS = Business Work Offer, Control&#xd;
+Home Phone 2 Go = No&#xd;
+CUSTOMER COMMENTS = customer request&#xd;
+CLASS OF SERVICE = Business&#xd;
+Access Information for Technician :&#xd;
+Installation Business Security Component = PLEASE CALL CS 1 HOUR BEFORE THE INSTALLATION Michelle Hackett 6047372018&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+&lt;/descriptionTxt&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+				&lt;/remarkList&gt;&#xd;
+				&lt;internalTeamWorkerRequiredInd&gt;false&lt;/internalTeamWorkerRequiredInd&gt;&#xd;
+				&lt;requiredTeamWorkerList/&gt;&#xd;
+				&lt;prohibitedTeamWorkerList/&gt;&#xd;
+				&lt;preferredTeamWorkerList/&gt;&#xd;
+				&lt;statusCd&gt;OPEN&lt;/statusCd&gt;&#xd;
+				&lt;jobList&gt;&#xd;
+					&lt;job&gt;&#xd;
+						&lt;jobIdent&gt;&#xd;
+							&lt;jobId&gt;46871036&lt;/jobId&gt;&#xd;
+							&lt;externalJobGroupingId&gt;100034082745&lt;/externalJobGroupingId&gt;&#xd;
+							&lt;externalJobId&gt;0&lt;/externalJobId&gt;&#xd;
+						&lt;/jobIdent&gt;&#xd;
+						&lt;statusCd&gt;TENTATIVE&lt;/statusCd&gt;&#xd;
+						&lt;assignment&gt;&#xd;
+							&lt;jobAssignmentId&gt;125073525&lt;/jobAssignmentId&gt;&#xd;
+							&lt;teamWorkerId&gt;X200891&lt;/teamWorkerId&gt;&#xd;
+							&lt;statusCd&gt;TENTATIVE&lt;/statusCd&gt;&#xd;
+							&lt;startDate&gt;2022-12-01T20:05:00.000Z&lt;/startDate&gt;&#xd;
+							&lt;endDate&gt;2022-12-01T23:50:00.000Z&lt;/endDate&gt;&#xd;
+							&lt;execution&gt;&#xd;
+								&lt;executionDate&gt;2022-11-24T09:29:04.000Z&lt;/executionDate&gt;&#xd;
+							&lt;/execution&gt;&#xd;
+						&lt;/assignment&gt;&#xd;
+					&lt;/job&gt;&#xd;
+				&lt;/jobList&gt;&#xd;
+				&lt;requiredTeamWorkerNum&gt;2&lt;/requiredTeamWorkerNum&gt;&#xd;
+				&lt;customerPremiseEquipmentList/&gt;&#xd;
+				&lt;componentList&gt;&#xd;
+					&lt;component&gt;&#xd;
+						&lt;componentId&gt;63709036&lt;/componentId&gt;&#xd;
+						&lt;originatingSystemWorkOrderId&gt;00250011170&lt;/originatingSystemWorkOrderId&gt;&#xd;
+						&lt;hostReadyForDispatchInd&gt;true&lt;/hostReadyForDispatchInd&gt;&#xd;
+						&lt;productCategoryCd&gt;SECURITY&lt;/productCategoryCd&gt;&#xd;
+						&lt;jobTypeCd&gt;SECURITY&lt;/jobTypeCd&gt;&#xd;
+						&lt;workOrderActionCd&gt;PR&lt;/workOrderActionCd&gt;&#xd;
+						&lt;productTechnologyCd&gt;OTT&lt;/productTechnologyCd&gt;&#xd;
+						&lt;installationTypeCd&gt;FW&lt;/installationTypeCd&gt;&#xd;
+						&lt;estimatedDurationNum&gt;3.0&lt;/estimatedDurationNum&gt;&#xd;
+						&lt;estimatedDurationUnitCd&gt;HOURS&lt;/estimatedDurationUnitCd&gt;&#xd;
+						&lt;componentAttributeList&gt;&#xd;
+							&lt;typeCode&gt;&#xd;
+								&lt;typeCd&gt;SUBDEMANDTYPE&lt;/typeCd&gt;&#xd;
+								&lt;descriptionTxt&gt;INSTALL&lt;/descriptionTxt&gt;&#xd;
+							&lt;/typeCode&gt;&#xd;
+							&lt;typeCode&gt;&#xd;
+								&lt;typeCd&gt;PRIORITY&lt;/typeCd&gt;&#xd;
+								&lt;descriptionTxt&gt;8&lt;/descriptionTxt&gt;&#xd;
+							&lt;/typeCode&gt;&#xd;
+						&lt;/componentAttributeList&gt;&#xd;
+						&lt;componentDetailList/&gt;&#xd;
+						&lt;remarkList&gt;&#xd;
+							&lt;typeCode&gt;&#xd;
+								&lt;typeCd&gt;DST&lt;/typeCd&gt;&#xd;
+								&lt;descriptionTxt&gt;Remark included by 245185 On 2022-11-23 10:05 PST:&#xd;
+&#xd;
+&#xd;
+We detected the following provisioned services at this address:&#xd;
+Voice: n/a&#xd;
+HSIA &amp;amp;amp; BTV: Fibre 1640&#xd;
+TSB &amp;amp;amp; Smart Home: n/a&#xd;
+Managed: 10xManaged Service&#xd;
+NaaS: n/a&#xd;
+BConn: n/a&#xd;
+&#xd;
+This customer address qualifies for the following services and/or upgrades:&#xd;
+HSIA: Fibre - 2.5 GbpsFixed wireless: Unavailable&#xd;
+Addr. remarks: n/a&#xd;
+Voice: Fibre (26 ports) available; Copper available&#xd;
+BConn (min. 25 Mbps): Available&#xd;
+TSB (min. 25 Mbps): Available&#xd;
+TV: Available&#xd;
+ &#xd;
+&#xd;
+----------&#xd;
+&#xd;
+ Remark included by 201870 On 2022-11-21 10:00 PST:&#xd;
+&#xd;
+ATTN TECH: Please call Michelle Hackett at 604-737-2018 prior arrival.&#xd;
+ &#xd;
+ &#xd;
+&#xd;
+----------&#xd;
+&#xd;
+ &lt;/descriptionTxt&gt;&#xd;
+							&lt;/typeCode&gt;&#xd;
+							&lt;typeCode&gt;&#xd;
+								&lt;typeCd&gt;FOR_TECHNICIAN&lt;/typeCd&gt;&#xd;
+								&lt;descriptionTxt&gt;&amp;lt;tables&amp;gt;&amp;lt;/tables&amp;gt;&lt;/descriptionTxt&gt;&#xd;
+							&lt;/typeCode&gt;&#xd;
+						&lt;/remarkList&gt;&#xd;
+						&lt;statusCd&gt;OPEN&lt;/statusCd&gt;&#xd;
+					&lt;/component&gt;&#xd;
+				&lt;/componentList&gt;&#xd;
+			&lt;/ns3:workOrder&gt;&#xd;
+			&lt;ns3:startDate&gt;${appointmentStartDate}&lt;/ns3:startDate&gt;&#xd;
+			&lt;ns3:endDate&gt;${appointmentEndDate}&lt;/ns3:endDate&gt;&#xd;
+			&lt;ns3:gradeAppointmentInd&gt;true&lt;/ns3:gradeAppointmentInd&gt;&#xd;
+			&lt;ns3:fullSearchInd&gt;true&lt;/ns3:fullSearchInd&gt;&#xd;
+		&lt;/ns3:searchAvailableAppointmentList&gt;&#xd;
+	&lt;/S:Body&gt;&#xd;
+&lt;/S:Envelope&gt;</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">apigw-soap-st.tsl.telus.com</stringProp>
+            <stringProp name="HTTPSampler.port">443</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">soap/is01/RMO/ProcessMgmt/FieldWorkAppointmentService_v3_0_RP</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <boolProp name="HTTPSampler.image_parser">true</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout">0</stringProp>
+            <stringProp name="HTTPSampler.response_timeout">0</stringProp>
+            <stringProp name="TestPlan.comments">002500${__Random(11000,11500,)}</stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Headers" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Authorization" elementType="Header">
+                  <stringProp name="Header.name">Authorization</stringProp>
+                  <stringProp name="Header.value">Basic QVBQX1JFTkRFWlZPVVM6c29hb3JnaWQ=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+            <DurationAssertion guiclass="DurationAssertionGui" testclass="DurationAssertion" testname="Timeout Check" enabled="false">
+              <stringProp name="DurationAssertion.duration">0</stringProp>
+            </DurationAssertion>
+            <hashTree/>
+            <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223PostProcessor" enabled="false">
+              <stringProp name="filename"></stringProp>
+              <stringProp name="script">vars.putObject(&apos;count&apos;, 0)</stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="scriptLanguage">groovy</stringProp>
+              <stringProp name="cacheKey">false</stringProp>
+            </JSR223PostProcessor>
+            <hashTree/>
+            <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223PostProcessor" enabled="false">
+              <stringProp name="filename"></stringProp>
+              <stringProp name="script">vars.put(&apos;authorizationValue&apos;, org.apache.jmeter.protocol.http.util.Base64Encoder.encode(&apos;APP_RENDEZVOUS&apos; + &apos;:&apos; + lr_decrypt))</stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="scriptLanguage">groovy</stringProp>
+              <stringProp name="cacheKey">false</stringProp>
+            </JSR223PostProcessor>
+            <hashTree/>
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="workOrderId" enabled="true">
+              <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+              <stringProp name="RegexExtractor.refname">workOrderId</stringProp>
+              <stringProp name="RegexExtractor.regex">&lt;workOrderId&gt;([^&quot;]+)&lt;/workOrderId&gt;</stringProp>
+              <stringProp name="RegexExtractor.template">$1$</stringProp>
+              <stringProp name="RegexExtractor.default"></stringProp>
+              <stringProp name="RegexExtractor.match_number">1</stringProp>
+              <boolProp name="RegexExtractor.default_empty_value">true</boolProp>
+            </RegexExtractor>
+            <hashTree/>
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor" enabled="true">
+              <stringProp name="RegexExtractor.useHeaders">true</stringProp>
+              <stringProp name="RegexExtractor.refname">rhcode</stringProp>
+              <stringProp name="RegexExtractor.regex">HTTP/1.1 (.+?) OK</stringProp>
+              <stringProp name="RegexExtractor.template">$1$</stringProp>
+              <stringProp name="RegexExtractor.default">none</stringProp>
+              <stringProp name="RegexExtractor.match_number">1</stringProp>
+              <stringProp name="Sample.scope">all</stringProp>
+            </RegexExtractor>
+            <hashTree/>
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor" enabled="true">
+              <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+              <stringProp name="RegexExtractor.refname">errormsg</stringProp>
+              <stringProp name="RegexExtractor.regex">&lt;ns2:message&gt;(.+?)&lt;/ns2:message&gt;</stringProp>
+              <stringProp name="RegexExtractor.template">$1$</stringProp>
+              <stringProp name="RegexExtractor.default">none</stringProp>
+              <stringProp name="RegexExtractor.match_number">1</stringProp>
+              <stringProp name="Sample.scope">all</stringProp>
+            </RegexExtractor>
+            <hashTree/>
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor" enabled="true">
+              <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+              <stringProp name="RegexExtractor.refname">rbcode</stringProp>
+              <stringProp name="RegexExtractor.regex">&quot;status&quot;:(.+?),</stringProp>
+              <stringProp name="RegexExtractor.template">$1$</stringProp>
+              <stringProp name="RegexExtractor.default">noservererror</stringProp>
+              <stringProp name="RegexExtractor.match_number">1</stringProp>
+              <stringProp name="Sample.scope">all</stringProp>
+            </RegexExtractor>
+            <hashTree/>
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor" enabled="true">
+              <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+              <stringProp name="RegexExtractor.refname">alist</stringProp>
+              <stringProp name="RegexExtractor.regex">&lt;/ns6:workOrder&gt;&lt;ns6:availableAppointmentList&gt;&lt;startDate&gt;(.+?)&lt;/ns6:searchAvailableAppointmentListResponse&gt;</stringProp>
+              <stringProp name="RegexExtractor.template">$1$</stringProp>
+              <stringProp name="RegexExtractor.default">noappointment</stringProp>
+              <stringProp name="RegexExtractor.match_number">1</stringProp>
+              <stringProp name="Sample.scope">all</stringProp>
+            </RegexExtractor>
+            <hashTree/>
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor" enabled="true">
+              <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+              <stringProp name="RegexExtractor.refname">ssl</stringProp>
+              <stringProp name="RegexExtractor.regex">javax.net.ssl.(.+?)ption:</stringProp>
+              <stringProp name="RegexExtractor.template">$1$</stringProp>
+              <stringProp name="RegexExtractor.default"></stringProp>
+              <stringProp name="RegexExtractor.match_number">1</stringProp>
+            </RegexExtractor>
+            <hashTree/>
+            <BeanShellPostProcessor guiclass="TestBeanGUI" testclass="BeanShellPostProcessor" testname="BeanShell PostProcessor" enabled="true">
+              <boolProp name="resetInterpreter">false</boolProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="script">import java.io.File;
+import org.apache.jmeter.services.FileServer;  
+import java.io.FileWriter;
+import java.io.PrintWriter;
+import java.util.Arrays;
+import java.io.Writer;
+
+String alistval = vars.get(&quot;alist&quot;); 
+String reshcode = vars.get(&quot;rhcode&quot;);
+String resbcode = vars.get(&quot;rbcode&quot;);
+String emsg = vars.get(&quot;errormsg&quot;);
+//String sslexp = vars.get(&quot;ssl&quot;);
+if(alistval.equals(&quot;noappointment&quot;) &amp;&amp; resbcode.equals(&quot;noservererror&quot;))
+{
+String Filenamedynamic =&quot;DataIssue.txt&quot;;
+File file = new File(Filenamedynamic);
+FileWriter fstream = new FileWriter(file, true);
+BufferedWriter out = new BufferedWriter(fstream);
+ALIST=vars.get(&quot;alist&quot;);
+out.write(ALIST+&quot;\n&quot;);
+out.close();
+fstream.close();
+}
+
+else if (resbcode.equals(&quot;500&quot;) &amp;&amp; reshcode.equals(&quot;200&quot;))
+{
+String Filenamedynamic =&quot;APIIssue.txt&quot;;
+File file = new File(Filenamedynamic);
+FileWriter fstream = new FileWriter(file, true);
+BufferedWriter out = new BufferedWriter(fstream);
+ERMSGS=vars.get(&quot;errormsg&quot;);
+vars.put(&quot;ERMSGS&quot;,&quot;API Issue&quot;);
+ErrorMsgs=vars.get(&quot;ERMSGS&quot;);
+out.write(ErrorMsgs+&quot;\n&quot;);
+out.close();
+fstream.close();
+}</stringProp>
+            </BeanShellPostProcessor>
+            <hashTree/>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="2432586">OPEN</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.custom_message"></stringProp>
+              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">16</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+          </hashTree>
+        </hashTree>
+      </hashTree>
+      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>true</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <sentBytes>true</sentBytes>
+            <url>true</url>
+            <threadCounts>true</threadCounts>
+            <idleTime>true</idleTime>
+            <connectTime>true</connectTime>
+          </value>
+        </objProp>
+        <stringProp name="filename"></stringProp>
+      </ResultCollector>
+      <hashTree/>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>

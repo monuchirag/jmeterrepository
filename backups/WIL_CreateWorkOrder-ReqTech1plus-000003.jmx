@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.5">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="WIL_CreateWorkOrder-ReqTech1plus" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">startnextloop</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">20</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">${__P(Users_CreateWorkOrder,1)}</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <longProp name="ThreadGroup.start_time">1455260938000</longProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">false</boolProp>
+        <boolProp name="ThreadGroup.delayedStart">true</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="CookieManager" enabled="true">
+          <collectionProp name="CookieManager.cookies"/>
+          <boolProp name="CookieManager.clearEachIteration">false</boolProp>
+          <boolProp name="CookieManager.controlledByThreadGroup">false</boolProp>
+        </CookieManager>
+        <hashTree/>
+        <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path"></stringProp>
+          <stringProp name="HTTPSampler.concurrentPool">6</stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </ConfigTestElement>
+        <hashTree/>
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <collectionProp name="HeaderManager.headers">
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Authorization</stringProp>
+              <stringProp name="Header.value">Basic QVBQX1JFTkRFWlZPVVM6c29hb3JnaWQ=</stringProp>
+            </elementProp>
+          </collectionProp>
+        </HeaderManager>
+        <hashTree/>
+        <CacheManager guiclass="CacheManagerGui" testclass="CacheManager" testname="HTTP Cache Manager" enabled="true">
+          <boolProp name="clearEachIteration">false</boolProp>
+          <boolProp name="useExpires">false</boolProp>
+          <boolProp name="CacheManager.controlledByThread">false</boolProp>
+        </CacheManager>
+        <hashTree/>
+        <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+          <collectionProp name="Arguments.arguments">
+            <elementProp name="appointmentEndDate" elementType="Argument">
+              <stringProp name="Argument.name">appointmentEndDate</stringProp>
+              <stringProp name="Argument.value">${__timeShift(yyyy-MM-dd,,P2D,,)}T${__timeShift(HH:mm:ss.SSS,,,,)}Z</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="appointmentStartDate" elementType="Argument">
+              <stringProp name="Argument.name">appointmentStartDate</stringProp>
+              <stringProp name="Argument.value">${__timeShift(yyyy-MM-dd,,P1D,,)}T${__timeShift(HH:mm:ss.SSS,,,,)}Z</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="dueDate" elementType="Argument">
+              <stringProp name="Argument.name">dueDate</stringProp>
+              <stringProp name="Argument.value">${__timeShift(yyyy-MM-dd,,P22D,,)}T${__timeShift(HH:mm:ss.SSS,,,,)}Z</stringProp>
+              <stringProp name="Argument.desc">not present</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="earlyStartDate" elementType="Argument">
+              <stringProp name="Argument.name">earlyStartDate</stringProp>
+              <stringProp name="Argument.value">${__timeShift(yyyy-MM-dd,,P17D,,)}T${__timeShift(HH:mm:ss.SSS,,,,)}Z</stringProp>
+              <stringProp name="Argument.desc">not present</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="originatingSystemCreateDate" elementType="Argument">
+              <stringProp name="Argument.name">originatingSystemCreateDate</stringProp>
+              <stringProp name="Argument.value">${__timeShift(yyyy-MM-dd,,,,)}T${__timeShift(HH:mm:ss.SSS,,,,)}Z</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="requestDate" elementType="Argument">
+              <stringProp name="Argument.name">requestDate</stringProp>
+              <stringProp name="Argument.value">${__timeShift(yyyy-MM-dd,,,,)}T${__timeShift(HH:mm:ss.SSS,,,,)}Z</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="counter" elementType="Argument">
+              <stringProp name="Argument.name">counter</stringProp>
+              <stringProp name="Argument.value">00${__Random(11000,11500,)}</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="Pacing" elementType="Argument">
+              <stringProp name="Argument.name">Pacing</stringProp>
+              <stringProp name="Argument.value">${__P(propPIpacing,180)}</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+          </collectionProp>
+        </Arguments>
+        <hashTree/>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="LocationID" enabled="true">
+          <stringProp name="filename">LocationID.txt</stringProp>
+          <stringProp name="fileEncoding"></stringProp>
+          <stringProp name="variableNames">LocationID</stringProp>
+          <boolProp name="ignoreFirstLine">true</boolProp>
+          <stringProp name="delimiter">,</stringProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="endTime" enabled="true">
+          <stringProp name="scriptLanguage">groovy</stringProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="filename"></stringProp>
+          <stringProp name="cacheKey">true</stringProp>
+          <stringProp name="script">def dateobj= new Date();
+def endTime = dateobj.getTime();
+vars.put(&quot;endTime&quot;,endTime.toString())
+log.info(&quot;Current date in the specified format: &quot; + endTime);
+SampleResult.setIgnore();
+</stringProp>
+        </JSR223Sampler>
+        <hashTree/>
+        <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If Controller" enabled="true">
+          <stringProp name="IfController.condition">&quot;${__jm__EnterpriseTMF676__idx}&quot; != &quot;0&quot;</stringProp>
+          <boolProp name="IfController.evaluateAll">false</boolProp>
+        </IfController>
+        <hashTree>
+          <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Pacing Timer" enabled="true">
+            <intProp name="ActionProcessor.action">1</intProp>
+            <intProp name="ActionProcessor.target">0</intProp>
+            <stringProp name="ActionProcessor.duration">${myDelay}</stringProp>
+          </TestAction>
+          <hashTree>
+            <JSR223Timer guiclass="TestBeanGUI" testclass="JSR223Timer" testname="JSR223 Timer" enabled="true">
+              <stringProp name="scriptLanguage">groovy</stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="script">Long pacingInput = Long.valueOf(vars.get(&apos;Pacing&apos;))*1000;
+Long elapsed = Long.valueOf(vars.get(&apos;endTime&apos;)) - Long.valueOf(vars.get(&apos;startTime&apos;))
+Long pacing = pacingInput-elapsed;
+if ( pacing &gt; 0 ) 
+{
+	vars.put(&quot;myDelay&quot;, String.valueOf(pacing));
+	return 0;
+}
+else 
+{
+	vars.put(&quot;myDelay&quot;, &quot;0&quot;);
+	return 0; 
+}
+</stringProp>
+            </JSR223Timer>
+            <hashTree/>
+          </hashTree>
+        </hashTree>
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="startTime" enabled="true">
+          <stringProp name="scriptLanguage">groovy</stringProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="filename"></stringProp>
+          <stringProp name="cacheKey">true</stringProp>
+          <stringProp name="script">def dateobj= new Date();
+def startTime = dateobj.getTime();
+log.info(&quot;Current date in the specified format: &quot; + startTime);
+vars.put(&quot;startTime&quot;,startTime.toString())
+SampleResult.setIgnore();</stringProp>
+        </JSR223Sampler>
+        <hashTree/>
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="WIL_CreateWorkOrder-ReqTech1plus" enabled="true">
+          <boolProp name="TransactionController.includeTimers">false</boolProp>
+          <boolProp name="TransactionController.parent">true</boolProp>
+        </TransactionController>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">X-dynaTrace</stringProp>
+                <stringProp name="Header.value">NA=WIL_CreateWorkOrder;PC=${__samplerName()};VU=-${__threadNum()};ID=${__time()}</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="WIL_CreateWorkOrder-ReqTech1plus" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">&lt;env:Envelope xmlns:env=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;&gt;&lt;env:Header/&gt;&lt;env:Body xmlns:env=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; xmlns:wsu=&quot;http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd&quot; wsu:Id=&quot;body_57c43a48-9cbb-4179-a881-7c7d73d8a739&quot;&gt;&lt;createWorkOrder xmlns=&quot;http://xmlschema.tmi.telus.com/srv/RMO/ProcessMgmt/FieldWorkAssignmentMgmtServiceRequestResponse_v3&quot;&gt;&lt;inputHeader&gt;&lt;systemSourceCd xmlns=&quot;&quot;&gt;6161&lt;/systemSourceCd&gt;&lt;userId xmlns=&quot;&quot;&gt;T069416&lt;/userId&gt;&lt;requestDate xmlns=&quot;&quot;&gt;${requestDate}&lt;/requestDate&gt;&lt;/inputHeader&gt;&lt;workOrder&gt;&lt;originatingSystemId xmlns=&quot;&quot;&gt;6161&lt;/originatingSystemId&gt;&lt;originatingSystemWorkOrderGroupId xmlns=&quot;&quot;&gt;OR-01289140.0001&lt;/originatingSystemWorkOrderGroupId&gt;&lt;originatingSystemWorkOrderId xmlns=&quot;&quot;&gt;001100${__Random(11000,11500,)}&lt;/originatingSystemWorkOrderId&gt;&lt;originatingSystemWorkOrderInternalId xmlns=&quot;&quot;&gt;001100${__Random(11000,11500,)}&lt;/originatingSystemWorkOrderInternalId&gt;&lt;secondarySystemId xmlns=&quot;&quot;&gt;6161&lt;/secondarySystemId&gt;&lt;classificationCd xmlns=&quot;&quot;&gt;ORDER&lt;/classificationCd&gt;&lt;serviceClassCd xmlns=&quot;&quot;&gt;B&lt;/serviceClassCd&gt;&lt;productCategoryCd xmlns=&quot;&quot;&gt;BUSINESS&lt;/productCategoryCd&gt;&lt;jobTypeCd xmlns=&quot;&quot;&gt;BUSINESS&lt;/jobTypeCd&gt;&lt;outofServiceInd xmlns=&quot;&quot;&gt;false&lt;/outofServiceInd&gt;&lt;priorityCd xmlns=&quot;&quot;&gt;3&lt;/priorityCd&gt;&lt;hostReadyForDispatchInd xmlns=&quot;&quot;&gt;false&lt;/hostReadyForDispatchInd&gt;&lt;appointmentStartDate xmlns=&quot;&quot;&gt;${appointmentStartDate}&lt;/appointmentStartDate&gt;&lt;appointmentEndDate xmlns=&quot;&quot;&gt;${appointmentEndDate}&lt;/appointmentEndDate&gt;&lt;estimatedDurationNum xmlns=&quot;&quot;&gt;12.75&lt;/estimatedDurationNum&gt;&lt;estimatedDurationUnitCd xmlns=&quot;&quot;&gt;HOURS&lt;/estimatedDurationUnitCd&gt;&lt;location xmlns=&quot;&quot;&gt;&lt;locationList&gt;&lt;typeCode&gt;SERVICE&lt;/typeCode&gt;&lt;dispatchLocationInd&gt;true&lt;/dispatchLocationInd&gt;&lt;locationAddress&gt;&lt;locationId&gt;${LocationID}&lt;/locationId&gt;&lt;/locationAddress&gt;&lt;fmsAddress/&gt;&lt;/locationList&gt;&lt;/location&gt;&lt;customerName xmlns=&quot;&quot;&gt;NAVY LEAGUE OF CANADA - NANAIMO BRANCH&lt;/customerName&gt;&lt;customerRatingCd xmlns=&quot;&quot;&gt;S1&lt;/customerRatingCd&gt;&lt;customerTypeCd xmlns=&quot;&quot;&gt;CUSTOMER&lt;/customerTypeCd&gt;&lt;contactList xmlns=&quot;&quot;&gt;&lt;name&gt;Scot Rounding&lt;/name&gt;&lt;typeCd&gt;CBR&lt;/typeCd&gt;&lt;phoneNumber&gt;2506199112&lt;/phoneNumber&gt;&lt;phoneLocationCd&gt;AUT&lt;/phoneLocationCd&gt;&lt;/contactList&gt;&lt;originatingSystemCreateDate xmlns=&quot;&quot;&gt;${requestDate}&lt;/originatingSystemCreateDate&gt;&lt;remarkList xmlns=&quot;&quot;&gt;&lt;typeCode&gt;&lt;typeCd&gt;FOR_TECHNICIAN&lt;/typeCd&gt;&lt;descriptionTxt/&gt;&lt;/typeCode&gt;&lt;/remarkList&gt;&lt;requiredTeamWorkerNum xmlns=&quot;&quot;&gt;2&lt;/requiredTeamWorkerNum&gt;&lt;componentList xmlns=&quot;&quot;&gt;&lt;component&gt;&lt;originatingSystemWorkOrderId&gt;001100${__Random(11000,11500,)}&lt;/originatingSystemWorkOrderId&gt;&lt;productCategoryCd&gt;SECURITY&lt;/productCategoryCd&gt;&lt;jobTypeCd&gt;SECURITY&lt;/jobTypeCd&gt;&lt;workOrderActionCd&gt;PR&lt;/workOrderActionCd&gt;&lt;productTechnologyCd&gt;OTT&lt;/productTechnologyCd&gt;&lt;installationTypeCd&gt;FW&lt;/installationTypeCd&gt;&lt;estimatedDurationNum&gt;12.75&lt;/estimatedDurationNum&gt;&lt;estimatedDurationUnitCd&gt;HOURS&lt;/estimatedDurationUnitCd&gt;&lt;remarkList&gt;&lt;typeCode&gt;&lt;typeCd&gt;FOR_TECHNICIAN&lt;/typeCd&gt;&lt;/typeCode&gt;&lt;/remarkList&gt;&lt;/component&gt;&lt;/componentList&gt;&lt;/workOrder&gt;&lt;/createWorkOrder&gt;&lt;/env:Body&gt;&lt;/env:Envelope&gt;</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">apigw-soap-st.tsl.telus.com</stringProp>
+            <stringProp name="HTTPSampler.port">443</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">soap/is01/RMO/ProcessMgmt/FieldWorkAssignmentMgmtService_v3_0_RP</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">false</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers"/>
+            </HeaderManager>
+            <hashTree/>
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="workOrderId" enabled="true">
+              <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+              <stringProp name="RegexExtractor.refname">workOrderId</stringProp>
+              <stringProp name="RegexExtractor.regex">&lt;workOrderId&gt;([^&quot;]+)&lt;/workOrderId&gt;</stringProp>
+              <stringProp name="RegexExtractor.template">$1$</stringProp>
+              <stringProp name="RegexExtractor.default"></stringProp>
+              <stringProp name="RegexExtractor.match_number">1</stringProp>
+              <boolProp name="RegexExtractor.default_empty_value">true</boolProp>
+            </RegexExtractor>
+            <hashTree/>
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="response" enabled="true">
+              <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+              <stringProp name="RegexExtractor.refname">response</stringProp>
+              <stringProp name="RegexExtractor.regex">(.*?)</stringProp>
+              <stringProp name="RegexExtractor.template">$1$</stringProp>
+              <stringProp name="RegexExtractor.default">null</stringProp>
+              <stringProp name="RegexExtractor.match_number">1</stringProp>
+            </RegexExtractor>
+            <hashTree/>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="2432586">OPEN</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.custom_message"></stringProp>
+              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">2</intProp>
+              <stringProp name="Assertion.scope">all</stringProp>
+            </ResponseAssertion>
+            <hashTree/>
+          </hashTree>
+          <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Flow Control Action" enabled="true">
+            <intProp name="ActionProcessor.action">1</intProp>
+            <intProp name="ActionProcessor.target">0</intProp>
+            <stringProp name="ActionProcessor.duration">5000</stringProp>
+          </TestAction>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="WIL_CancelWorkOrder" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">&lt;soapenv:Envelope xmlns:soapenv=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; xmlns:fiel=&quot;http://xmlschema.tmi.telus.com/srv/RMO/ProcessMgmt/FieldWorkAssignmentMgmtServiceRequestResponse_v3&quot;&gt;&lt;soapenv:Header/&gt;&lt;soapenv:Body&gt;   &lt;fiel:cancelWorkOrder&gt;      &lt;fiel:inputHeader&gt;         &lt;systemSourceCd&gt;3259&lt;/systemSourceCd&gt;         &lt;userId&gt;T071661&lt;/userId&gt;         &lt;requestDate&gt;${requestDate}&lt;/requestDate&gt;      &lt;/fiel:inputHeader&gt;      &lt;fiel:workOrder&gt;         &lt;workOrderId&gt;${workOrderId}&lt;/workOrderId&gt;      &lt;/fiel:workOrder&gt;   &lt;/fiel:cancelWorkOrder&gt;&lt;/soapenv:Body&gt;&lt;/soapenv:Envelope&gt;</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">apigw-soap-st.tsl.telus.com</stringProp>
+          <stringProp name="HTTPSampler.port">443</stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">soap/is01/RMO/ProcessMgmt/FieldWorkAssignmentMgmtService_v3_0_RP</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">false</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers"/>
+          </HeaderManager>
+          <hashTree/>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="response" enabled="true">
+            <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+            <stringProp name="RegexExtractor.refname">response</stringProp>
+            <stringProp name="RegexExtractor.regex">(.*?)</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default">null</stringProp>
+            <stringProp name="RegexExtractor.match_number">1</stringProp>
+          </RegexExtractor>
+          <hashTree/>
+        </hashTree>
+      </hashTree>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>

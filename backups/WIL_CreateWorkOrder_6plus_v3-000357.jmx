@@ -1,0 +1,1204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.5">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="WIL_CreateWorkOrder_6plus" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">startnextloop</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">34</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">${__P(Users_CreateWorkOrder,20)}</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">300</stringProp>
+        <longProp name="ThreadGroup.start_time">1455260938000</longProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration">37200</stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">false</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="CookieManager" enabled="true">
+          <collectionProp name="CookieManager.cookies"/>
+          <boolProp name="CookieManager.clearEachIteration">false</boolProp>
+          <boolProp name="CookieManager.controlledByThreadGroup">false</boolProp>
+        </CookieManager>
+        <hashTree/>
+        <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+          <collectionProp name="Arguments.arguments">
+            <elementProp name="Pacing" elementType="Argument">
+              <stringProp name="Argument.name">Pacing</stringProp>
+              <stringProp name="Argument.value">${__P(propPIpacing,106)}</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+          </collectionProp>
+        </Arguments>
+        <hashTree/>
+        <AuthManager guiclass="AuthPanel" testclass="AuthManager" testname="HTTP Authorization Manager" enabled="true">
+          <collectionProp name="AuthManager.auth_list">
+            <elementProp name="" elementType="Authorization">
+              <stringProp name="Authorization.url">apigw-soap-st.tsl.telus.com:443</stringProp>
+              <stringProp name="Authorization.username">APP_RENDEZVOUS</stringProp>
+              <stringProp name="Authorization.password">soaorgid</stringProp>
+              <stringProp name="Authorization.domain"></stringProp>
+              <stringProp name="Authorization.realm"></stringProp>
+              <stringProp name="Authorization.mechanism">BASIC_DIGEST</stringProp>
+            </elementProp>
+          </collectionProp>
+          <boolProp name="AuthManager.controlledByThreadGroup">false</boolProp>
+        </AuthManager>
+        <hashTree/>
+        <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path"></stringProp>
+          <stringProp name="HTTPSampler.concurrentPool">6</stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </ConfigTestElement>
+        <hashTree/>
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <collectionProp name="HeaderManager.headers">
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Authorization</stringProp>
+              <stringProp name="Header.value">Basic QVBQX1JFTkRFWlZPVVM6c29hb3JnaWQ=</stringProp>
+            </elementProp>
+          </collectionProp>
+        </HeaderManager>
+        <hashTree/>
+        <CacheManager guiclass="CacheManagerGui" testclass="CacheManager" testname="HTTP Cache Manager" enabled="true">
+          <boolProp name="clearEachIteration">false</boolProp>
+          <boolProp name="useExpires">false</boolProp>
+          <boolProp name="CacheManager.controlledByThread">false</boolProp>
+        </CacheManager>
+        <hashTree/>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="WIL_CreateWorkOrder_6plus_Address.csv" enabled="true">
+          <stringProp name="delimiter">,</stringProp>
+          <stringProp name="fileEncoding"></stringProp>
+          <stringProp name="filename">WIL_CreateWorkOrder_6plus_Address.csv</stringProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="ignoreFirstLine">true</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <stringProp name="shareMode.all">shareMode</stringProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="variableNames">fmsAddressId,apartmentNumber,houseNumber,suffix,vector,street,city,provinceCode,postalcode,fmsCoid,clli,country</stringProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="WIL_CreateWorkOrder_6plus_estimatedDuration.csv" enabled="true">
+          <stringProp name="delimiter">,</stringProp>
+          <stringProp name="fileEncoding"></stringProp>
+          <stringProp name="filename">WIL_CreateWorkOrder_6plus_estimatedDuration.csv</stringProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="ignoreFirstLine">true</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <stringProp name="shareMode.all">shareMode</stringProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="variableNames">estimatedDuration</stringProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="WIL_CreateWorkOrder_6plus_Product.csv" enabled="true">
+          <stringProp name="delimiter">,</stringProp>
+          <stringProp name="fileEncoding"></stringProp>
+          <stringProp name="filename">WIL_CreateWorkOrder_6plus_Product.csv</stringProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="ignoreFirstLine">true</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <stringProp name="shareMode.all">shareMode</stringProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="variableNames">Product,Technology,JobType,workGroupCode</stringProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="WIL_CreateWorkOrder_6plus_originatingSystemWoId.csv" enabled="true">
+          <stringProp name="delimiter">,</stringProp>
+          <stringProp name="fileEncoding"></stringProp>
+          <stringProp name="filename">WIL_CreateWorkOrder_6plus_originatingSystemWoId.csv</stringProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="ignoreFirstLine">true</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <stringProp name="shareMode.all">shareMode</stringProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="variableNames">originatingSystemWoId</stringProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="WIL_CreateWorkOrder_6plus_originatingSystemWoInternalId.csv" enabled="true">
+          <stringProp name="delimiter">,</stringProp>
+          <stringProp name="fileEncoding"></stringProp>
+          <stringProp name="filename">WIL_CreateWorkOrder_6plus_originatingSystemWoInternalId.csv</stringProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="ignoreFirstLine">true</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <stringProp name="shareMode.all">shareMode</stringProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="variableNames">originatingSystemWoInternalId</stringProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="WIL_CreateWorkOrder_6plus_required_language.csv" enabled="true">
+          <stringProp name="delimiter">,</stringProp>
+          <stringProp name="fileEncoding"></stringProp>
+          <stringProp name="filename">WIL_CreateWorkOrder_6plus_required_language.csv</stringProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="ignoreFirstLine">true</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <stringProp name="shareMode.all">shareMode</stringProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="variableNames">required_language,description</stringProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="LocationID" enabled="true">
+          <stringProp name="filename">LocationID.txt</stringProp>
+          <stringProp name="fileEncoding"></stringProp>
+          <stringProp name="variableNames">LocationID</stringProp>
+          <boolProp name="ignoreFirstLine">true</boolProp>
+          <stringProp name="delimiter">,</stringProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="endTime" enabled="true">
+          <stringProp name="scriptLanguage">groovy</stringProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="filename"></stringProp>
+          <stringProp name="cacheKey">true</stringProp>
+          <stringProp name="script">def dateobj= new Date();
+def endTime = dateobj.getTime();
+vars.put(&quot;endTime&quot;,endTime.toString())
+log.info(&quot;Current date in the specified format: &quot; + endTime);
+SampleResult.setIgnore();
+</stringProp>
+        </JSR223Sampler>
+        <hashTree/>
+        <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If Controller" enabled="true">
+          <stringProp name="IfController.condition">&quot;${__jm__EnterpriseTMF676__idx}&quot; != &quot;0&quot;</stringProp>
+          <boolProp name="IfController.evaluateAll">false</boolProp>
+        </IfController>
+        <hashTree>
+          <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Pacing Timer" enabled="true">
+            <intProp name="ActionProcessor.action">1</intProp>
+            <intProp name="ActionProcessor.target">0</intProp>
+            <stringProp name="ActionProcessor.duration">${myDelay}</stringProp>
+          </TestAction>
+          <hashTree>
+            <JSR223Timer guiclass="TestBeanGUI" testclass="JSR223Timer" testname="JSR223 Timer" enabled="true">
+              <stringProp name="scriptLanguage">groovy</stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="script">Long pacingInput = Long.valueOf(vars.get(&apos;Pacing&apos;))*1000;
+Long elapsed = Long.valueOf(vars.get(&apos;endTime&apos;)) - Long.valueOf(vars.get(&apos;startTime&apos;))
+Long pacing = pacingInput-elapsed;
+if ( pacing &gt; 0 ) 
+{
+	vars.put(&quot;myDelay&quot;, String.valueOf(pacing));
+	return 0;
+}
+else 
+{
+	vars.put(&quot;myDelay&quot;, &quot;0&quot;);
+	return 0; 
+}
+</stringProp>
+            </JSR223Timer>
+            <hashTree/>
+          </hashTree>
+        </hashTree>
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="startTime" enabled="true">
+          <stringProp name="scriptLanguage">groovy</stringProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="filename"></stringProp>
+          <stringProp name="cacheKey">true</stringProp>
+          <stringProp name="script">def dateobj= new Date();
+def startTime = dateobj.getTime();
+log.info(&quot;Current date in the specified format: &quot; + startTime);
+vars.put(&quot;startTime&quot;,startTime.toString())
+SampleResult.setIgnore();</stringProp>
+        </JSR223Sampler>
+        <hashTree/>
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="WIL_CreateWorkOrder" enabled="true">
+          <boolProp name="TransactionController.includeTimers">false</boolProp>
+          <boolProp name="TransactionController.parent">true</boolProp>
+        </TransactionController>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">X-dynaTrace</stringProp>
+                <stringProp name="Header.value">NA=WIL_CreateWorkOrder;PC=${__samplerName()};VU=-${__threadNum()};ID=${__time()}</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="${__Random(30000,35000,counter_d)}" elementType="Argument">
+                <stringProp name="Argument.name">${__Random(30000,35000,counter_d)}</stringProp>
+                <stringProp name="Argument.value"></stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="${__time(yyyy-MM-dd,RequestDate_d)}" elementType="Argument">
+                <stringProp name="Argument.name">${__time(yyyy-MM-dd,RequestDate_d)}</stringProp>
+                <stringProp name="Argument.value"></stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="${__time(HH:mm:ss.SSS,time_t)}" elementType="Argument">
+                <stringProp name="Argument.name">${__time(HH:mm:ss.SSS,time_t)}</stringProp>
+                <stringProp name="Argument.value"></stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="${__timeShift(yyyy-MM-dd,,P4D,,dueDate_d)}" elementType="Argument">
+                <stringProp name="Argument.name">${__timeShift(yyyy-MM-dd,,P4D,,dueDate_d)}</stringProp>
+                <stringProp name="Argument.value"></stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="${__timeShift(yyyy-MM-dd,,P19D,,appointmentStartDate_d)}" elementType="Argument">
+                <stringProp name="Argument.name">${__timeShift(yyyy-MM-dd,,P19D,,appointmentStartDate_d)}</stringProp>
+                <stringProp name="Argument.value"></stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="${__timeShift(yyyy-MM-dd,,P20D,,appointmentEndDate_d)}" elementType="Argument">
+                <stringProp name="Argument.name">${__timeShift(yyyy-MM-dd,,P20D,,appointmentEndDate_d)}</stringProp>
+                <stringProp name="Argument.value"></stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="requestDate" elementType="Argument">
+                <stringProp name="Argument.name">requestDate</stringProp>
+                <stringProp name="Argument.value">${RequestDate_d}T${time_t}Z</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="appointmentStartDate" elementType="Argument">
+                <stringProp name="Argument.name">appointmentStartDate</stringProp>
+                <stringProp name="Argument.value">${appointmentStartDate_d}T21:00:00.645Z</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="appointmentEndDate" elementType="Argument">
+                <stringProp name="Argument.name">appointmentEndDate</stringProp>
+                <stringProp name="Argument.value">${appointmentEndDate_d}T21:00:00.645Z</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="earlyStartDate" elementType="Argument">
+                <stringProp name="Argument.name">earlyStartDate</stringProp>
+                <stringProp name="Argument.value">${RequestDate_d}T${time_t}Z</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="dueDate" elementType="Argument">
+                <stringProp name="Argument.name">dueDate</stringProp>
+                <stringProp name="Argument.value">${dueDate_d}T${time_t}Z</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="counter" elementType="Argument">
+                <stringProp name="Argument.name">counter</stringProp>
+                <stringProp name="Argument.value">000${counter_d}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="originatingSystemCreateDate" elementType="Argument">
+                <stringProp name="Argument.name">originatingSystemCreateDate</stringProp>
+                <stringProp name="Argument.value">${RequestDate_d}T${time_t}Z</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="Pacing" elementType="Argument">
+                <stringProp name="Argument.name">Pacing</stringProp>
+                <stringProp name="Argument.value">${__P(propPIpacing,36)}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </Arguments>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CreateWorkOrder" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">&lt;soapenv:Envelope&#xd;
+	xmlns:soapenv=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;&gt;&#xd;
+	&lt;soapenv:Header&gt;&lt;/soapenv:Header&gt;&#xd;
+	&lt;soapenv:Body&gt;&#xd;
+		&lt;ns2:createWorkOrder&#xd;
+			xmlns:ns2=&quot;http://xmlschema.tmi.telus.com/srv/RMO/ProcessMgmt/FieldWorkAssignmentMgmtServiceRequestResponse_v3&quot;&#xd;
+			xmlns:ns3=&quot;http://xmlschema.tmi.telus.com/xsd/Resource/Resource/WorkForceManagementOrderTypes_v3&quot;&gt;&#xd;
+			&lt;ns2:inputHeader&gt;&#xd;
+				&lt;systemSourceCd&gt;3259&lt;/systemSourceCd&gt;&#xd;
+				&lt;userId&gt;T071661&lt;/userId&gt;&#xd;
+				&lt;requestDate&gt;${requestDate}&lt;/requestDate&gt;&#xd;
+			&lt;/ns2:inputHeader&gt;&#xd;
+			&lt;ns2:workOrder&gt;&#xd;
+				&lt;originatingSystemId&gt;3259&lt;/originatingSystemId&gt;&#xd;
+				&lt;originatingSystemWorkOrderId&gt;SFTST1${Random1}${__time()}&lt;/originatingSystemWorkOrderId&gt;&#xd;
+				&lt;originatingSystemWorkOrderInternalId&gt;SFTST1${Random2}${__time()}&lt;/originatingSystemWorkOrderInternalId&gt;&#xd;
+				&lt;classificationCd&gt;ORDER&lt;/classificationCd&gt;&#xd;
+				&lt;serviceClassCd&gt;R&lt;/serviceClassCd&gt;&#xd;
+				&lt;productCategoryCd&gt;MASS_MARKET&lt;/productCategoryCd&gt;&#xd;
+				&lt;productTechnologyCd&gt;${Technology}&lt;/productTechnologyCd&gt;&#xd;
+				&lt;jobTypeCd&gt;MASS_MARKET&lt;/jobTypeCd&gt;&#xd;
+				&lt;outofServiceInd&gt;false&lt;/outofServiceInd&gt;&#xd;
+				&lt;serviceIdentification&gt;&#xd;
+					&lt;typeCd&gt;PHONE&lt;/typeCd&gt;&#xd;
+					&lt;descriptionTxt&gt;6049864779&lt;/descriptionTxt&gt;&#xd;
+				&lt;/serviceIdentification&gt;&#xd;
+				&lt;hostReadyForDispatchInd&gt;true&lt;/hostReadyForDispatchInd&gt;&#xd;
+				&lt;overrideInd&gt;false&lt;/overrideInd&gt;&#xd;
+				&lt;scheduleRemarkInd&gt;false&lt;/scheduleRemarkInd&gt;&#xd;
+				&lt;appointmentStartDate&gt;${appointmentStartDate}&lt;/appointmentStartDate&gt;&#xd;
+				&lt;appointmentEndDate&gt;${appointmentEndDate}&lt;/appointmentEndDate&gt;&#xd;
+				&lt;estimatedDurationNum&gt;${estimatedDuration}&lt;/estimatedDurationNum&gt;&#xd;
+				&lt;estimatedDurationUnitCd&gt;HOURS&lt;/estimatedDurationUnitCd&gt;&#xd;
+				&lt;location&gt;&#xd;
+					&lt;locationList&gt;&#xd;
+						&lt;typeCode&gt;SERVICE&lt;/typeCode&gt;&#xd;
+						&lt;dispatchLocationInd&gt;true&lt;/dispatchLocationInd&gt;&#xd;
+						&lt;locationAddress&gt;&#xd;
+							&lt;locationId&gt;${LocationID}&lt;/locationId&gt;&#xd;
+						&lt;/locationAddress&gt;&#xd;
+					&lt;/locationList&gt;&#xd;
+				&lt;/location&gt;&#xd;
+				&lt;customerName&gt;Ingried Gervin&lt;/customerName&gt;&#xd;
+				&lt;customerTypeCd&gt;CUSTOMER&lt;/customerTypeCd&gt;&#xd;
+				&lt;contactList&gt;&#xd;
+					&lt;name&gt;Ingried Gervin&lt;/name&gt;&#xd;
+					&lt;typeCd&gt;CBR&lt;/typeCd&gt;&#xd;
+					&lt;phoneNumber&gt;7782146461&lt;/phoneNumber&gt;&#xd;
+					&lt;phoneLocationCd&gt;AUT&lt;/phoneLocationCd&gt;&#xd;
+				&lt;/contactList&gt;&#xd;
+				&lt;customerId&gt;20504646&lt;/customerId&gt;&#xd;
+				&lt;customerIdTypeCd&gt;CUSTOMER_ID&lt;/customerIdTypeCd&gt;&#xd;
+				&lt;workOrderAttributeList&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;WELCOME_KIT_IND&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt&gt;false&lt;/descriptionTxt&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;NOTIFICATION_IND&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt&gt;true&lt;/descriptionTxt&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+				&lt;/workOrderAttributeList&gt;&#xd;
+				&lt;workOrderDetailList&gt;&lt;/workOrderDetailList&gt;&#xd;
+				&lt;remarkList&gt;&lt;/remarkList&gt;&#xd;
+				&lt;preferredTeamWorkerList&gt;&lt;/preferredTeamWorkerList&gt;&#xd;
+				&lt;requiredTeamWorkerNum&gt;1&lt;/requiredTeamWorkerNum&gt;&#xd;
+				&lt;customerPremiseEquipmentList&gt;&lt;/customerPremiseEquipmentList&gt;&#xd;
+				&lt;componentList&gt;&#xd;
+					&lt;component&gt;&#xd;
+						&lt;originatingSystemWorkOrderId&gt;${Random3}${__time()}&lt;/originatingSystemWorkOrderId&gt;&#xd;
+						&lt;hostReadyForDispatchInd&gt;false&lt;/hostReadyForDispatchInd&gt;&#xd;
+						&lt;productCategoryCd&gt;${Product}&lt;/productCategoryCd&gt;&#xd;
+						&lt;jobTypeCd&gt;${JobType}&lt;/jobTypeCd&gt;&#xd;
+						&lt;workOrderActionCd&gt;CH&lt;/workOrderActionCd&gt;&#xd;
+						&lt;productTechnologyCd&gt;${Technology}&lt;/productTechnologyCd&gt;&#xd;
+						&lt;installationTypeCd&gt;FW&lt;/installationTypeCd&gt;&#xd;
+						&lt;estimatedDurationNum&gt;${estimatedDuration}&lt;/estimatedDurationNum&gt;&#xd;
+						&lt;estimatedDurationUnitCd&gt;HOURS&lt;/estimatedDurationUnitCd&gt;&#xd;
+						&lt;componentAttributeList&gt;&lt;/componentAttributeList&gt;&#xd;
+						&lt;componentDetailList&gt;&#xd;
+							&lt;typeCode&gt;&#xd;
+								&lt;typeCd&gt;ASSIGNMENT&lt;/typeCd&gt;&#xd;
+								&lt;descriptionTxt&gt;&lt;/descriptionTxt&gt;&#xd;
+							&lt;/typeCode&gt;&#xd;
+						&lt;/componentDetailList&gt;&#xd;
+						&lt;remarkList&gt;&#xd;
+							&lt;typeCode&gt;&#xd;
+								&lt;typeCd&gt;GENERAL&lt;/typeCd&gt;&#xd;
+								&lt;descriptionTxt&gt;&lt;/descriptionTxt&gt;&#xd;
+							&lt;/typeCode&gt;&#xd;
+							&lt;typeCode&gt;&#xd;
+								&lt;typeCd&gt;FOR_TECHNICIAN&lt;/typeCd&gt;&#xd;
+								&lt;descriptionTxt&gt;&lt;/descriptionTxt&gt;&#xd;
+							&lt;/typeCode&gt;&#xd;
+						&lt;/remarkList&gt;&#xd;
+						&lt;statusCd&gt;OPEN&lt;/statusCd&gt;&#xd;
+					&lt;/component&gt;&#xd;
+				&lt;/componentList&gt;&#xd;
+			&lt;/ns2:workOrder&gt;&#xd;
+		&lt;/ns2:createWorkOrder&gt;&#xd;
+	&lt;/soapenv:Body&gt;&#xd;
+&lt;/soapenv:Envelope&gt;</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">apigw-soap-st.tsl.telus.com</stringProp>
+            <stringProp name="HTTPSampler.port">443</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">soap/is01/RMO/ProcessMgmt/FieldWorkAssignmentMgmtService_v3_0_RP</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">false</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            <stringProp name="TestPlan.comments">5000${counter}</stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers"/>
+            </HeaderManager>
+            <hashTree/>
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="workOrderId" enabled="true">
+              <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+              <stringProp name="RegexExtractor.refname">workOrderId</stringProp>
+              <stringProp name="RegexExtractor.regex">&lt;workOrderId&gt;([^&quot;]+)&lt;/workOrderId&gt;</stringProp>
+              <stringProp name="RegexExtractor.template">$1$</stringProp>
+              <stringProp name="RegexExtractor.default"></stringProp>
+              <stringProp name="RegexExtractor.match_number">1</stringProp>
+              <boolProp name="RegexExtractor.default_empty_value">true</boolProp>
+            </RegexExtractor>
+            <hashTree/>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="2432586">OPEN</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.custom_message"></stringProp>
+              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">16</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+          </hashTree>
+          <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Flow Control Action" enabled="true">
+            <intProp name="ActionProcessor.action">1</intProp>
+            <intProp name="ActionProcessor.target">0</intProp>
+            <stringProp name="ActionProcessor.duration">3000</stringProp>
+          </TestAction>
+          <hashTree/>
+          <RandomVariableConfig guiclass="TestBeanGUI" testclass="RandomVariableConfig" testname="Random Variable" enabled="true">
+            <stringProp name="maximumValue">3000</stringProp>
+            <stringProp name="minimumValue">1000</stringProp>
+            <stringProp name="outputFormat"></stringProp>
+            <boolProp name="perThread">true</boolProp>
+            <stringProp name="randomSeed"></stringProp>
+            <stringProp name="variableName">Random1</stringProp>
+          </RandomVariableConfig>
+          <hashTree/>
+          <RandomVariableConfig guiclass="TestBeanGUI" testclass="RandomVariableConfig" testname="Random Variable" enabled="true">
+            <stringProp name="maximumValue">5000</stringProp>
+            <stringProp name="minimumValue">3000</stringProp>
+            <stringProp name="outputFormat"></stringProp>
+            <boolProp name="perThread">true</boolProp>
+            <stringProp name="randomSeed"></stringProp>
+            <stringProp name="variableName">Random2</stringProp>
+          </RandomVariableConfig>
+          <hashTree/>
+          <RandomVariableConfig guiclass="TestBeanGUI" testclass="RandomVariableConfig" testname="Random Variable" enabled="true">
+            <stringProp name="maximumValue">7000</stringProp>
+            <stringProp name="minimumValue">5000</stringProp>
+            <stringProp name="outputFormat"></stringProp>
+            <boolProp name="perThread">true</boolProp>
+            <stringProp name="randomSeed"></stringProp>
+            <stringProp name="variableName">Random3</stringProp>
+          </RandomVariableConfig>
+          <hashTree/>
+          <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="exportFile" enabled="true">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="script">import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import org.apache.jmeter.services.FileServer;
+String Path = FileServer.getFileServer().getBaseDir();
+String Seperator = File.separator;
+BufferedWriter bw = null;
+FileWriter fw = null;
+String filename=Path+Seperator+&quot;WorkIDs.txt&quot;;
+String headLine=&quot;WOID&quot;+&quot;\n&quot;;
+String data=vars.get(&quot;workOrderId&quot;)+&quot;\n&quot;;
+File file = new File(filename);
+if (!file.exists()) {
+  file.createNewFile();
+  fw = new FileWriter(file.getAbsoluteFile(), true);
+  bw = new BufferedWriter(fw);
+  bw.write(headLine);
+  bw.close();
+}
+fw = new FileWriter(file.getAbsoluteFile(), true);
+bw = new BufferedWriter(fw);
+bw.write(data);
+bw.close();
+SampleResult.setIgnore();
+</stringProp>
+          </JSR223Sampler>
+          <hashTree/>
+        </hashTree>
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="WIL_CreateWorkOrder" enabled="true">
+          <boolProp name="TransactionController.includeTimers">false</boolProp>
+          <boolProp name="TransactionController.parent">true</boolProp>
+        </TransactionController>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">X-dynaTrace</stringProp>
+                <stringProp name="Header.value">NA=WIL_CreateWorkOrder;PC=${__samplerName()};VU=-${__threadNum()};ID=${__time()}</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="${__Random(30000,35000,counter_d)}" elementType="Argument">
+                <stringProp name="Argument.name">${__Random(30000,35000,counter_d)}</stringProp>
+                <stringProp name="Argument.value"></stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="${__time(yyyy-MM-dd,RequestDate_d)}" elementType="Argument">
+                <stringProp name="Argument.name">${__time(yyyy-MM-dd,RequestDate_d)}</stringProp>
+                <stringProp name="Argument.value"></stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="${__time(HH:mm:ss.SSS,time_t)}" elementType="Argument">
+                <stringProp name="Argument.name">${__time(HH:mm:ss.SSS,time_t)}</stringProp>
+                <stringProp name="Argument.value"></stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="${__timeShift(yyyy-MM-dd,,P4D,,dueDate_d)}" elementType="Argument">
+                <stringProp name="Argument.name">${__timeShift(yyyy-MM-dd,,P4D,,dueDate_d)}</stringProp>
+                <stringProp name="Argument.value"></stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="${__timeShift(yyyy-MM-dd,,P20D,,appointmentStartDate_d)}" elementType="Argument">
+                <stringProp name="Argument.name">${__timeShift(yyyy-MM-dd,,P20D,,appointmentStartDate_d)}</stringProp>
+                <stringProp name="Argument.value"></stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="${__timeShift(yyyy-MM-dd,,P21D,,appointmentEndDate_d)}" elementType="Argument">
+                <stringProp name="Argument.name">${__timeShift(yyyy-MM-dd,,P21D,,appointmentEndDate_d)}</stringProp>
+                <stringProp name="Argument.value"></stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="requestDate" elementType="Argument">
+                <stringProp name="Argument.name">requestDate</stringProp>
+                <stringProp name="Argument.value">${RequestDate_d}T${time_t}Z</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="appointmentStartDate" elementType="Argument">
+                <stringProp name="Argument.name">appointmentStartDate</stringProp>
+                <stringProp name="Argument.value">${appointmentStartDate_d}T21:00:00.645Z</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="appointmentEndDate" elementType="Argument">
+                <stringProp name="Argument.name">appointmentEndDate</stringProp>
+                <stringProp name="Argument.value">${appointmentEndDate_d}T21:00:00.645Z</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="earlyStartDate" elementType="Argument">
+                <stringProp name="Argument.name">earlyStartDate</stringProp>
+                <stringProp name="Argument.value">${RequestDate_d}T${time_t}Z</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="dueDate" elementType="Argument">
+                <stringProp name="Argument.name">dueDate</stringProp>
+                <stringProp name="Argument.value">${dueDate_d}T${time_t}Z</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="counter" elementType="Argument">
+                <stringProp name="Argument.name">counter</stringProp>
+                <stringProp name="Argument.value">000${counter_d}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="originatingSystemCreateDate" elementType="Argument">
+                <stringProp name="Argument.name">originatingSystemCreateDate</stringProp>
+                <stringProp name="Argument.value">${RequestDate_d}T${time_t}Z</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="Pacing" elementType="Argument">
+                <stringProp name="Argument.name">Pacing</stringProp>
+                <stringProp name="Argument.value">${__P(propPIpacing,36)}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </Arguments>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CreateWorkOrder" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">&lt;soapenv:Envelope&#xd;
+	xmlns:soapenv=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;&gt;&#xd;
+	&lt;soapenv:Header&gt;&lt;/soapenv:Header&gt;&#xd;
+	&lt;soapenv:Body&gt;&#xd;
+		&lt;ns2:createWorkOrder&#xd;
+			xmlns:ns2=&quot;http://xmlschema.tmi.telus.com/srv/RMO/ProcessMgmt/FieldWorkAssignmentMgmtServiceRequestResponse_v3&quot;&#xd;
+			xmlns:ns3=&quot;http://xmlschema.tmi.telus.com/xsd/Resource/Resource/WorkForceManagementOrderTypes_v3&quot;&gt;&#xd;
+			&lt;ns2:inputHeader&gt;&#xd;
+				&lt;systemSourceCd&gt;3259&lt;/systemSourceCd&gt;&#xd;
+				&lt;userId&gt;T071661&lt;/userId&gt;&#xd;
+				&lt;requestDate&gt;${requestDate}&lt;/requestDate&gt;&#xd;
+			&lt;/ns2:inputHeader&gt;&#xd;
+			&lt;ns2:workOrder&gt;&#xd;
+				&lt;originatingSystemId&gt;3259&lt;/originatingSystemId&gt;&#xd;
+				&lt;originatingSystemWorkOrderId&gt;SFTST1${Random1}${__time()}&lt;/originatingSystemWorkOrderId&gt;&#xd;
+				&lt;originatingSystemWorkOrderInternalId&gt;SFTST1${Random2}${__time()}&lt;/originatingSystemWorkOrderInternalId&gt;&#xd;
+				&lt;classificationCd&gt;ORDER&lt;/classificationCd&gt;&#xd;
+				&lt;serviceClassCd&gt;R&lt;/serviceClassCd&gt;&#xd;
+				&lt;productCategoryCd&gt;MASS_MARKET&lt;/productCategoryCd&gt;&#xd;
+				&lt;productTechnologyCd&gt;${Technology}&lt;/productTechnologyCd&gt;&#xd;
+				&lt;jobTypeCd&gt;MASS_MARKET&lt;/jobTypeCd&gt;&#xd;
+				&lt;outofServiceInd&gt;false&lt;/outofServiceInd&gt;&#xd;
+				&lt;serviceIdentification&gt;&#xd;
+					&lt;typeCd&gt;PHONE&lt;/typeCd&gt;&#xd;
+					&lt;descriptionTxt&gt;6049864779&lt;/descriptionTxt&gt;&#xd;
+				&lt;/serviceIdentification&gt;&#xd;
+				&lt;hostReadyForDispatchInd&gt;true&lt;/hostReadyForDispatchInd&gt;&#xd;
+				&lt;overrideInd&gt;false&lt;/overrideInd&gt;&#xd;
+				&lt;scheduleRemarkInd&gt;false&lt;/scheduleRemarkInd&gt;&#xd;
+				&lt;appointmentStartDate&gt;${appointmentStartDate}&lt;/appointmentStartDate&gt;&#xd;
+				&lt;appointmentEndDate&gt;${appointmentEndDate}&lt;/appointmentEndDate&gt;&#xd;
+				&lt;estimatedDurationNum&gt;${estimatedDuration}&lt;/estimatedDurationNum&gt;&#xd;
+				&lt;estimatedDurationUnitCd&gt;HOURS&lt;/estimatedDurationUnitCd&gt;&#xd;
+				&lt;location&gt;&#xd;
+					&lt;locationList&gt;&#xd;
+						&lt;typeCode&gt;SERVICE&lt;/typeCode&gt;&#xd;
+						&lt;dispatchLocationInd&gt;true&lt;/dispatchLocationInd&gt;&#xd;
+						&lt;locationAddress&gt;&#xd;
+							&lt;locationId&gt;${LocationID}&lt;/locationId&gt;&#xd;
+						&lt;/locationAddress&gt;&#xd;
+					&lt;/locationList&gt;&#xd;
+				&lt;/location&gt;&#xd;
+				&lt;customerName&gt;Ingried Gervin&lt;/customerName&gt;&#xd;
+				&lt;customerTypeCd&gt;CUSTOMER&lt;/customerTypeCd&gt;&#xd;
+				&lt;contactList&gt;&#xd;
+					&lt;name&gt;Ingried Gervin&lt;/name&gt;&#xd;
+					&lt;typeCd&gt;CBR&lt;/typeCd&gt;&#xd;
+					&lt;phoneNumber&gt;7782146461&lt;/phoneNumber&gt;&#xd;
+					&lt;phoneLocationCd&gt;AUT&lt;/phoneLocationCd&gt;&#xd;
+				&lt;/contactList&gt;&#xd;
+				&lt;customerId&gt;20504646&lt;/customerId&gt;&#xd;
+				&lt;customerIdTypeCd&gt;CUSTOMER_ID&lt;/customerIdTypeCd&gt;&#xd;
+				&lt;workOrderAttributeList&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;WELCOME_KIT_IND&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt&gt;false&lt;/descriptionTxt&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;NOTIFICATION_IND&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt&gt;true&lt;/descriptionTxt&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+				&lt;/workOrderAttributeList&gt;&#xd;
+				&lt;workOrderDetailList&gt;&lt;/workOrderDetailList&gt;&#xd;
+				&lt;remarkList&gt;&lt;/remarkList&gt;&#xd;
+				&lt;preferredTeamWorkerList&gt;&lt;/preferredTeamWorkerList&gt;&#xd;
+				&lt;requiredTeamWorkerNum&gt;1&lt;/requiredTeamWorkerNum&gt;&#xd;
+				&lt;customerPremiseEquipmentList&gt;&lt;/customerPremiseEquipmentList&gt;&#xd;
+				&lt;componentList&gt;&#xd;
+					&lt;component&gt;&#xd;
+						&lt;originatingSystemWorkOrderId&gt;${Random3}${__time()}&lt;/originatingSystemWorkOrderId&gt;&#xd;
+						&lt;hostReadyForDispatchInd&gt;false&lt;/hostReadyForDispatchInd&gt;&#xd;
+						&lt;productCategoryCd&gt;${Product}&lt;/productCategoryCd&gt;&#xd;
+						&lt;jobTypeCd&gt;${JobType}&lt;/jobTypeCd&gt;&#xd;
+						&lt;workOrderActionCd&gt;CH&lt;/workOrderActionCd&gt;&#xd;
+						&lt;productTechnologyCd&gt;${Technology}&lt;/productTechnologyCd&gt;&#xd;
+						&lt;installationTypeCd&gt;FW&lt;/installationTypeCd&gt;&#xd;
+						&lt;estimatedDurationNum&gt;${estimatedDuration}&lt;/estimatedDurationNum&gt;&#xd;
+						&lt;estimatedDurationUnitCd&gt;HOURS&lt;/estimatedDurationUnitCd&gt;&#xd;
+						&lt;componentAttributeList&gt;&lt;/componentAttributeList&gt;&#xd;
+						&lt;componentDetailList&gt;&#xd;
+							&lt;typeCode&gt;&#xd;
+								&lt;typeCd&gt;ASSIGNMENT&lt;/typeCd&gt;&#xd;
+								&lt;descriptionTxt&gt;&lt;/descriptionTxt&gt;&#xd;
+							&lt;/typeCode&gt;&#xd;
+						&lt;/componentDetailList&gt;&#xd;
+						&lt;remarkList&gt;&#xd;
+							&lt;typeCode&gt;&#xd;
+								&lt;typeCd&gt;GENERAL&lt;/typeCd&gt;&#xd;
+								&lt;descriptionTxt&gt;&lt;/descriptionTxt&gt;&#xd;
+							&lt;/typeCode&gt;&#xd;
+							&lt;typeCode&gt;&#xd;
+								&lt;typeCd&gt;FOR_TECHNICIAN&lt;/typeCd&gt;&#xd;
+								&lt;descriptionTxt&gt;&lt;/descriptionTxt&gt;&#xd;
+							&lt;/typeCode&gt;&#xd;
+						&lt;/remarkList&gt;&#xd;
+						&lt;statusCd&gt;OPEN&lt;/statusCd&gt;&#xd;
+					&lt;/component&gt;&#xd;
+				&lt;/componentList&gt;&#xd;
+			&lt;/ns2:workOrder&gt;&#xd;
+		&lt;/ns2:createWorkOrder&gt;&#xd;
+	&lt;/soapenv:Body&gt;&#xd;
+&lt;/soapenv:Envelope&gt;</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">apigw-soap-st.tsl.telus.com</stringProp>
+            <stringProp name="HTTPSampler.port">443</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">soap/is01/RMO/ProcessMgmt/FieldWorkAssignmentMgmtService_v3_0_RP</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">false</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            <stringProp name="TestPlan.comments">5000${counter}</stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers"/>
+            </HeaderManager>
+            <hashTree/>
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="workOrderId" enabled="true">
+              <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+              <stringProp name="RegexExtractor.refname">workOrderId</stringProp>
+              <stringProp name="RegexExtractor.regex">&lt;workOrderId&gt;([^&quot;]+)&lt;/workOrderId&gt;</stringProp>
+              <stringProp name="RegexExtractor.template">$1$</stringProp>
+              <stringProp name="RegexExtractor.default"></stringProp>
+              <stringProp name="RegexExtractor.match_number">1</stringProp>
+              <boolProp name="RegexExtractor.default_empty_value">true</boolProp>
+            </RegexExtractor>
+            <hashTree/>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="2432586">OPEN</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.custom_message"></stringProp>
+              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">16</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+          </hashTree>
+          <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Flow Control Action" enabled="true">
+            <intProp name="ActionProcessor.action">1</intProp>
+            <intProp name="ActionProcessor.target">0</intProp>
+            <stringProp name="ActionProcessor.duration">3000</stringProp>
+          </TestAction>
+          <hashTree/>
+          <RandomVariableConfig guiclass="TestBeanGUI" testclass="RandomVariableConfig" testname="Random Variable" enabled="true">
+            <stringProp name="maximumValue">9000</stringProp>
+            <stringProp name="minimumValue">7000</stringProp>
+            <stringProp name="outputFormat"></stringProp>
+            <boolProp name="perThread">true</boolProp>
+            <stringProp name="randomSeed"></stringProp>
+            <stringProp name="variableName">Random1</stringProp>
+          </RandomVariableConfig>
+          <hashTree/>
+          <RandomVariableConfig guiclass="TestBeanGUI" testclass="RandomVariableConfig" testname="Random Variable" enabled="true">
+            <stringProp name="maximumValue">11000</stringProp>
+            <stringProp name="minimumValue">9000</stringProp>
+            <stringProp name="outputFormat"></stringProp>
+            <boolProp name="perThread">true</boolProp>
+            <stringProp name="randomSeed"></stringProp>
+            <stringProp name="variableName">Random2</stringProp>
+          </RandomVariableConfig>
+          <hashTree/>
+          <RandomVariableConfig guiclass="TestBeanGUI" testclass="RandomVariableConfig" testname="Random Variable" enabled="true">
+            <stringProp name="maximumValue">13000</stringProp>
+            <stringProp name="minimumValue">11000</stringProp>
+            <stringProp name="outputFormat"></stringProp>
+            <boolProp name="perThread">true</boolProp>
+            <stringProp name="randomSeed"></stringProp>
+            <stringProp name="variableName">Random3</stringProp>
+          </RandomVariableConfig>
+          <hashTree/>
+          <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="exportFile" enabled="true">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="script">import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import org.apache.jmeter.services.FileServer;
+String Path = FileServer.getFileServer().getBaseDir();
+String Seperator = File.separator;
+BufferedWriter bw = null;
+FileWriter fw = null;
+String filename=Path+Seperator+&quot;WorkIDs.txt&quot;;
+String headLine=&quot;WOID&quot;+&quot;\n&quot;;
+String data=vars.get(&quot;workOrderId&quot;)+&quot;\n&quot;;
+File file = new File(filename);
+if (!file.exists()) {
+  file.createNewFile();
+  fw = new FileWriter(file.getAbsoluteFile(), true);
+  bw = new BufferedWriter(fw);
+  bw.write(headLine);
+  bw.close();
+}
+fw = new FileWriter(file.getAbsoluteFile(), true);
+bw = new BufferedWriter(fw);
+bw.write(data);
+bw.close();
+SampleResult.setIgnore();
+</stringProp>
+          </JSR223Sampler>
+          <hashTree/>
+        </hashTree>
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="WIL_CreateWorkOrder" enabled="true">
+          <boolProp name="TransactionController.includeTimers">false</boolProp>
+          <boolProp name="TransactionController.parent">true</boolProp>
+        </TransactionController>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">X-dynaTrace</stringProp>
+                <stringProp name="Header.value">NA=WIL_CreateWorkOrder;PC=${__samplerName()};VU=-${__threadNum()};ID=${__time()}</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="${__Random(30000,35000,counter_d)}" elementType="Argument">
+                <stringProp name="Argument.name">${__Random(30000,35000,counter_d)}</stringProp>
+                <stringProp name="Argument.value"></stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="${__time(yyyy-MM-dd,RequestDate_d)}" elementType="Argument">
+                <stringProp name="Argument.name">${__time(yyyy-MM-dd,RequestDate_d)}</stringProp>
+                <stringProp name="Argument.value"></stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="${__time(HH:mm:ss.SSS,time_t)}" elementType="Argument">
+                <stringProp name="Argument.name">${__time(HH:mm:ss.SSS,time_t)}</stringProp>
+                <stringProp name="Argument.value"></stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="${__timeShift(yyyy-MM-dd,,P4D,,dueDate_d)}" elementType="Argument">
+                <stringProp name="Argument.name">${__timeShift(yyyy-MM-dd,,P4D,,dueDate_d)}</stringProp>
+                <stringProp name="Argument.value"></stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="${__timeShift(yyyy-MM-dd,,P22D,,appointmentStartDate_d)}" elementType="Argument">
+                <stringProp name="Argument.name">${__timeShift(yyyy-MM-dd,,P22D,,appointmentStartDate_d)}</stringProp>
+                <stringProp name="Argument.value"></stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="${__timeShift(yyyy-MM-dd,,P23D,,appointmentEndDate_d)}" elementType="Argument">
+                <stringProp name="Argument.name">${__timeShift(yyyy-MM-dd,,P23D,,appointmentEndDate_d)}</stringProp>
+                <stringProp name="Argument.value"></stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="requestDate" elementType="Argument">
+                <stringProp name="Argument.name">requestDate</stringProp>
+                <stringProp name="Argument.value">${RequestDate_d}T${time_t}Z</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="appointmentStartDate" elementType="Argument">
+                <stringProp name="Argument.name">appointmentStartDate</stringProp>
+                <stringProp name="Argument.value">${appointmentStartDate_d}T21:00:00.645Z</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="appointmentEndDate" elementType="Argument">
+                <stringProp name="Argument.name">appointmentEndDate</stringProp>
+                <stringProp name="Argument.value">${appointmentStartDate_d}T21:00:00.645Z</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="earlyStartDate" elementType="Argument">
+                <stringProp name="Argument.name">earlyStartDate</stringProp>
+                <stringProp name="Argument.value">${RequestDate_d}T${time_t}Z</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="dueDate" elementType="Argument">
+                <stringProp name="Argument.name">dueDate</stringProp>
+                <stringProp name="Argument.value">${dueDate_d}T${time_t}Z</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="counter" elementType="Argument">
+                <stringProp name="Argument.name">counter</stringProp>
+                <stringProp name="Argument.value">000${counter_d}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="originatingSystemCreateDate" elementType="Argument">
+                <stringProp name="Argument.name">originatingSystemCreateDate</stringProp>
+                <stringProp name="Argument.value">${RequestDate_d}T${time_t}Z</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="Pacing" elementType="Argument">
+                <stringProp name="Argument.name">Pacing</stringProp>
+                <stringProp name="Argument.value">${__P(propPIpacing,36)}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </Arguments>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CreateWorkOrder" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">&lt;soapenv:Envelope&#xd;
+	xmlns:soapenv=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;&gt;&#xd;
+	&lt;soapenv:Header&gt;&lt;/soapenv:Header&gt;&#xd;
+	&lt;soapenv:Body&gt;&#xd;
+		&lt;ns2:createWorkOrder&#xd;
+			xmlns:ns2=&quot;http://xmlschema.tmi.telus.com/srv/RMO/ProcessMgmt/FieldWorkAssignmentMgmtServiceRequestResponse_v3&quot;&#xd;
+			xmlns:ns3=&quot;http://xmlschema.tmi.telus.com/xsd/Resource/Resource/WorkForceManagementOrderTypes_v3&quot;&gt;&#xd;
+			&lt;ns2:inputHeader&gt;&#xd;
+				&lt;systemSourceCd&gt;3259&lt;/systemSourceCd&gt;&#xd;
+				&lt;userId&gt;T071661&lt;/userId&gt;&#xd;
+				&lt;requestDate&gt;${requestDate}&lt;/requestDate&gt;&#xd;
+			&lt;/ns2:inputHeader&gt;&#xd;
+			&lt;ns2:workOrder&gt;&#xd;
+				&lt;originatingSystemId&gt;3259&lt;/originatingSystemId&gt;&#xd;
+				&lt;originatingSystemWorkOrderId&gt;SFTST1${Random1}${__time()}&lt;/originatingSystemWorkOrderId&gt;&#xd;
+				&lt;originatingSystemWorkOrderInternalId&gt;SFTST1${Random2}${__time()}&lt;/originatingSystemWorkOrderInternalId&gt;&#xd;
+				&lt;classificationCd&gt;ORDER&lt;/classificationCd&gt;&#xd;
+				&lt;serviceClassCd&gt;R&lt;/serviceClassCd&gt;&#xd;
+				&lt;productCategoryCd&gt;MASS_MARKET&lt;/productCategoryCd&gt;&#xd;
+				&lt;productTechnologyCd&gt;${Technology}&lt;/productTechnologyCd&gt;&#xd;
+				&lt;jobTypeCd&gt;MASS_MARKET&lt;/jobTypeCd&gt;&#xd;
+				&lt;outofServiceInd&gt;false&lt;/outofServiceInd&gt;&#xd;
+				&lt;serviceIdentification&gt;&#xd;
+					&lt;typeCd&gt;PHONE&lt;/typeCd&gt;&#xd;
+					&lt;descriptionTxt&gt;6049864779&lt;/descriptionTxt&gt;&#xd;
+				&lt;/serviceIdentification&gt;&#xd;
+				&lt;hostReadyForDispatchInd&gt;true&lt;/hostReadyForDispatchInd&gt;&#xd;
+				&lt;overrideInd&gt;false&lt;/overrideInd&gt;&#xd;
+				&lt;scheduleRemarkInd&gt;false&lt;/scheduleRemarkInd&gt;&#xd;
+				&lt;appointmentStartDate&gt;${appointmentStartDate}&lt;/appointmentStartDate&gt;&#xd;
+				&lt;appointmentEndDate&gt;${appointmentEndDate}&lt;/appointmentEndDate&gt;&#xd;
+				&lt;estimatedDurationNum&gt;${estimatedDuration}&lt;/estimatedDurationNum&gt;&#xd;
+				&lt;estimatedDurationUnitCd&gt;HOURS&lt;/estimatedDurationUnitCd&gt;&#xd;
+				&lt;location&gt;&#xd;
+					&lt;locationList&gt;&#xd;
+						&lt;typeCode&gt;SERVICE&lt;/typeCode&gt;&#xd;
+						&lt;dispatchLocationInd&gt;true&lt;/dispatchLocationInd&gt;&#xd;
+						&lt;locationAddress&gt;&#xd;
+							&lt;locationId&gt;${LocationID}&lt;/locationId&gt;&#xd;
+						&lt;/locationAddress&gt;&#xd;
+					&lt;/locationList&gt;&#xd;
+				&lt;/location&gt;&#xd;
+				&lt;customerName&gt;Ingried Gervin&lt;/customerName&gt;&#xd;
+				&lt;customerTypeCd&gt;CUSTOMER&lt;/customerTypeCd&gt;&#xd;
+				&lt;contactList&gt;&#xd;
+					&lt;name&gt;Ingried Gervin&lt;/name&gt;&#xd;
+					&lt;typeCd&gt;CBR&lt;/typeCd&gt;&#xd;
+					&lt;phoneNumber&gt;7782146461&lt;/phoneNumber&gt;&#xd;
+					&lt;phoneLocationCd&gt;AUT&lt;/phoneLocationCd&gt;&#xd;
+				&lt;/contactList&gt;&#xd;
+				&lt;customerId&gt;20504646&lt;/customerId&gt;&#xd;
+				&lt;customerIdTypeCd&gt;CUSTOMER_ID&lt;/customerIdTypeCd&gt;&#xd;
+				&lt;workOrderAttributeList&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;WELCOME_KIT_IND&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt&gt;false&lt;/descriptionTxt&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;NOTIFICATION_IND&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt&gt;true&lt;/descriptionTxt&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+				&lt;/workOrderAttributeList&gt;&#xd;
+				&lt;workOrderDetailList&gt;&lt;/workOrderDetailList&gt;&#xd;
+				&lt;remarkList&gt;&lt;/remarkList&gt;&#xd;
+				&lt;preferredTeamWorkerList&gt;&lt;/preferredTeamWorkerList&gt;&#xd;
+				&lt;requiredTeamWorkerNum&gt;1&lt;/requiredTeamWorkerNum&gt;&#xd;
+				&lt;customerPremiseEquipmentList&gt;&lt;/customerPremiseEquipmentList&gt;&#xd;
+				&lt;componentList&gt;&#xd;
+					&lt;component&gt;&#xd;
+						&lt;originatingSystemWorkOrderId&gt;${Random3}${__time()}&lt;/originatingSystemWorkOrderId&gt;&#xd;
+						&lt;hostReadyForDispatchInd&gt;false&lt;/hostReadyForDispatchInd&gt;&#xd;
+						&lt;productCategoryCd&gt;${Product}&lt;/productCategoryCd&gt;&#xd;
+						&lt;jobTypeCd&gt;${JobType}&lt;/jobTypeCd&gt;&#xd;
+						&lt;workOrderActionCd&gt;CH&lt;/workOrderActionCd&gt;&#xd;
+						&lt;productTechnologyCd&gt;${Technology}&lt;/productTechnologyCd&gt;&#xd;
+						&lt;installationTypeCd&gt;FW&lt;/installationTypeCd&gt;&#xd;
+						&lt;estimatedDurationNum&gt;${estimatedDuration}&lt;/estimatedDurationNum&gt;&#xd;
+						&lt;estimatedDurationUnitCd&gt;HOURS&lt;/estimatedDurationUnitCd&gt;&#xd;
+						&lt;componentAttributeList&gt;&lt;/componentAttributeList&gt;&#xd;
+						&lt;componentDetailList&gt;&#xd;
+							&lt;typeCode&gt;&#xd;
+								&lt;typeCd&gt;ASSIGNMENT&lt;/typeCd&gt;&#xd;
+								&lt;descriptionTxt&gt;&lt;/descriptionTxt&gt;&#xd;
+							&lt;/typeCode&gt;&#xd;
+						&lt;/componentDetailList&gt;&#xd;
+						&lt;remarkList&gt;&#xd;
+							&lt;typeCode&gt;&#xd;
+								&lt;typeCd&gt;GENERAL&lt;/typeCd&gt;&#xd;
+								&lt;descriptionTxt&gt;&lt;/descriptionTxt&gt;&#xd;
+							&lt;/typeCode&gt;&#xd;
+							&lt;typeCode&gt;&#xd;
+								&lt;typeCd&gt;FOR_TECHNICIAN&lt;/typeCd&gt;&#xd;
+								&lt;descriptionTxt&gt;&lt;/descriptionTxt&gt;&#xd;
+							&lt;/typeCode&gt;&#xd;
+						&lt;/remarkList&gt;&#xd;
+						&lt;statusCd&gt;OPEN&lt;/statusCd&gt;&#xd;
+					&lt;/component&gt;&#xd;
+				&lt;/componentList&gt;&#xd;
+			&lt;/ns2:workOrder&gt;&#xd;
+		&lt;/ns2:createWorkOrder&gt;&#xd;
+	&lt;/soapenv:Body&gt;&#xd;
+&lt;/soapenv:Envelope&gt;</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">apigw-soap-st.tsl.telus.com</stringProp>
+            <stringProp name="HTTPSampler.port">443</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">soap/is01/RMO/ProcessMgmt/FieldWorkAssignmentMgmtService_v3_0_RP</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">false</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            <stringProp name="TestPlan.comments">5000${counter}</stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers"/>
+            </HeaderManager>
+            <hashTree/>
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="workOrderId" enabled="true">
+              <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+              <stringProp name="RegexExtractor.refname">workOrderId</stringProp>
+              <stringProp name="RegexExtractor.regex">&lt;workOrderId&gt;([^&quot;]+)&lt;/workOrderId&gt;</stringProp>
+              <stringProp name="RegexExtractor.template">$1$</stringProp>
+              <stringProp name="RegexExtractor.default"></stringProp>
+              <stringProp name="RegexExtractor.match_number">1</stringProp>
+              <boolProp name="RegexExtractor.default_empty_value">true</boolProp>
+            </RegexExtractor>
+            <hashTree/>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="2432586">OPEN</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.custom_message"></stringProp>
+              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">16</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+          </hashTree>
+          <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Flow Control Action" enabled="true">
+            <intProp name="ActionProcessor.action">1</intProp>
+            <intProp name="ActionProcessor.target">0</intProp>
+            <stringProp name="ActionProcessor.duration">3000</stringProp>
+          </TestAction>
+          <hashTree/>
+          <RandomVariableConfig guiclass="TestBeanGUI" testclass="RandomVariableConfig" testname="Random Variable" enabled="true">
+            <stringProp name="maximumValue">15000</stringProp>
+            <stringProp name="minimumValue">13000</stringProp>
+            <stringProp name="outputFormat"></stringProp>
+            <boolProp name="perThread">true</boolProp>
+            <stringProp name="randomSeed"></stringProp>
+            <stringProp name="variableName">Random1</stringProp>
+          </RandomVariableConfig>
+          <hashTree/>
+          <RandomVariableConfig guiclass="TestBeanGUI" testclass="RandomVariableConfig" testname="Random Variable" enabled="true">
+            <stringProp name="maximumValue">17000</stringProp>
+            <stringProp name="minimumValue">15000</stringProp>
+            <stringProp name="outputFormat"></stringProp>
+            <boolProp name="perThread">true</boolProp>
+            <stringProp name="randomSeed"></stringProp>
+            <stringProp name="variableName">Random2</stringProp>
+          </RandomVariableConfig>
+          <hashTree/>
+          <RandomVariableConfig guiclass="TestBeanGUI" testclass="RandomVariableConfig" testname="Random Variable" enabled="true">
+            <stringProp name="maximumValue">19000</stringProp>
+            <stringProp name="minimumValue">17000</stringProp>
+            <stringProp name="outputFormat"></stringProp>
+            <boolProp name="perThread">true</boolProp>
+            <stringProp name="randomSeed"></stringProp>
+            <stringProp name="variableName">Random3</stringProp>
+          </RandomVariableConfig>
+          <hashTree/>
+          <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="exportFile" enabled="true">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="script">import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import org.apache.jmeter.services.FileServer;
+String Path = FileServer.getFileServer().getBaseDir();
+String Seperator = File.separator;
+BufferedWriter bw = null;
+FileWriter fw = null;
+String filename=Path+Seperator+&quot;WorkIDs.txt&quot;;
+String headLine=&quot;WOID&quot;+&quot;\n&quot;;
+String data=vars.get(&quot;workOrderId&quot;)+&quot;\n&quot;;
+File file = new File(filename);
+if (!file.exists()) {
+  file.createNewFile();
+  fw = new FileWriter(file.getAbsoluteFile(), true);
+  bw = new BufferedWriter(fw);
+  bw.write(headLine);
+  bw.close();
+}
+fw = new FileWriter(file.getAbsoluteFile(), true);
+bw = new BufferedWriter(fw);
+bw.write(data);
+bw.close();
+SampleResult.setIgnore();
+</stringProp>
+          </JSR223Sampler>
+          <hashTree/>
+        </hashTree>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+      </hashTree>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>

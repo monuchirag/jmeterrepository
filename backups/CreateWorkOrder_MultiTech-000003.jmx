@@ -1,0 +1,1281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.5">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="WIL_CreateWorkOrder_Multi-Tech" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">startnextloop</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">20</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">${__P(Users_WIL_CreateWorkOrder_Multi-Tech,1)}</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <longProp name="ThreadGroup.start_time">1455260938000</longProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">false</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="CookieManager" enabled="true">
+          <collectionProp name="CookieManager.cookies"/>
+          <boolProp name="CookieManager.clearEachIteration">false</boolProp>
+          <boolProp name="CookieManager.controlledByThreadGroup">false</boolProp>
+        </CookieManager>
+        <hashTree/>
+        <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path"></stringProp>
+          <stringProp name="HTTPSampler.concurrentPool">6</stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </ConfigTestElement>
+        <hashTree/>
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <collectionProp name="HeaderManager.headers">
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Authorization</stringProp>
+              <stringProp name="Header.value">Basic QVBQX1JFTkRFWlZPVVM6c29hb3JnaWQ=</stringProp>
+            </elementProp>
+          </collectionProp>
+        </HeaderManager>
+        <hashTree/>
+        <CacheManager guiclass="CacheManagerGui" testclass="CacheManager" testname="HTTP Cache Manager" enabled="true">
+          <boolProp name="clearEachIteration">false</boolProp>
+          <boolProp name="useExpires">false</boolProp>
+          <boolProp name="CacheManager.controlledByThread">false</boolProp>
+        </CacheManager>
+        <hashTree/>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="WIL_CreateWorkOrder_6plus_originatingSystemWoId.csv" enabled="false">
+          <stringProp name="delimiter">,</stringProp>
+          <stringProp name="fileEncoding"></stringProp>
+          <stringProp name="filename">wil_createWO-MultTechSystemWOID.csv</stringProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="ignoreFirstLine">true</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <stringProp name="shareMode.all">shareMode</stringProp>
+          <boolProp name="stopThread">true</boolProp>
+          <stringProp name="variableNames">originatingSystemWoId</stringProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="WIL_CreateWorkOrder_6plus_originatingSystemWoInternalId.csv" enabled="false">
+          <stringProp name="delimiter">,</stringProp>
+          <stringProp name="fileEncoding"></stringProp>
+          <stringProp name="filename">wil_createWO-MultTechSystemWOInternalID.csv</stringProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="ignoreFirstLine">true</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <stringProp name="shareMode.all">shareMode</stringProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="variableNames">originatingSystemWoInternalId</stringProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+          <collectionProp name="Arguments.arguments">
+            <elementProp name="appointmentEndDate" elementType="Argument">
+              <stringProp name="Argument.name">appointmentEndDate</stringProp>
+              <stringProp name="Argument.value">${__timeShift(yyyy-MM-dd,,P2D,,)}T${__timeShift(HH:mm:ss.SSS,,,,)}Z</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="appointmentStartDate" elementType="Argument">
+              <stringProp name="Argument.name">appointmentStartDate</stringProp>
+              <stringProp name="Argument.value">${__timeShift(yyyy-MM-dd,,P1D,,)}T${__timeShift(HH:mm:ss.SSS,,,,)}Z</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="dueDate" elementType="Argument">
+              <stringProp name="Argument.name">dueDate</stringProp>
+              <stringProp name="Argument.value">${__timeShift(yyyy-MM-dd,,P22D,,)}T${__timeShift(HH:mm:ss.SSS,,,,)}Z</stringProp>
+              <stringProp name="Argument.desc">not present</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="earlyStartDate" elementType="Argument">
+              <stringProp name="Argument.name">earlyStartDate</stringProp>
+              <stringProp name="Argument.value">${__timeShift(yyyy-MM-dd,,P17D,,)}T${__timeShift(HH:mm:ss.SSS,,,,)}Z</stringProp>
+              <stringProp name="Argument.desc">not present</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="originatingSystemCreateDate" elementType="Argument">
+              <stringProp name="Argument.name">originatingSystemCreateDate</stringProp>
+              <stringProp name="Argument.value">${__timeShift(yyyy-MM-dd,,,,)}T${__timeShift(HH:mm:ss.SSS,,,,)}Z</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="requestDate" elementType="Argument">
+              <stringProp name="Argument.name">requestDate</stringProp>
+              <stringProp name="Argument.value">${__timeShift(yyyy-MM-dd,,,,)}T${__timeShift(HH:mm:ss.SSS,,,,)}Z</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="counter" elementType="Argument">
+              <stringProp name="Argument.name">counter</stringProp>
+              <stringProp name="Argument.value">00${__Random(11000,11500,)}</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="Pacing" elementType="Argument">
+              <stringProp name="Argument.name">Pacing</stringProp>
+              <stringProp name="Argument.value">${__P(propPIpacing,180)}</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+          </collectionProp>
+        </Arguments>
+        <hashTree/>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="LocationID" enabled="true">
+          <stringProp name="filename">LocationID.txt</stringProp>
+          <stringProp name="fileEncoding"></stringProp>
+          <stringProp name="variableNames">LocationID</stringProp>
+          <boolProp name="ignoreFirstLine">true</boolProp>
+          <stringProp name="delimiter">,</stringProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="endTime" enabled="true">
+          <stringProp name="scriptLanguage">groovy</stringProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="filename"></stringProp>
+          <stringProp name="cacheKey">true</stringProp>
+          <stringProp name="script">def dateobj= new Date();
+def endTime = dateobj.getTime();
+vars.put(&quot;endTime&quot;,endTime.toString())
+log.info(&quot;Current date in the specified format: &quot; + endTime);
+SampleResult.setIgnore();
+</stringProp>
+        </JSR223Sampler>
+        <hashTree/>
+        <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If Controller" enabled="true">
+          <stringProp name="IfController.condition">&quot;${__jm__EnterpriseTMF676__idx}&quot; != &quot;0&quot;</stringProp>
+          <boolProp name="IfController.evaluateAll">false</boolProp>
+        </IfController>
+        <hashTree>
+          <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Pacing Timer" enabled="true">
+            <intProp name="ActionProcessor.action">1</intProp>
+            <intProp name="ActionProcessor.target">0</intProp>
+            <stringProp name="ActionProcessor.duration">${myDelay}</stringProp>
+          </TestAction>
+          <hashTree>
+            <JSR223Timer guiclass="TestBeanGUI" testclass="JSR223Timer" testname="JSR223 Timer" enabled="true">
+              <stringProp name="scriptLanguage">groovy</stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="script">Long pacingInput = Long.valueOf(vars.get(&apos;Pacing&apos;))*1000;
+Long elapsed = Long.valueOf(vars.get(&apos;endTime&apos;)) - Long.valueOf(vars.get(&apos;startTime&apos;))
+Long pacing = pacingInput-elapsed;
+if ( pacing &gt; 0 ) 
+{
+	vars.put(&quot;myDelay&quot;, String.valueOf(pacing));
+	return 0;
+}
+else 
+{
+	vars.put(&quot;myDelay&quot;, &quot;0&quot;);
+	return 0; 
+}
+</stringProp>
+            </JSR223Timer>
+            <hashTree/>
+          </hashTree>
+        </hashTree>
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="startTime" enabled="true">
+          <stringProp name="scriptLanguage">groovy</stringProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="filename"></stringProp>
+          <stringProp name="cacheKey">true</stringProp>
+          <stringProp name="script">def dateobj= new Date();
+def startTime = dateobj.getTime();
+log.info(&quot;Current date in the specified format: &quot; + startTime);
+vars.put(&quot;startTime&quot;,startTime.toString())
+SampleResult.setIgnore();</stringProp>
+        </JSR223Sampler>
+        <hashTree/>
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="WIL_CreateWorkOrder_Multi-Tech" enabled="true">
+          <boolProp name="TransactionController.includeTimers">false</boolProp>
+          <boolProp name="TransactionController.parent">true</boolProp>
+        </TransactionController>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">X-dynaTrace</stringProp>
+                <stringProp name="Header.value">NA=WIL_CreateWorkOrder;PC=${__samplerName()};VU=-${__threadNum()};ID=${__time()}</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="WIL_CreateWorkOrder_Multi-Tech" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">&lt;soapenv:Envelope&#xd;
+	xmlns:env=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;&#xd;
+	xmlns:soapenv=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;&gt;&#xd;
+	&lt;soapenv:Header/&gt;&#xd;
+	&lt;soapenv:Body&#xd;
+		xmlns:soapenv=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;&#xd;
+		xmlns:wsu=&quot;http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd&quot; wsu:Id=&quot;body_87292902-9458-45d4-b510-a6571ec23727&quot;&gt;&#xd;
+		&lt;re:createWorkOrder&#xd;
+			xmlns:re=&quot;http://xmlschema.tmi.telus.com/srv/RMO/ProcessMgmt/FieldWorkAssignmentMgmtServiceRequestResponse_v3&quot;&gt;&#xd;
+			&lt;re:inputHeader&gt;&#xd;
+				&lt;systemSourceCd&gt;13574&lt;/systemSourceCd&gt;&#xd;
+				&lt;userId&gt;1100048547-K9VV&lt;/userId&gt;&#xd;
+				&lt;requestDate&gt;${requestDate}&lt;/requestDate&gt;&#xd;
+			&lt;/re:inputHeader&gt;&#xd;
+			&lt;re:workOrder&gt;&#xd;
+				&lt;originatingSystemId&gt;13574&lt;/originatingSystemId&gt;&#xd;
+				&lt;originatingSystemWorkOrderGroupId&gt;0619812063&lt;/originatingSystemWorkOrderGroupId&gt;&#xd;
+				&lt;originatingSystemWorkOrderId&gt;001200${__Random(11000,11500,)}&lt;/originatingSystemWorkOrderId&gt;&#xd;
+				&lt;originatingSystemWorkOrderInternalId&gt;001200${__Random(11000,11500,)}&lt;/originatingSystemWorkOrderInternalId&gt;&#xd;
+				&lt;classificationCd&gt;ORDER&lt;/classificationCd&gt;&#xd;
+				&lt;serviceClassCd&gt;R&lt;/serviceClassCd&gt;&#xd;
+				&lt;productCategoryCd&gt;MASS_MARKET&lt;/productCategoryCd&gt;&#xd;
+				&lt;jobTypeCd&gt;MASS_MARKET&lt;/jobTypeCd&gt;&#xd;
+				&lt;serviceIdentification&gt;&#xd;
+					&lt;typeCd&gt;ACCOUNT&lt;/typeCd&gt;&#xd;
+					&lt;descriptionTxt&gt;3538896&lt;/descriptionTxt&gt;&#xd;
+				&lt;/serviceIdentification&gt;&#xd;
+				&lt;hostReadyForDispatchInd&gt;false&lt;/hostReadyForDispatchInd&gt;&#xd;
+				&lt;overrideInd&gt;false&lt;/overrideInd&gt;&#xd;
+				&lt;appointmentStartDate&gt;${appointmentStartDate}&lt;/appointmentStartDate&gt;&#xd;
+				&lt;appointmentEndDate&gt;${appointmentEndDate}&lt;/appointmentEndDate&gt;&#xd;
+				&lt;estimatedDurationNum&gt;7.75&lt;/estimatedDurationNum&gt;&#xd;
+				&lt;estimatedDurationUnitCd&gt;HOURS&lt;/estimatedDurationUnitCd&gt;&#xd;
+				&lt;location&gt;&#xd;
+					&lt;locationList&gt;&#xd;
+						&lt;typeCode&gt;SERVICE&lt;/typeCode&gt;&#xd;
+						&lt;dispatchLocationInd&gt;true&lt;/dispatchLocationInd&gt;&#xd;
+						&lt;locationAddress&gt;&#xd;
+							&lt;locationId&gt;${LocationID}&lt;/locationId&gt;&#xd;
+						&lt;/locationAddress&gt;&#xd;
+					&lt;/locationList&gt;&#xd;
+				&lt;/location&gt;&#xd;
+				&lt;customerName&gt;Travis Ruthven&lt;/customerName&gt;&#xd;
+				&lt;customerTypeCd&gt;CUSTOMER&lt;/customerTypeCd&gt;&#xd;
+				&lt;contactList&gt;&#xd;
+					&lt;name&gt;Travis Ruthven&lt;/name&gt;&#xd;
+					&lt;typeCd&gt;CLT&lt;/typeCd&gt;&#xd;
+					&lt;phoneNumber&gt;7789944511&lt;/phoneNumber&gt;&#xd;
+					&lt;phoneLocationCd&gt;AUT&lt;/phoneLocationCd&gt;&#xd;
+				&lt;/contactList&gt;&#xd;
+				&lt;contactList&gt;&#xd;
+					&lt;name&gt;Travis Ruthven&lt;/name&gt;&#xd;
+					&lt;typeCd&gt;CBR&lt;/typeCd&gt;&#xd;
+					&lt;phoneNumber&gt;7789944511&lt;/phoneNumber&gt;&#xd;
+					&lt;phoneLocationCd&gt;WIRELESS&lt;/phoneLocationCd&gt;&#xd;
+				&lt;/contactList&gt;&#xd;
+				&lt;customerId&gt;105133301&lt;/customerId&gt;&#xd;
+				&lt;customerIdTypeCd&gt;CUSTOMER_ID&lt;/customerIdTypeCd&gt;&#xd;
+				&lt;originatingSystemCreateDate&gt;${requestDate}&lt;/originatingSystemCreateDate&gt;&#xd;
+				&lt;workOrderAttributeList&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;WINBACK_SIMPLE&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt&gt;true&lt;/descriptionTxt&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;FIFA_CUSTOMER_STATE&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt&gt;New&lt;/descriptionTxt&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;INITIAL_DURATION&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt&gt;7.75&lt;/descriptionTxt&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;DIY_SUPPORT&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt&gt;false&lt;/descriptionTxt&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;OBD_FLAG&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt&gt;false&lt;/descriptionTxt&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;QC_TYPE&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt&gt;QC-Conversion&lt;/descriptionTxt&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;NEW_CUSTOMER&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt&gt;TRUE&lt;/descriptionTxt&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;COPPER_MIGRATION&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt&gt;FALSE&lt;/descriptionTxt&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;SIMPLE_SWITCH&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt&gt;FALSE&lt;/descriptionTxt&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;CUST_ADD_PRODUCT&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt&gt;FALSE&lt;/descriptionTxt&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;UPGRADE_TO&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt&gt;FALSE&lt;/descriptionTxt&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;DOWNGRADE_TO&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt&gt;FALSE&lt;/descriptionTxt&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;CAPACITY_PRIORITY&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt/&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;CAPACITY_SCORE&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt/&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;REVENUE_SEGMENT&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt/&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;CHURN_RISK&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt/&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;CHANGE_TECHNOLOGY&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt&gt;FALSE&lt;/descriptionTxt&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;WINBACK&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt/&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;MOVE_FLAG&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt&gt;FALSE&lt;/descriptionTxt&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;DELETE_EQUIPMENT&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt&gt;FALSE&lt;/descriptionTxt&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;ADD_EQUIPMENT&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt&gt;TRUE&lt;/descriptionTxt&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;DATA_LANGUAGE&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt&gt;EN&lt;/descriptionTxt&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+				&lt;/workOrderAttributeList&gt;&#xd;
+				&lt;workOrderDetailList&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;ORDER_EQUIPMENT&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt&gt;[{&quot;id&quot;:&quot;9160906808513649636&quot;,&quot;name&quot;:&quot;Boost Wi-Fi 6 Free Rental&quot;,&quot;categoryName&quot;:&quot;HSIA Equipment&quot;,&quot;categoryId&quot;:&quot;9148302515313935478&quot;,&quot;characteristics&quot;:[{&quot;id&quot;:&quot;9152509233513494893&quot;,&quot;name&quot;:&quot;Acquisition Type&quot;,&quot;value&quot;:&quot;Rented&quot;},{&quot;id&quot;:&quot;9152509347813495011&quot;,&quot;name&quot;:&quot;SKU&quot;,&quot;value&quot;:&quot;2402015&quot;}]},{&quot;id&quot;:&quot;9148267172313921553&quot;,&quot;name&quot;:&quot;Optik 4K PVR&quot;,&quot;categoryName&quot;:&quot;TV Equipment&quot;,&quot;categoryId&quot;:&quot;9148302305313935328&quot;,&quot;characteristics&quot;:[{&quot;id&quot;:&quot;9152509233513494893&quot;,&quot;name&quot;:&quot;Acquisition Type&quot;,&quot;value&quot;:&quot;Rented&quot;},{&quot;id&quot;:&quot;9152509347813495011&quot;,&quot;name&quot;:&quot;SKU&quot;,&quot;value&quot;:&quot;2402018&quot;}]},{&quot;id&quot;:&quot;9164780682885772551&quot;,&quot;name&quot;:&quot;Smart Push Button Door Lock - Nickel Satin TELUS Easy Pay B2C&quot;,&quot;categoryName&quot;:&quot;Home Security Equipment&quot;,&quot;categoryId&quot;:&quot;9150451420813201788&quot;,&quot;characteristics&quot;:[{&quot;id&quot;:&quot;9152509233513494893&quot;,&quot;name&quot;:&quot;Acquisition Type&quot;,&quot;value&quot;:&quot;Purchased&quot;},{&quot;id&quot;:&quot;9152509347813495011&quot;,&quot;name&quot;:&quot;SKU&quot;,&quot;value&quot;:&quot;2413040&quot;}]},{&quot;id&quot;:&quot;9153566148313840387&quot;,&quot;name&quot;:&quot;Doorbell Camera - Slimline&quot;,&quot;categoryName&quot;:&quot;Home Security Equipment&quot;,&quot;categoryId&quot;:&quot;9150451420813201788&quot;,&quot;characteristics&quot;:[{&quot;id&quot;:&quot;9152509233513494893&quot;,&quot;name&quot;:&quot;Acquisition Type&quot;,&quot;value&quot;:&quot;Rented&quot;},{&quot;id&quot;:&quot;9152509347813495011&quot;,&quot;name&quot;:&quot;SKU&quot;,&quot;value&quot;:&quot;2404269&quot;}]},{&quot;id&quot;:&quot;9163463054332849022&quot;,&quot;name&quot;:&quot;Smart Garage Door Controller&quot;,&quot;categoryName&quot;:&quot;Home Security Equipment&quot;,&quot;categoryId&quot;:&quot;9150451420813201788&quot;,&quot;characteristics&quot;:[{&quot;id&quot;:&quot;9152509233513494893&quot;,&quot;name&quot;:&quot;Acquisition Type&quot;,&quot;value&quot;:&quot;Rented&quot;},{&quot;id&quot;:&quot;9152509347813495011&quot;,&quot;name&quot;:&quot;SKU&quot;,&quot;value&quot;:&quot;2412288&quot;}]},{&quot;id&quot;:&quot;9151657034613356392&quot;,&quot;name&quot;:&quot;Smart Thermostat&quot;,&quot;categoryName&quot;:&quot;Home Security Equipment&quot;,&quot;categoryId&quot;:&quot;9150451420813201788&quot;,&quot;characteristics&quot;:[{&quot;id&quot;:&quot;9152509233513494893&quot;,&quot;name&quot;:&quot;Acquisition Type&quot;,&quot;value&quot;:&quot;Rented&quot;},{&quot;id&quot;:&quot;9152509347813495011&quot;,&quot;name&quot;:&quot;SKU&quot;,&quot;value&quot;:&quot;2383104&quot;}]}]&lt;/descriptionTxt&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;QUICK_CONNECT_INSTALLATION&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt&gt;[{&quot;value&quot;:&quot;FULL NAH ELIGIBLE: 1. Install NAH Modem and Base Plate 2. Install one Wi-Fi Jack and Boost Wi-Fi 6 in a centralized location 3. Capture equipment in InSight 4. Enter remarks in signoff if unable to complete full NAH setup&quot;,&quot;code&quot;:&quot;INSTRUCTION&quot;},[{&quot;value&quot;:&quot;NAH&quot;,&quot;code&quot;:&quot;EQUIPMENT&quot;},{&quot;value&quot;:&quot;1&quot;,&quot;code&quot;:&quot;TOTAL&quot;},{&quot;value&quot;:&quot;QC&quot;,&quot;code&quot;:&quot;CATEGORY&quot;}],[{&quot;value&quot;:&quot;NAH Base Plate&quot;,&quot;code&quot;:&quot;EQUIPMENT&quot;},{&quot;value&quot;:&quot;1&quot;,&quot;code&quot;:&quot;TOTAL&quot;},{&quot;value&quot;:&quot;QC&quot;,&quot;code&quot;:&quot;CATEGORY&quot;}],[{&quot;value&quot;:&quot;Wi-Fi Jack&quot;,&quot;code&quot;:&quot;EQUIPMENT&quot;},{&quot;value&quot;:&quot;1 (Max 5)&quot;,&quot;code&quot;:&quot;TOTAL&quot;},{&quot;value&quot;:&quot;QC&quot;,&quot;code&quot;:&quot;CATEGORY&quot;}],[{&quot;value&quot;:&quot;Boost Wi-Fi 6&quot;,&quot;code&quot;:&quot;EQUIPMENT&quot;},{&quot;value&quot;:&quot;1 (Max 5)&quot;,&quot;code&quot;:&quot;TOTAL&quot;},{&quot;value&quot;:&quot;QC&quot;,&quot;code&quot;:&quot;CATEGORY&quot;}]]&lt;/descriptionTxt&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;ORDERED_PRODUCTS&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt&gt;[{&quot;characteristics&quot;:[],&quot;name&quot;:&quot;TELUS Online Security - Basic&quot;,&quot;id&quot;:&quot;9157722345313159909&quot;,&quot;category&quot;:&quot;OTHER&quot;},{&quot;characteristics&quot;:[{&quot;name&quot;:&quot;Delivery Method&quot;,&quot;id&quot;:&quot;9157950816213373074&quot;,&quot;value&quot;:&quot;Pro Install&quot;}],&quot;name&quot;:&quot;Smart Automation Plus&quot;,&quot;id&quot;:&quot;9162184618979604472&quot;,&quot;category&quot;:&quot;SHS/MC&quot;},{&quot;characteristics&quot;:[],&quot;name&quot;:&quot;Telephone Number Offering&quot;,&quot;id&quot;:&quot;9163106805926089044&quot;,&quot;category&quot;:&quot;OTHER&quot;},{&quot;characteristics&quot;:[],&quot;name&quot;:&quot;TELUS Simple Switch&quot;,&quot;id&quot;:&quot;9145572401713849539&quot;,&quot;category&quot;:&quot;OTHER&quot;},{&quot;characteristics&quot;:[],&quot;name&quot;:&quot;TELUS Online Security&quot;,&quot;id&quot;:&quot;9162858465194193636&quot;,&quot;category&quot;:&quot;OTHER&quot;},{&quot;characteristics&quot;:[],&quot;name&quot;:&quot;Boost Wi-Fi 6 Free Rental&quot;,&quot;id&quot;:&quot;9160906808513649636&quot;,&quot;category&quot;:&quot;OTHER&quot;},{&quot;characteristics&quot;:[{&quot;name&quot;:&quot;Delivery Method&quot;,&quot;id&quot;:&quot;9157950816213373074&quot;,&quot;value&quot;:&quot;Pro Install&quot;}],&quot;name&quot;:&quot;TELUS Internet 300/300&quot;,&quot;id&quot;:&quot;9150554859213487280&quot;,&quot;category&quot;:&quot;DSL&quot;},{&quot;characteristics&quot;:[],&quot;name&quot;:&quot;Home Phone&quot;,&quot;id&quot;:&quot;9136923654113578822&quot;,&quot;category&quot;:&quot;HP/Voix&quot;},{&quot;characteristics&quot;:[],&quot;name&quot;:&quot;Amazon Prime&quot;,&quot;id&quot;:&quot;9155066478413739702&quot;,&quot;category&quot;:&quot;OTT&quot;},{&quot;characteristics&quot;:[{&quot;name&quot;:&quot;Delivery Method&quot;,&quot;id&quot;:&quot;9157950816213373074&quot;,&quot;value&quot;:&quot;Pro Install&quot;}],&quot;name&quot;:&quot;Essentials&quot;,&quot;id&quot;:&quot;9142278346813160836&quot;,&quot;category&quot;:&quot;IPTV&quot;}]&lt;/descriptionTxt&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;CONNECTIVITY_PATH_ASSIGNMENT&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt&gt;[{&quot;Default Duration&quot;:&quot;0.5&quot;,&quot;Service Designation&quot;:&quot;Regular Consumer&quot;,&quot;Classification Cd&quot;:&quot;ORDER&quot;,&quot;Work Activity Type&quot;:&quot;Install Connectivity&quot;,&quot;Job Type&quot;:&quot;CONNECT&quot;,&quot;Work Order Action Cd&quot;:&quot;PR&quot;,&quot;Component ID&quot;:&quot;9165260193913672979&quot;,&quot;Product Category&quot;:&quot;CONNECT&quot;,&quot;Installation Type Cd&quot;:&quot;FW&quot;,&quot;Product Technology&quot;:&quot;GPON&quot;,&quot;Host Ready for Dispatch&quot;:&quot;false&quot;,&quot;Default Duration Unit Cd&quot;:&quot;HOURS&quot;,&quot;ComponentID&quot;:&quot;9165260190913670149&quot;}]&lt;/descriptionTxt&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;PRIORITY_DETAILS&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt&gt;[{&quot;characteristics&quot;:[{&quot;name&quot;:&quot;DELETE_EQUIPMENT&quot;,&quot;value&quot;:&quot;FALSE&quot;},{&quot;name&quot;:&quot;SIMPLE_SWITCH&quot;,&quot;value&quot;:&quot;FALSE&quot;},{&quot;name&quot;:&quot;ADD_EQUIPMENT&quot;,&quot;value&quot;:&quot;TRUE&quot;},{&quot;name&quot;:&quot;DOWNGRADE_TO&quot;,&quot;value&quot;:&quot;FALSE&quot;},{&quot;name&quot;:&quot;PREFERRED_LANGUAGE&quot;,&quot;value&quot;:&quot;English&quot;},{&quot;name&quot;:&quot;ACTIVE_SERVICES&quot;,&quot;value&quot;:&quot;[]&quot;},{&quot;name&quot;:&quot;STOREY_CNT&quot;,&quot;value&quot;:&quot;3&quot;},{&quot;name&quot;:&quot;EXISTING_CUSTOMER_ADDING_A_PRODUCT&quot;,&quot;value&quot;:&quot;FALSE&quot;},{&quot;name&quot;:&quot;CHANGE_TECHNOLOGY&quot;,&quot;value&quot;:&quot;FALSE&quot;},{&quot;name&quot;:&quot;HOUSE_SIZE_SQFT&quot;,&quot;value&quot;:&quot;112.00&quot;},{&quot;name&quot;:&quot;NEW_CUSTOMER&quot;,&quot;value&quot;:&quot;TRUE&quot;},{&quot;name&quot;:&quot;ORIGINAL_INSTALL_METHOD&quot;,&quot;value&quot;:&quot;[{&quot;productSpecificationId&quot;:&quot;9134835128913241455&quot;,&quot;name&quot;:&quot;TELUS Internet Product&quot;,&quot;installMethod&quot;:&quot;Pro Install&quot;},{&quot;productSpecificationId&quot;:&quot;9134833640013240078&quot;,&quot;name&quot;:&quot;TELUS TV Product&quot;,&quot;installMethod&quot;:&quot;Pro Install&quot;},{&quot;productSpecificationId&quot;:&quot;9150381725313165010&quot;,&quot;name&quot;:&quot;TELUS Home Security Product&quot;,&quot;installMethod&quot;:&quot;Pro Install&quot;}]&quot;},{&quot;name&quot;:&quot;COPPER_MIGRATION&quot;,&quot;value&quot;:&quot;FALSE&quot;},{&quot;name&quot;:&quot;MOVE_FLAG&quot;,&quot;value&quot;:&quot;FALSE&quot;},{&quot;name&quot;:&quot;UPGRADE_TO&quot;,&quot;value&quot;:&quot;FALSE&quot;},{&quot;name&quot;:&quot;EMAIL_ADDRESS&quot;,&quot;value&quot;:&quot;tjruthven@gmail.com&quot;}]}]&lt;/descriptionTxt&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+				&lt;/workOrderDetailList&gt;&#xd;
+				&lt;remarkList&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;GENERAL&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt&gt;FULL NAH ELIGIBLE: 1. Install NAH Modem and Base Plate 2. Install one Wi-Fi Jack and Boost Wi-Fi 6 in a centralized location 3. Capture equipment in InSight 4. Enter remarks in signoff if unable to complete full NAH setup.&#xd;
+Simple Switch order, PLEASE ADVISE THE CUSTOMER NOT TO RETURN THE EQUIPMENT UNTIL 5 BUSINESS DAYS&#xd;
+EMAIL = tjruthven@gmail.com&#xd;
+ORDERED PRODUCTS = Amazon Prime, Boost Wi-Fi 6 Free Rental, Essentials, Home Phone, Smart Automation Plus, TELUS Internet 300/300, TELUS Online Security, TELUS Online Security - Basic, TELUS Simple Switch, Telephone Number Offering&#xd;
+ALL PRODUCTS = Boost Wi-Fi 6 Free Rental, Essentials, Home Phone, Home Security Commitment for 36 months, Smart Automation Plus, Special Offer - TELUS Whole Home Bundle! Big savings on Internet, Optik TV, and Smart Home Security, TELUS Internet 300/300, TELUS Online Security - Basic, TELUS Simple Switch&#xd;
+Home Phone 2 Go = No&#xd;
+Boost Wi-Fi 6 = Rented :  Boost Wi-Fi 6 Free Rental&#xd;
+HSIA Equipment = Rented :  Boost Wi-Fi 6 Free Rental&#xd;
+Home Security Equipment = Purchased :  Smart Push Button Door Lock - Nickel Satin TELUS Easy Pay B2C&#xd;
+Home Security Equipment = Rented :  Doorbell Camera - Slimline ,  Smart Garage Door Controller ,  Smart Thermostat&#xd;
+TV Equipment = Rented :  Optik 4K PVR&#xd;
+Property Information = Number of Stories:3.0; Square Footage:;&#xd;
+CUSTOMER COMMENTS = #pro&#xd;
+CLASS OF SERVICE = Consumer&#xd;
+Number of Wired STBs = 1&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+SERVICE DESIGNATION = Regular Consumer&#xd;
+LOCATION ID =&#xd;
+OPTION82 =&#xd;
+&lt;/descriptionTxt&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;FOR_TECHNICIAN&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt&gt;&amp;lt;tables&amp;gt;  &amp;lt;table&amp;gt;&#xd;
+      &amp;lt;caption&amp;gt;Customer Information : Customer Information&amp;lt;/caption&amp;gt;&#xd;
+      &amp;lt;thead&amp;gt;&#xd;
+         &amp;lt;tr&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Name&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Contact Numbers&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Email&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Business Operating Name&amp;lt;/th&amp;gt;&#xd;
+         &amp;lt;/tr&amp;gt;&#xd;
+      &amp;lt;/thead&amp;gt;&#xd;
+      &amp;lt;tbody&amp;gt;&#xd;
+         &amp;lt;tr&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;Travis Ruthven&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;7789944511&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;tjruthven@gmail.com&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+         &amp;lt;/tr&amp;gt;&#xd;
+      &amp;lt;/tbody&amp;gt;&#xd;
+   &amp;lt;/table&amp;gt;&#xd;
+   &amp;lt;table&amp;gt;&#xd;
+      &amp;lt;caption&amp;gt;Customer Information : Account Type&amp;lt;/caption&amp;gt;&#xd;
+      &amp;lt;thead&amp;gt;&#xd;
+         &amp;lt;tr&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Business Or Consumer Account&amp;lt;/th&amp;gt;&#xd;
+         &amp;lt;/tr&amp;gt;&#xd;
+      &amp;lt;/thead&amp;gt;&#xd;
+      &amp;lt;tbody&amp;gt;&#xd;
+         &amp;lt;tr&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;Consumer&amp;lt;/td&amp;gt;&#xd;
+         &amp;lt;/tr&amp;gt;&#xd;
+      &amp;lt;/tbody&amp;gt;&#xd;
+   &amp;lt;/table&amp;gt;&#xd;
+   &amp;lt;table&amp;gt;&#xd;
+      &amp;lt;caption&amp;gt;Customer Information : Product Information&amp;lt;/caption&amp;gt;&#xd;
+      &amp;lt;thead&amp;gt;&#xd;
+         &amp;lt;tr&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Ordered Product&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Existing Products&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;All Products&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Additional Comments&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Remarks&amp;lt;/th&amp;gt;&#xd;
+         &amp;lt;/tr&amp;gt;&#xd;
+      &amp;lt;/thead&amp;gt;&#xd;
+      &amp;lt;tbody&amp;gt;&#xd;
+         &amp;lt;tr&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;Essentials, TELUS Internet 300/300, Home Phone, TELUS Simple Switch, Telephone Number Offering, TELUS Online Security, TELUS Online Security - Basic, Smart Automation Plus, Amazon Prime, Boost Wi-Fi 6 Free Rental, TELUS Online Security - Basic (9165260190613669396), Smart Automation Plus (9165260190613669383), Telephone Number Offering (9165260190613669381), TELUS Simple Switch (9165260190613669410), TELUS Online Security (9165260190613669384), Boost Wi-Fi 6 Free Rental (9165260190613669412), TELUS Internet 300/300 (9165260190613669354), Home Phone (9165260190613669367), Amazon Prime (9165260190613669364), Essentials (9165260190613669358)&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;Home Phone, TELUS Online Security - Basic, Smart Automation Plus, Home Security Commitment for 36 months, Boost Wi-Fi 6 Free Rental, TELUS Simple Switch, Essentials, Special Offer - TELUS Whole Home Bundle! Big savings on Internet, Optik TV, and Smart Home Security, TELUS Internet 300/300&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+         &amp;lt;/tr&amp;gt;&#xd;
+      &amp;lt;/tbody&amp;gt;&#xd;
+   &amp;lt;/table&amp;gt;&amp;lt;/tables&amp;gt;&lt;/descriptionTxt&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+				&lt;/remarkList&gt;&#xd;
+				&lt;componentList&gt;&#xd;
+					&lt;component&gt;&#xd;
+						&lt;originatingSystemWorkOrderId&gt;9165260190913670148&lt;/originatingSystemWorkOrderId&gt;&#xd;
+						&lt;hostReadyForDispatchInd&gt;false&lt;/hostReadyForDispatchInd&gt;&#xd;
+						&lt;productCategoryCd&gt;SECURITY&lt;/productCategoryCd&gt;&#xd;
+						&lt;jobTypeCd&gt;SECURITY&lt;/jobTypeCd&gt;&#xd;
+						&lt;workOrderActionCd&gt;PR&lt;/workOrderActionCd&gt;&#xd;
+						&lt;productTechnologyCd&gt;OTT&lt;/productTechnologyCd&gt;&#xd;
+						&lt;installationTypeCd&gt;FW&lt;/installationTypeCd&gt;&#xd;
+						&lt;estimatedDurationNum&gt;3.25&lt;/estimatedDurationNum&gt;&#xd;
+						&lt;estimatedDurationUnitCd&gt;HOURS&lt;/estimatedDurationUnitCd&gt;&#xd;
+						&lt;remarkList&gt;&#xd;
+							&lt;typeCode&gt;&#xd;
+								&lt;typeCd&gt;FOR_TECHNICIAN&lt;/typeCd&gt;&#xd;
+								&lt;descriptionTxt&gt;&amp;lt;tables&amp;gt; &amp;lt;table&amp;gt;&#xd;
+      &amp;lt;caption&amp;gt;Home Security : Order Information&amp;lt;/caption&amp;gt;&#xd;
+      &amp;lt;thead&amp;gt;&#xd;
+         &amp;lt;tr&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Order Number&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Order Action&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Class of Service&amp;lt;/th&amp;gt;&#xd;
+&amp;lt;th&amp;gt;Home Security Product Name&amp;lt;/th&amp;gt;&#xd;
+&amp;lt;th&amp;gt;Desired Login Name&amp;lt;/th&amp;gt;&#xd;
+&amp;lt;th&amp;gt;Panel Type&amp;lt;/th&amp;gt;&#xd;
+&amp;lt;th&amp;gt;Panel Description&amp;lt;/th&amp;gt;&#xd;
+&amp;lt;th&amp;gt;Daughterboard&amp;lt;/th&amp;gt;&#xd;
+&amp;lt;th&amp;gt;Legacy Company&amp;lt;/th&amp;gt;&#xd;
+&amp;lt;th&amp;gt;Acquisition Type&amp;lt;/th&amp;gt;&#xd;
+&amp;lt;th&amp;gt;Warranty&amp;lt;/th&amp;gt;&#xd;
+         &amp;lt;/tr&amp;gt;&#xd;
+      &amp;lt;/thead&amp;gt;&#xd;
+      &amp;lt;tbody&amp;gt;&#xd;
+         &amp;lt;tr&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;0439096637&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;PR&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;R&amp;lt;/td&amp;gt;&#xd;
+&amp;lt;td&amp;gt;Smart Automation Plus&amp;lt;/td&amp;gt;&#xd;
+&amp;lt;td&amp;gt;tjruthven@gmail.com&amp;lt;/td&amp;gt;&#xd;
+&amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+&amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+&amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+&amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+&amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+&amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+&amp;lt;/tr&amp;gt;&#xd;
+      &amp;lt;/tbody&amp;gt;&#xd;
+   &amp;lt;/table&amp;gt;&#xd;
+   &amp;lt;table&amp;gt;&#xd;
+      &amp;lt;caption&amp;gt;Home Security : Customer Comments&amp;lt;/caption&amp;gt;&#xd;
+      &amp;lt;thead&amp;gt;&#xd;
+         &amp;lt;tr&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Customer Comments&amp;lt;/th&amp;gt;&#xd;
+         &amp;lt;/tr&amp;gt;&#xd;
+      &amp;lt;/thead&amp;gt;&#xd;
+      &amp;lt;tbody&amp;gt;&#xd;
+         &amp;lt;tr&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;#pro&amp;lt;/td&amp;gt;&#xd;
+         &amp;lt;/tr&amp;gt;&#xd;
+      &amp;lt;/tbody&amp;gt;&#xd;
+   &amp;lt;/table&amp;gt;&#xd;
+&amp;lt;/tables&amp;gt;&lt;/descriptionTxt&gt;&#xd;
+							&lt;/typeCode&gt;&#xd;
+						&lt;/remarkList&gt;&#xd;
+					&lt;/component&gt;&#xd;
+					&lt;component&gt;&#xd;
+						&lt;originatingSystemWorkOrderId&gt;9165260190913670146&lt;/originatingSystemWorkOrderId&gt;&#xd;
+						&lt;hostReadyForDispatchInd&gt;false&lt;/hostReadyForDispatchInd&gt;&#xd;
+						&lt;productCategoryCd&gt;POTS&lt;/productCategoryCd&gt;&#xd;
+						&lt;jobTypeCd&gt;VOICE&lt;/jobTypeCd&gt;&#xd;
+						&lt;workOrderActionCd&gt;PR&lt;/workOrderActionCd&gt;&#xd;
+						&lt;productTechnologyCd&gt;GPON&lt;/productTechnologyCd&gt;&#xd;
+						&lt;installationTypeCd&gt;FW&lt;/installationTypeCd&gt;&#xd;
+						&lt;estimatedDurationNum&gt;1.0&lt;/estimatedDurationNum&gt;&#xd;
+						&lt;estimatedDurationUnitCd&gt;HOURS&lt;/estimatedDurationUnitCd&gt;&#xd;
+						&lt;remarkList&gt;&#xd;
+							&lt;typeCode&gt;&#xd;
+								&lt;typeCd&gt;FOR_TECHNICIAN&lt;/typeCd&gt;&#xd;
+								&lt;descriptionTxt&gt;&amp;lt;tables&amp;gt;   &amp;lt;table&amp;gt;&#xd;
+      &amp;lt;caption&amp;gt;Home Phone : Order Information&amp;lt;/caption&amp;gt;&#xd;
+      &amp;lt;thead&amp;gt;&#xd;
+         &amp;lt;tr&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Order Number&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Order Action&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Phone Product Name&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Class of Service&amp;lt;/th&amp;gt;&#xd;
+         &amp;lt;/tr&amp;gt;&#xd;
+      &amp;lt;/thead&amp;gt;&#xd;
+      &amp;lt;tbody&amp;gt;&#xd;
+         &amp;lt;tr&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;0439096637&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;PR&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;Home Phone&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;R&amp;lt;/td&amp;gt;&#xd;
+         &amp;lt;/tr&amp;gt;&#xd;
+      &amp;lt;/tbody&amp;gt;&#xd;
+   &amp;lt;/table&amp;gt;&#xd;
+   &amp;lt;table&amp;gt;&#xd;
+      &amp;lt;caption&amp;gt;Home Phone : Product Details&amp;lt;/caption&amp;gt;&#xd;
+      &amp;lt;thead&amp;gt;&#xd;
+         &amp;lt;tr&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Telephone Number&amp;lt;/th&amp;gt;&#xd;
+&amp;lt;th&amp;gt;Calling Features&amp;lt;/th&amp;gt;&#xd;
+&amp;lt;th&amp;gt;Long Distance&amp;lt;/th&amp;gt;&#xd;
+         &amp;lt;/tr&amp;gt;&#xd;
+      &amp;lt;/thead&amp;gt;&#xd;
+      &amp;lt;tbody&amp;gt;&#xd;
+         &amp;lt;tr&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+&amp;lt;td&amp;gt;3 Way Calling, Call Display, Call Forwarding, Call Return, Call Screen, Call Waiting, Name Display, Voice Mail&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;No&amp;lt;/td&amp;gt;&#xd;
+         &amp;lt;/tr&amp;gt;&#xd;
+      &amp;lt;/tbody&amp;gt;&#xd;
+   &amp;lt;/table&amp;gt;&#xd;
+   &amp;lt;table&amp;gt;&#xd;
+      &amp;lt;caption&amp;gt;Home Phone : Phone Numbers&amp;lt;/caption&amp;gt;&#xd;
+      &amp;lt;thead&amp;gt;&#xd;
+         &amp;lt;tr&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Main Number&amp;lt;/th&amp;gt;&#xd;
+&amp;lt;th&amp;gt;New or Migrate&amp;lt;/th&amp;gt;&#xd;
+&amp;lt;th&amp;gt;Smart Ring Number&amp;lt;/th&amp;gt;&#xd;
+&amp;lt;th&amp;gt;Smart Ring - New or Migrate&amp;lt;/th&amp;gt;&#xd;
+         &amp;lt;/tr&amp;gt;&#xd;
+      &amp;lt;/thead&amp;gt;&#xd;
+      &amp;lt;tbody&amp;gt;&#xd;
+         &amp;lt;tr&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+&amp;lt;td&amp;gt;New&amp;lt;/td&amp;gt;&#xd;
+&amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+&amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+         &amp;lt;/tr&amp;gt;&#xd;
+      &amp;lt;/tbody&amp;gt;&#xd;
+   &amp;lt;/table&amp;gt;&#xd;
+   &amp;lt;table&amp;gt;&#xd;
+      &amp;lt;caption&amp;gt;Home Phone : Customer Comments&amp;lt;/caption&amp;gt;&#xd;
+      &amp;lt;thead&amp;gt;&#xd;
+         &amp;lt;tr&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Customer Comments&amp;lt;/th&amp;gt;&#xd;
+         &amp;lt;/tr&amp;gt;&#xd;
+      &amp;lt;/thead&amp;gt;&#xd;
+      &amp;lt;tbody&amp;gt;&#xd;
+         &amp;lt;tr&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;#pro&amp;lt;/td&amp;gt;&#xd;
+         &amp;lt;/tr&amp;gt;&#xd;
+      &amp;lt;/tbody&amp;gt;&#xd;
+   &amp;lt;/table&amp;gt;&#xd;
+ &amp;lt;table&amp;gt;&#xd;
+      &amp;lt;caption&amp;gt;Home Phone : FDH Information&amp;lt;/caption&amp;gt;&#xd;
+      &amp;lt;thead&amp;gt;&#xd;
+         &amp;lt;tr&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;FDH ID&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Civic Address&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;FDH Status&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;FDH Build Completion Date&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Geo Coordinates&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Feeder Fiber Name and Strand&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Splitter&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Splitter Port #&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Dist Pr (Distribution Fibre Strand)&amp;lt;/th&amp;gt;&#xd;
+         &amp;lt;/tr&amp;gt;&#xd;
+      &amp;lt;/thead&amp;gt;&#xd;
+      &amp;lt;tbody&amp;gt;&#xd;
+         &amp;lt;tr&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+         &amp;lt;/tr&amp;gt;&#xd;
+      &amp;lt;/tbody&amp;gt;&#xd;
+   &amp;lt;/table&amp;gt;&#xd;
+   &amp;lt;table&amp;gt;&#xd;
+      &amp;lt;caption&amp;gt;Home Phone : NAP Information&amp;l&#xd;
+||2022-11-29 01:52:56,296|DEBUG|[[ACTIVE] ExecuteThread: &apos;5&apos; for queue: &apos;weblogic.kernel.Default (self-tuning)&apos;]|SOAP|WorkforceManagementWILSrv1|WorkforceManagementWILSrv1.61.2022-11-29T01:52:56.295Z|C|createWorkOrder|START|1669686776295|0|0||XML||t;/caption&amp;gt;&#xd;
+      &amp;lt;thead&amp;gt;&#xd;
+         &amp;lt;tr&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;NAP ID&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Civic Address (NAP)&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;NAP Build Completion Date &amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Geo Coordinates (NAP)&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;NAP Status&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Nap Port #&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Drop ID&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Drop Build Completion Date&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Drop Status&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Drop Type&amp;lt;/th&amp;gt;&#xd;
+         &amp;lt;/tr&amp;gt;&#xd;
+      &amp;lt;/thead&amp;gt;&#xd;
+      &amp;lt;tbody&amp;gt;&#xd;
+         &amp;lt;tr&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+         &amp;lt;/tr&amp;gt;&#xd;
+      &amp;lt;/tbody&amp;gt;&#xd;
+   &amp;lt;/table&amp;gt;&#xd;
+   &amp;lt;table&amp;gt;&#xd;
+      &amp;lt;caption&amp;gt;Home Phone : ONT Information&amp;lt;/caption&amp;gt;&#xd;
+      &amp;lt;thead&amp;gt;&#xd;
+         &amp;lt;tr&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;ONT SLID&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Device Type&amp;lt;/th&amp;gt;&#xd;
+&amp;lt;th&amp;gt;Location ID (ONT)&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Civic Address (ONT)&amp;lt;/th&amp;gt;&#xd;
+&amp;lt;th&amp;gt;ONT Shared Status&amp;lt;/th&amp;gt;&#xd;
+&amp;lt;th&amp;gt;Option 82&amp;lt;/th&amp;gt;&#xd;
+&amp;lt;th&amp;gt;Device Manufacturer&amp;lt;/th&amp;gt;&#xd;
+         &amp;lt;/tr&amp;gt;&#xd;
+      &amp;lt;/thead&amp;gt;&#xd;
+      &amp;lt;tbody&amp;gt;&#xd;
+         &amp;lt;tr&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+&amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+&amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+&amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+&amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+         &amp;lt;/tr&amp;gt;&#xd;
+      &amp;lt;/tbody&amp;gt;&#xd;
+   &amp;lt;/table&amp;gt;&amp;lt;/tables&amp;gt;&lt;/descriptionTxt&gt;&#xd;
+							&lt;/typeCode&gt;&#xd;
+						&lt;/remarkList&gt;&#xd;
+					&lt;/component&gt;&#xd;
+					&lt;component&gt;&#xd;
+						&lt;originatingSystemWorkOrderId&gt;9165260190913670145&lt;/originatingSystemWorkOrderId&gt;&#xd;
+						&lt;hostReadyForDispatchInd&gt;false&lt;/hostReadyForDispatchInd&gt;&#xd;
+						&lt;productCategoryCd&gt;TTV&lt;/productCategoryCd&gt;&#xd;
+						&lt;jobTypeCd&gt;IPTV&lt;/jobTypeCd&gt;&#xd;
+						&lt;workOrderActionCd&gt;PR&lt;/workOrderActionCd&gt;&#xd;
+						&lt;productTechnologyCd&gt;GPON&lt;/productTechnologyCd&gt;&#xd;
+						&lt;installationTypeCd&gt;FW&lt;/installationTypeCd&gt;&#xd;
+						&lt;estimatedDurationNum&gt;1.5&lt;/estimatedDurationNum&gt;&#xd;
+						&lt;estimatedDurationUnitCd&gt;HOURS&lt;/estimatedDurationUnitCd&gt;&#xd;
+						&lt;remarkList&gt;&#xd;
+							&lt;typeCode&gt;&#xd;
+								&lt;typeCd&gt;FOR_TECHNICIAN&lt;/typeCd&gt;&#xd;
+								&lt;descriptionTxt&gt;&amp;lt;tables&amp;gt;   &amp;lt;table&amp;gt;&#xd;
+      &amp;lt;caption&amp;gt;Optik TV : Order Information&amp;lt;/caption&amp;gt;&#xd;
+      &amp;lt;thead&amp;gt;&#xd;
+         &amp;lt;tr&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Order&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Order Action&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;TV Product name&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Class of Service&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Number of TV&apos;s&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Wireless STBs - To be installed&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Wired STBs - To be installed&amp;lt;/th&amp;gt;&#xd;
+         &amp;lt;/tr&amp;gt;&#xd;
+      &amp;lt;/thead&amp;gt;&#xd;
+      &amp;lt;tbody&amp;gt;&#xd;
+         &amp;lt;tr&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;0439096637&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;PR&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;Essentials&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;R&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;1&amp;lt;/td&amp;gt;&#xd;
+         &amp;lt;/tr&amp;gt;&#xd;
+      &amp;lt;/tbody&amp;gt;&#xd;
+   &amp;lt;/table&amp;gt;&#xd;
+   &amp;lt;table&amp;gt;&#xd;
+      &amp;lt;caption&amp;gt;Optik TV : Components&amp;lt;/caption&amp;gt;&#xd;
+      &amp;lt;thead&amp;gt;&#xd;
+         &amp;lt;tr&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Theme Packs&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Premium Packs and Channels&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Add-ons&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Other channels/packs&amp;lt;/th&amp;gt;&#xd;
+         &amp;lt;/tr&amp;gt;&#xd;
+      &amp;lt;/thead&amp;gt;&#xd;
+      &amp;lt;tbody&amp;gt;&#xd;
+         &amp;lt;tr&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;Amazon Prime&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;4K Channel Pack, Amazon Prime, Musicroom, Stingray&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;Essentials&amp;lt;/td&amp;gt;&#xd;
+         &amp;lt;/tr&amp;gt;&#xd;
+      &amp;lt;/tbody&amp;gt;&#xd;
+   &amp;lt;/table&amp;gt;&#xd;
+   &amp;lt;table&amp;gt;&#xd;
+      &amp;lt;caption&amp;gt;Optik TV : Customer Comments&amp;lt;/caption&amp;gt;&#xd;
+      &amp;lt;thead&amp;gt;&#xd;
+         &amp;lt;tr&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Customer Comments&amp;lt;/th&amp;gt;&#xd;
+         &amp;lt;/tr&amp;gt;&#xd;
+      &amp;lt;/thead&amp;gt;&#xd;
+      &amp;lt;tbody&amp;gt;&#xd;
+         &amp;lt;tr&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;#pro&amp;lt;/td&amp;gt;&#xd;
+         &amp;lt;/tr&amp;gt;&#xd;
+      &amp;lt;/tbody&amp;gt;&#xd;
+   &amp;lt;/table&amp;gt; &amp;lt;table&amp;gt;&#xd;
+      &amp;lt;caption&amp;gt;Optik TV : FDH Information&amp;lt;/caption&amp;gt;&#xd;
+      &amp;lt;thead&amp;gt;&#xd;
+         &amp;lt;tr&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;FDH ID&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Civic Address&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;FDH Status&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;FDH Build Completion Date&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Geo Coordinates&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Feeder Fiber Name and Strand&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Splitter&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Splitter Port #&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Dist Pr (Distribution Fibre Strand)&amp;lt;/th&amp;gt;&#xd;
+         &amp;lt;/tr&amp;gt;&#xd;
+      &amp;lt;/thead&amp;gt;&#xd;
+      &amp;lt;tbody&amp;gt;&#xd;
+         &amp;lt;tr&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+         &amp;lt;/tr&amp;gt;&#xd;
+      &amp;lt;/tbody&amp;gt;&#xd;
+   &amp;lt;/table&amp;gt;&#xd;
+   &amp;lt;table&amp;gt;&#xd;
+      &amp;lt;caption&amp;gt;Optik TV : NAP Information&amp;lt;/caption&amp;gt;&#xd;
+      &amp;lt;thead&amp;gt;&#xd;
+         &amp;lt;tr&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;NAP ID&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Civic Address (NAP)&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;NAP Build Completion Date &amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Geo Coordinates (NAP)&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;NAP Status&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Nap Port #&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Drop ID&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Drop Build Completion Date&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Drop Status&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Drop Type&amp;lt;/th&amp;gt;&#xd;
+         &amp;lt;/tr&amp;gt;&#xd;
+      &amp;lt;/thead&amp;gt;&#xd;
+      &amp;lt;tbody&amp;gt;&#xd;
+         &amp;lt;tr&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+         &amp;lt;/tr&amp;gt;&#xd;
+      &amp;lt;/tbody&amp;gt;&#xd;
+   &amp;lt;/table&amp;gt;&#xd;
+   &amp;lt;table&amp;gt;&#xd;
+      &amp;lt;caption&amp;gt;Optik TV : ONT Information&amp;lt;/caption&amp;gt;&#xd;
+      &amp;lt;thead&amp;gt;&#xd;
+         &amp;lt;tr&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;ONT SLID&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Device Type&amp;lt;/th&amp;gt;&#xd;
+&amp;lt;th&amp;gt;Location ID (ONT)&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Civic Address (ONT)&amp;lt;/th&amp;gt;&#xd;
+&amp;lt;th&amp;gt;ONT Shared Status&amp;lt;/th&amp;gt;&#xd;
+&amp;lt;th&amp;gt;Option 82&amp;lt;/th&amp;gt;&#xd;
+&amp;lt;th&amp;gt;Device Manufacturer&amp;lt;/th&amp;gt;&#xd;
+         &amp;lt;/tr&amp;gt;&#xd;
+      &amp;lt;/thead&amp;gt;&#xd;
+      &amp;lt;tbody&amp;gt;&#xd;
+         &amp;lt;tr&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+&amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+&amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+&amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+&amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+         &amp;lt;/tr&amp;gt;&#xd;
+      &amp;lt;/tbody&amp;gt;&#xd;
+   &amp;lt;/table&amp;gt;&amp;lt;/tables&amp;gt;&lt;/descriptionTxt&gt;&#xd;
+							&lt;/typeCode&gt;&#xd;
+						&lt;/remarkList&gt;&#xd;
+					&lt;/component&gt;&#xd;
+					&lt;component&gt;&#xd;
+						&lt;originatingSystemWorkOrderId&gt;9165260190913670149&lt;/originatingSystemWorkOrderId&gt;&#xd;
+						&lt;hostReadyForDispatchInd&gt;false&lt;/hostReadyForDispatchInd&gt;&#xd;
+						&lt;productCategoryCd&gt;CONNECT&lt;/productCategoryCd&gt;&#xd;
+						&lt;jobTypeCd&gt;CONNECT&lt;/jobTypeCd&gt;&#xd;
+						&lt;workOrderActionCd&gt;PR&lt;/workOrderActionCd&gt;&#xd;
+						&lt;productTechnologyCd&gt;GPON&lt;/productTechnologyCd&gt;&#xd;
+						&lt;installationTypeCd&gt;FW&lt;/installationTypeCd&gt;&#xd;
+						&lt;estimatedDurationNum&gt;0.5&lt;/estimatedDurationNum&gt;&#xd;
+						&lt;estimatedDurationUnitCd&gt;HOURS&lt;/estimatedDurationUnitCd&gt;&#xd;
+						&lt;remarkList&gt;&#xd;
+							&lt;typeCode&gt;&#xd;
+								&lt;typeCd&gt;FOR_TECHNICIAN&lt;/typeCd&gt;&#xd;
+								&lt;descriptionTxt&gt;&amp;lt;tables&amp;gt; &amp;lt;table&amp;gt;&#xd;
+      &amp;lt;caption&amp;gt;Assignment Details : FDH Information&amp;lt;/caption&amp;gt;&#xd;
+      &amp;lt;thead&amp;gt;&#xd;
+         &amp;lt;tr&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;FDH ID&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Civic Address&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;FDH Status&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;FDH Build Completion Date&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Geo Coordinates&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Feeder Fiber Name and Strand&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Splitter&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Splitter Port #&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Dist Pr (Distribution Fibre Strand)&amp;lt;/th&amp;gt;&#xd;
+         &amp;lt;/tr&amp;gt;&#xd;
+      &amp;lt;/thead&amp;gt;&#xd;
+      &amp;lt;tbody&amp;gt;&#xd;
+         &amp;lt;tr&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+         &amp;lt;/tr&amp;gt;&#xd;
+      &amp;lt;/tbody&amp;gt;&#xd;
+   &amp;lt;/table&amp;gt;&#xd;
+   &amp;lt;table&amp;gt;&#xd;
+      &amp;lt;caption&amp;gt;Assignment Details : NAP Information&amp;lt;/caption&amp;gt;&#xd;
+      &amp;lt;thead&amp;gt;&#xd;
+         &amp;lt;tr&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;NAP ID&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Civic Address (NAP)&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;NAP Build Completion Date &amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Geo Coordinates (NAP)&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;NAP Status&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Nap Port #&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Drop ID&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Drop Build Completion Date&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Drop Status&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Drop Type&amp;lt;/th&amp;gt;&#xd;
+         &amp;lt;/tr&amp;gt;&#xd;
+      &amp;lt;/thead&amp;gt;&#xd;
+      &amp;lt;tbody&amp;gt;&#xd;
+         &amp;lt;tr&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+         &amp;lt;/tr&amp;gt;&#xd;
+      &amp;lt;/tbody&amp;gt;&#xd;
+   &amp;lt;/table&amp;gt;&#xd;
+   &amp;lt;table&amp;gt;&#xd;
+      &amp;lt;caption&amp;gt;Assignment Details : ONT Information&amp;lt;/caption&amp;gt;&#xd;
+      &amp;lt;thead&amp;gt;&#xd;
+         &amp;lt;tr&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;ONT SLID&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Device Type&amp;lt;/th&amp;gt;&#xd;
+&amp;lt;th&amp;gt;Location ID (ONT)&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Civic Address (ONT)&amp;lt;/th&amp;gt;&#xd;
+&amp;lt;th&amp;gt;ONT Shared Status&amp;lt;/th&amp;gt;&#xd;
+&amp;lt;th&amp;gt;Option 82&amp;lt;/th&amp;gt;&#xd;
+&amp;lt;th&amp;gt;Device Manufacturer&amp;lt;/th&amp;gt;&#xd;
+         &amp;lt;/tr&amp;gt;&#xd;
+      &amp;lt;/thead&amp;gt;&#xd;
+      &amp;lt;tbody&amp;gt;&#xd;
+         &amp;lt;tr&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+&amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+&amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+&amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+&amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+         &amp;lt;/tr&amp;gt;&#xd;
+      &amp;lt;/tbody&amp;gt;&#xd;
+   &amp;lt;/table&amp;gt;&amp;lt;/tables&amp;gt;&lt;/descriptionTxt&gt;&#xd;
+							&lt;/typeCode&gt;&#xd;
+						&lt;/remarkList&gt;&#xd;
+					&lt;/component&gt;&#xd;
+					&lt;component&gt;&#xd;
+						&lt;originatingSystemWorkOrderId&gt;001200${__Random(11000,11500,)}&lt;/originatingSystemWorkOrderId&gt;&#xd;
+						&lt;hostReadyForDispatchInd&gt;false&lt;/hostReadyForDispatchInd&gt;&#xd;
+						&lt;productCategoryCd&gt;DSL&lt;/productCategoryCd&gt;&#xd;
+						&lt;jobTypeCd&gt;HS&lt;/jobTypeCd&gt;&#xd;
+						&lt;workOrderActionCd&gt;PR&lt;/workOrderActionCd&gt;&#xd;
+						&lt;productTechnologyCd&gt;GPON&lt;/productTechnologyCd&gt;&#xd;
+						&lt;installationTypeCd&gt;FW&lt;/installationTypeCd&gt;&#xd;
+						&lt;estimatedDurationNum&gt;1.5&lt;/estimatedDurationNum&gt;&#xd;
+						&lt;estimatedDurationUnitCd&gt;HOURS&lt;/estimatedDurationUnitCd&gt;&#xd;
+						&lt;remarkList&gt;&#xd;
+							&lt;typeCode&gt;&#xd;
+								&lt;typeCd&gt;FOR_TECHNICIAN&lt;/typeCd&gt;&#xd;
+								&lt;descriptionTxt&gt;&amp;lt;tables&amp;gt;   &amp;lt;table&amp;gt;&#xd;
+      &amp;lt;caption&amp;gt;TELUS Internet : Order Information&amp;lt;/caption&amp;gt;&#xd;
+      &amp;lt;thead&amp;gt;&#xd;
+         &amp;lt;tr&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Order Number&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Order Action&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Internet Product name&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Class of Service&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Number of Static IP&apos;s&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Download Speed&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Upload Speed&amp;lt;/th&amp;gt;&#xd;
+&#xd;
+         &amp;lt;/tr&amp;gt;&#xd;
+      &amp;lt;/thead&amp;gt;&#xd;
+      &amp;lt;tbody&amp;gt;&#xd;
+         &amp;lt;tr&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;0439096637&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;PR&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;TELUS Internet 300/300&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;R&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+         &amp;lt;/tr&amp;gt;&#xd;
+      &amp;lt;/tbody&amp;gt;&#xd;
+   &amp;lt;/table&amp;gt;&#xd;
+   &amp;lt;table&amp;gt;&#xd;
+      &amp;lt;caption&amp;gt;TELUS Internet : Components&amp;lt;/caption&amp;gt;&#xd;
+      &amp;lt;thead&amp;gt;&#xd;
+         &amp;lt;tr&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Security and Cloud Add Ons&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Smart Hub&amp;lt;/th&amp;gt;&#xd;
+         &amp;lt;/tr&amp;gt;&#xd;
+      &amp;lt;/thead&amp;gt;&#xd;
+      &amp;lt;tbody&amp;gt;&#xd;
+         &amp;lt;tr&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;No&amp;lt;/td&amp;gt;&#xd;
+         &amp;lt;/tr&amp;gt;&#xd;
+      &amp;lt;/tbody&amp;gt;&#xd;
+   &amp;lt;/table&amp;gt;&#xd;
+   &amp;lt;table&amp;gt;&#xd;
+      &amp;lt;caption&amp;gt;TELUS Internet : Customer Comments&amp;lt;/caption&amp;gt;&#xd;
+      &amp;lt;thead&amp;gt;&#xd;
+         &amp;lt;tr&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Customer Comments&amp;lt;/th&amp;gt;&#xd;
+         &amp;lt;/tr&amp;gt;&#xd;
+      &amp;lt;/thead&amp;gt;&#xd;
+      &amp;lt;tbody&amp;gt;&#xd;
+         &amp;lt;tr&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;#pro&amp;lt;/td&amp;gt;&#xd;
+         &amp;lt;/tr&amp;gt;&#xd;
+      &amp;lt;/tbody&amp;gt;&#xd;
+   &amp;lt;/table&amp;gt; &amp;lt;table&amp;gt;&#xd;
+      &amp;lt;caption&amp;gt;Assignment Details : FDH Information&amp;lt;/caption&amp;gt;&#xd;
+      &amp;lt;thead&amp;gt;&#xd;
+         &amp;lt;tr&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;FDH ID&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Civic Address&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;FDH Status&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;FDH Build Completion Date&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Geo Coordinates&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Feeder Fiber Name and Strand&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Splitter&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Splitter Port #&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Dist Pr (Distribution Fibre Strand)&amp;lt;/th&amp;gt;&#xd;
+         &amp;lt;/tr&amp;gt;&#xd;
+      &amp;lt;/thead&amp;gt;&#xd;
+      &amp;lt;tbody&amp;gt;&#xd;
+         &amp;lt;tr&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+         &amp;lt;/tr&amp;gt;&#xd;
+      &amp;lt;/tbody&amp;gt;&#xd;
+   &amp;lt;/table&amp;gt;&#xd;
+   &amp;lt;table&amp;gt;&#xd;
+      &amp;lt;caption&amp;gt;Assignment Details : NAP Information&amp;lt;/caption&amp;gt;&#xd;
+      &amp;lt;thead&amp;gt;&#xd;
+         &amp;lt;tr&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;NAP ID&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Civic Address (NAP)&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;NAP Build Completion Date &amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Geo Coordinates (NAP)&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;NAP Status&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Nap Port #&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Drop ID&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Drop Build Completion Date&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Drop Status&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Drop Type&amp;lt;/th&amp;gt;&#xd;
+         &amp;lt;/tr&amp;gt;&#xd;
+      &amp;lt;/thead&amp;gt;&#xd;
+      &amp;lt;tbody&amp;gt;&#xd;
+         &amp;lt;tr&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+         &amp;lt;/tr&amp;gt;&#xd;
+      &amp;lt;/tbody&amp;gt;&#xd;
+   &amp;lt;/table&amp;gt;&#xd;
+   &amp;lt;table&amp;gt;&#xd;
+      &amp;lt;caption&amp;gt;Assignment Details : ONT Information&amp;lt;/caption&amp;gt;&#xd;
+      &amp;lt;thead&amp;gt;&#xd;
+         &amp;lt;tr&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;ONT SLID&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Device Type&amp;lt;/th&amp;gt;&#xd;
+&amp;lt;th&amp;gt;Location ID (ONT)&amp;lt;/th&amp;gt;&#xd;
+            &amp;lt;th&amp;gt;Civic Address (ONT)&amp;lt;/th&amp;gt;&#xd;
+&amp;lt;th&amp;gt;ONT Shared Status&amp;lt;/th&amp;gt;&#xd;
+&amp;lt;th&amp;gt;Option 82&amp;lt;/th&amp;gt;&#xd;
+&amp;lt;th&amp;gt;Device Manufacturer&amp;lt;/th&amp;gt;&#xd;
+         &amp;lt;/tr&amp;gt;&#xd;
+      &amp;lt;/thead&amp;gt;&#xd;
+      &amp;lt;tbody&amp;gt;&#xd;
+         &amp;lt;tr&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+&amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+            &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+&amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+&amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+&amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&#xd;
+         &amp;lt;/tr&amp;gt;&#xd;
+      &amp;lt;/tbody&amp;gt;&#xd;
+   &amp;lt;/table&amp;gt;&amp;lt;/tables&amp;gt;&lt;/descriptionTxt&gt;&#xd;
+							&lt;/typeCode&gt;&#xd;
+						&lt;/remarkList&gt;&#xd;
+					&lt;/component&gt;&#xd;
+				&lt;/componentList&gt;&#xd;
+			&lt;/re:workOrder&gt;&#xd;
+		&lt;/re:createWorkOrder&gt;&#xd;
+	&lt;/soapenv:Body&gt;&#xd;
+&lt;/soapenv:Envelope&gt;</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">apigw-soap-st.tsl.telus.com</stringProp>
+            <stringProp name="HTTPSampler.port">443</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">soap/is01/RMO/ProcessMgmt/FieldWorkAssignmentMgmtService_v3_0_RP</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">false</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers"/>
+            </HeaderManager>
+            <hashTree/>
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="workOrderId" enabled="true">
+              <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+              <stringProp name="RegexExtractor.refname">workOrderId</stringProp>
+              <stringProp name="RegexExtractor.regex">&lt;workOrderId&gt;([^&quot;]+)&lt;/workOrderId&gt;</stringProp>
+              <stringProp name="RegexExtractor.template">$1$</stringProp>
+              <stringProp name="RegexExtractor.default"></stringProp>
+              <stringProp name="RegexExtractor.match_number">1</stringProp>
+              <boolProp name="RegexExtractor.default_empty_value">true</boolProp>
+            </RegexExtractor>
+            <hashTree/>
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="response" enabled="true">
+              <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+              <stringProp name="RegexExtractor.refname">response</stringProp>
+              <stringProp name="RegexExtractor.regex">(.*?)</stringProp>
+              <stringProp name="RegexExtractor.template">$1$</stringProp>
+              <stringProp name="RegexExtractor.default">null</stringProp>
+              <stringProp name="RegexExtractor.match_number">1</stringProp>
+            </RegexExtractor>
+            <hashTree/>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="-1422614550">Customer Information</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.custom_message"></stringProp>
+              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">2</intProp>
+              <stringProp name="Assertion.scope">all</stringProp>
+            </ResponseAssertion>
+            <hashTree/>
+          </hashTree>
+          <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Flow Control Action" enabled="true">
+            <intProp name="ActionProcessor.action">1</intProp>
+            <intProp name="ActionProcessor.target">0</intProp>
+            <stringProp name="ActionProcessor.duration">5000</stringProp>
+          </TestAction>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="WIL_CancelWorkOrder" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">&lt;soapenv:Envelope xmlns:soapenv=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; xmlns:fiel=&quot;http://xmlschema.tmi.telus.com/srv/RMO/ProcessMgmt/FieldWorkAssignmentMgmtServiceRequestResponse_v3&quot;&gt;&lt;soapenv:Header/&gt;&lt;soapenv:Body&gt;   &lt;fiel:cancelWorkOrder&gt;      &lt;fiel:inputHeader&gt;         &lt;systemSourceCd&gt;3259&lt;/systemSourceCd&gt;         &lt;userId&gt;T071661&lt;/userId&gt;         &lt;requestDate&gt;${requestDate}&lt;/requestDate&gt;      &lt;/fiel:inputHeader&gt;      &lt;fiel:workOrder&gt;         &lt;workOrderId&gt;${workOrderId}&lt;/workOrderId&gt;      &lt;/fiel:workOrder&gt;   &lt;/fiel:cancelWorkOrder&gt;&lt;/soapenv:Body&gt;&lt;/soapenv:Envelope&gt;</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">apigw-soap-st.tsl.telus.com</stringProp>
+          <stringProp name="HTTPSampler.port">443</stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">soap/is01/RMO/ProcessMgmt/FieldWorkAssignmentMgmtService_v3_0_RP</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">false</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers"/>
+          </HeaderManager>
+          <hashTree/>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="response" enabled="true">
+            <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+            <stringProp name="RegexExtractor.refname">response</stringProp>
+            <stringProp name="RegexExtractor.regex">(.*?)</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default">null</stringProp>
+            <stringProp name="RegexExtractor.match_number">1</stringProp>
+          </RegexExtractor>
+          <hashTree/>
+        </hashTree>
+      </hashTree>
+      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>true</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <sentBytes>true</sentBytes>
+            <url>true</url>
+            <threadCounts>true</threadCounts>
+            <idleTime>true</idleTime>
+            <connectTime>true</connectTime>
+          </value>
+        </objProp>
+        <stringProp name="filename"></stringProp>
+      </ResultCollector>
+      <hashTree/>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>

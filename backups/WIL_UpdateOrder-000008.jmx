@@ -1,0 +1,1094 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.5">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="BZT Generated Test Plan" enabled="true">
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <stringProp name="TestPlan.comments"></stringProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
+        <stringProp name="delimiter">,</stringProp>
+        <stringProp name="fileEncoding"></stringProp>
+        <stringProp name="filename">UpdateWO.txt</stringProp>
+        <boolProp name="ignoreFirstLine">true</boolProp>
+        <boolProp name="quotedData">false</boolProp>
+        <boolProp name="recycle">true</boolProp>
+        <stringProp name="shareMode">shareMode.all</stringProp>
+        <boolProp name="stopThread">false</boolProp>
+        <stringProp name="variableNames">workOrderID,originatingSystemWorkOrderId,originatingSystemWorkOrderInternalId,LocationId</stringProp>
+      </CSVDataSet>
+      <hashTree/>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="WIL_UpdateOrder" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">startnextloop</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1000</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">${__P(Users_WIL_UpdateOrder,6)}</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">0</stringProp>
+        <stringProp name="ThreadGroup.start_time"></stringProp>
+        <stringProp name="ThreadGroup.end_time"></stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration">3900</stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">false</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <CacheManager guiclass="CacheManagerGui" testclass="CacheManager" testname="Cache" enabled="true">
+          <boolProp name="clearEachIteration">false</boolProp>
+          <boolProp name="useExpires">false</boolProp>
+          <boolProp name="CacheManager.controlledByThread">false</boolProp>
+        </CacheManager>
+        <hashTree/>
+        <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="Cookies" enabled="true">
+          <collectionProp name="CookieManager.cookies"/>
+          <boolProp name="CookieManager.clearEachIteration">false</boolProp>
+          <boolProp name="CookieManager.controlledByThreadGroup">false</boolProp>
+        </CookieManager>
+        <hashTree/>
+        <DNSCacheManager guiclass="DNSCachePanel" testclass="DNSCacheManager" testname="DNS Cache Manager" enabled="true">
+          <collectionProp name="DNSCacheManager.servers"/>
+          <boolProp name="DNSCacheManager.clearEachIteration">false</boolProp>
+          <boolProp name="DNSCacheManager.isCustomResolver">false</boolProp>
+        </DNSCacheManager>
+        <hashTree/>
+        <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="Defaults" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="user_defined" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path"></stringProp>
+          <boolProp name="HTTPSampler.image_parser">true</boolProp>
+          <stringProp name="HTTPSampler.concurrentPool">4</stringProp>
+          <stringProp name="HTTPSampler.implementation">HttpClient4</stringProp>
+          <stringProp name="HTTPSampler.connect_timeout">360000</stringProp>
+          <stringProp name="HTTPSampler.response_timeout">360000</stringProp>
+        </ConfigTestElement>
+        <hashTree/>
+        <AuthManager guiclass="AuthPanel" testclass="AuthManager" testname="HTTP Authorization Manager" enabled="true">
+          <collectionProp name="AuthManager.auth_list">
+            <elementProp name="" elementType="Authorization">
+              <stringProp name="Authorization.url">soa-mp-rmsk-is01.tsl.telus.com:443</stringProp>
+              <stringProp name="Authorization.username">APP_RENDEZVOUS</stringProp>
+              <stringProp name="Authorization.password">soaorgid</stringProp>
+              <stringProp name="Authorization.domain"></stringProp>
+              <stringProp name="Authorization.realm"></stringProp>
+            </elementProp>
+          </collectionProp>
+          <boolProp name="AuthManager.controlledByThreadGroup">false</boolProp>
+        </AuthManager>
+        <hashTree/>
+        <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+          <collectionProp name="Arguments.arguments">
+            <elementProp name="appointmentEndDate" elementType="Argument">
+              <stringProp name="Argument.name">appointmentEndDate</stringProp>
+              <stringProp name="Argument.value">${__timeShift(yyyy-MM-dd,,P3D,,)}T${__timeShift(HH:mm:ss.SSS,,,,)}Z</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="appointmentStartDate" elementType="Argument">
+              <stringProp name="Argument.name">appointmentStartDate</stringProp>
+              <stringProp name="Argument.value">${__timeShift(yyyy-MM-dd,,P2D,,)}T${__timeShift(HH:mm:ss.SSS,,,,)}Z</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="dueDate" elementType="Argument">
+              <stringProp name="Argument.name">dueDate</stringProp>
+              <stringProp name="Argument.value">${__timeShift(yyyy-MM-dd,,P22D,,)}T${__timeShift(HH:mm:ss.SSS,,,,)}Z</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+              <stringProp name="Argument.desc">not present</stringProp>
+            </elementProp>
+            <elementProp name="earlyStartDate" elementType="Argument">
+              <stringProp name="Argument.name">earlyStartDate</stringProp>
+              <stringProp name="Argument.value">${__timeShift(yyyy-MM-dd,,P17D,,)}T${__timeShift(HH:mm:ss.SSS,,,,)}Z</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+              <stringProp name="Argument.desc">not present</stringProp>
+            </elementProp>
+            <elementProp name="originatingSystemCreateDate" elementType="Argument">
+              <stringProp name="Argument.name">originatingSystemCreateDate</stringProp>
+              <stringProp name="Argument.value">${__timeShift(yyyy-MM-dd,,,,)}T${__timeShift(HH:mm:ss.SSS,,,,)}Z</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="requestDate" elementType="Argument">
+              <stringProp name="Argument.name">requestDate</stringProp>
+              <stringProp name="Argument.value">${__timeShift(yyyy-MM-dd,,,,)}T${__timeShift(HH:mm:ss.SSS,,,,)}Z</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="counter" elementType="Argument">
+              <stringProp name="Argument.name">counter</stringProp>
+              <stringProp name="Argument.value">00${__Random(11000,11500,)}</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="Pacing" elementType="Argument">
+              <stringProp name="Argument.name">Pacing</stringProp>
+              <stringProp name="Argument.value">${__P(propPIpacing,3.6)}</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+          </collectionProp>
+        </Arguments>
+        <hashTree/>
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="endTime" enabled="true">
+          <stringProp name="scriptLanguage">groovy</stringProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="filename"></stringProp>
+          <stringProp name="cacheKey">true</stringProp>
+          <stringProp name="script">def dateobj= new Date();
+def endTime = dateobj.getTime();
+vars.put(&quot;endTime&quot;,endTime.toString())
+log.info(&quot;Current date in the specified format: &quot; + endTime);
+SampleResult.setIgnore();
+</stringProp>
+        </JSR223Sampler>
+        <hashTree/>
+        <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If Controller" enabled="true">
+          <stringProp name="IfController.condition">&quot;${__jm__EnterpriseTMF676__idx}&quot; != &quot;0&quot;</stringProp>
+          <boolProp name="IfController.evaluateAll">false</boolProp>
+        </IfController>
+        <hashTree>
+          <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Pacing Timer" enabled="true">
+            <intProp name="ActionProcessor.action">1</intProp>
+            <intProp name="ActionProcessor.target">0</intProp>
+            <stringProp name="ActionProcessor.duration">${myDelay}</stringProp>
+          </TestAction>
+          <hashTree>
+            <JSR223Timer guiclass="TestBeanGUI" testclass="JSR223Timer" testname="JSR223 Timer" enabled="true">
+              <stringProp name="scriptLanguage">groovy</stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="script">Long pacingInput = Long.valueOf(vars.get(&apos;Pacing&apos;))*1000;
+Long elapsed = Long.valueOf(vars.get(&apos;endTime&apos;)) - Long.valueOf(vars.get(&apos;startTime&apos;))
+Long pacing = pacingInput-elapsed;
+if ( pacing &gt; 0 ) 
+{
+	vars.put(&quot;myDelay&quot;, String.valueOf(pacing));
+	return 0;
+}
+else 
+{
+	vars.put(&quot;myDelay&quot;, &quot;0&quot;);
+	return 0; 
+}
+</stringProp>
+            </JSR223Timer>
+            <hashTree/>
+          </hashTree>
+        </hashTree>
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="startTime" enabled="true">
+          <stringProp name="scriptLanguage">groovy</stringProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="filename"></stringProp>
+          <stringProp name="cacheKey">true</stringProp>
+          <stringProp name="script">def dateobj= new Date();
+def startTime = dateobj.getTime();
+log.info(&quot;Current date in the specified format: &quot; + startTime);
+vars.put(&quot;startTime&quot;,startTime.toString())
+SampleResult.setIgnore();</stringProp>
+        </JSR223Sampler>
+        <hashTree/>
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="WIL_UpdateOrder" enabled="true">
+          <boolProp name="TransactionController.parent">true</boolProp>
+          <boolProp name="TransactionController.includeTimers">false</boolProp>
+        </TransactionController>
+        <hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="SOAP Request" enabled="false">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">&lt;S:Envelope&#xd;
+	xmlns:env=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;&#xd;
+	xmlns:S=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;&gt;&#xd;
+	&lt;S:Header/&gt;&#xd;
+	&lt;S:Body&#xd;
+		xmlns:S=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;&#xd;
+		xmlns:wsu=&quot;http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd&quot; wsu:Id=&quot;body_a4663ca6-2ca7-480a-beee-368f959c7190&quot;&gt;&#xd;
+		&lt;ns2:updateWorkOrder&#xd;
+			xmlns:ns2=&quot;http://xmlschema.tmi.telus.com/srv/RMO/ProcessMgmt/FieldWorkAssignmentMgmtServiceRequestResponse_v3&quot;&gt;&#xd;
+			&lt;ns2:inputHeader&gt;&#xd;
+				&lt;systemSourceCd&gt;3259&lt;/systemSourceCd&gt;&#xd;
+				&lt;userId&gt;SADMIN&lt;/userId&gt;&#xd;
+				&lt;requestDate&gt;2022-12-13T18:51:27.000Z&lt;/requestDate&gt;&#xd;
+			&lt;/ns2:inputHeader&gt;&#xd;
+			&lt;ns2:workOrder&gt;&#xd;
+				&lt;workOrderId&gt;100034478153&lt;/workOrderId&gt;&#xd;
+				&lt;originatingSystemId&gt;3259&lt;/originatingSystemId&gt;&#xd;
+				&lt;originatingSystemWorkOrderId&gt;00250011432&lt;/originatingSystemWorkOrderId&gt;&#xd;
+				&lt;originatingSystemWorkOrderInternalId&gt;00250011116&lt;/originatingSystemWorkOrderInternalId&gt;&#xd;
+				&lt;classificationCd&gt;TROUBLE&lt;/classificationCd&gt;&#xd;
+				&lt;serviceClassCd&gt;R&lt;/serviceClassCd&gt;&#xd;
+				&lt;productCategoryCd&gt;DSL&lt;/productCategoryCd&gt;&#xd;
+				&lt;productTechnologyCd&gt;COPPER_BONDED&lt;/productTechnologyCd&gt;&#xd;
+				&lt;workGroupCd&gt;TELUS TV&lt;/workGroupCd&gt;&#xd;
+				&lt;workOrderActionCd&gt;R&lt;/workOrderActionCd&gt;&#xd;
+				&lt;jobTypeCd&gt;HS&lt;/jobTypeCd&gt;&#xd;
+				&lt;outofServiceInd&gt;false&lt;/outofServiceInd&gt;&#xd;
+				&lt;serviceIdentification&gt;&#xd;
+					&lt;typeCd&gt;PHONE&lt;/typeCd&gt;&#xd;
+					&lt;descriptionTxt&gt;6045893581&lt;/descriptionTxt&gt;&#xd;
+				&lt;/serviceIdentification&gt;&#xd;
+				&lt;hostReadyForDispatchInd&gt;true&lt;/hostReadyForDispatchInd&gt;&#xd;
+				&lt;overrideInd&gt;false&lt;/overrideInd&gt;&#xd;
+				&lt;appointmentStartDate&gt;2022-12-17T16:00:00.000Z&lt;/appointmentStartDate&gt;&#xd;
+				&lt;appointmentEndDate&gt;2022-12-17T17:00:00.000Z&lt;/appointmentEndDate&gt;&#xd;
+				&lt;estimatedDurationNum&gt;1.75&lt;/estimatedDurationNum&gt;&#xd;
+				&lt;estimatedDurationUnitCd&gt;HOURS&lt;/estimatedDurationUnitCd&gt;&#xd;
+				&lt;location&gt;&#xd;
+					&lt;locationList&gt;&#xd;
+						&lt;typeCode&gt;SERVICE&lt;/typeCode&gt;&#xd;
+						&lt;dispatchLocationInd&gt;true&lt;/dispatchLocationInd&gt;&#xd;
+						&lt;fmsAddress&gt;&#xd;
+							&lt;apartmentNumber&gt;6&lt;/apartmentNumber&gt;&#xd;
+							&lt;houseNumber&gt;15332&lt;/houseNumber&gt;&#xd;
+							&lt;streetName&gt;100 AVE&lt;/streetName&gt;&#xd;
+							&lt;cityName&gt;SURREY&lt;/cityName&gt;&#xd;
+							&lt;provinceCode&gt;BC&lt;/provinceCode&gt;&#xd;
+							&lt;postalCode&gt;V3R7T8&lt;/postalCode&gt;&#xd;
+							&lt;fmsCoId&gt;WHLY&lt;/fmsCoId&gt;&#xd;
+							&lt;countryCode&gt;CANADA&lt;/countryCode&gt;&#xd;
+						&lt;/fmsAddress&gt;&#xd;
+					&lt;/locationList&gt;&#xd;
+				&lt;/location&gt;&#xd;
+				&lt;customerName&gt;PANDURU CINDY&lt;/customerName&gt;&#xd;
+				&lt;customerRatingCd&gt;6&lt;/customerRatingCd&gt;&#xd;
+				&lt;customerTypeCd&gt;CUSTOMER&lt;/customerTypeCd&gt;&#xd;
+				&lt;contactList&gt;&#xd;
+					&lt;name&gt;cindy  &lt;/name&gt;&#xd;
+					&lt;typeCd&gt;CBR&lt;/typeCd&gt;&#xd;
+					&lt;phoneNumber&gt;7787892783&lt;/phoneNumber&gt;&#xd;
+					&lt;phoneLocationCd&gt;AUT&lt;/phoneLocationCd&gt;&#xd;
+				&lt;/contactList&gt;&#xd;
+				&lt;customerId&gt;41270047&lt;/customerId&gt;&#xd;
+				&lt;customerIdTypeCd&gt;CUSTOMER_ID&lt;/customerIdTypeCd&gt;&#xd;
+				&lt;originatingSystemCreateDate&gt;2022-12-13T18:51:11.000Z&lt;/originatingSystemCreateDate&gt;&#xd;
+				&lt;workOrderAttributeList&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;CHRONIC_INDICATOR&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt&gt;false&lt;/descriptionTxt&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;CREATE_DATE&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt&gt;20221212T225541&lt;/descriptionTxt&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;CRTC&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt&gt;false&lt;/descriptionTxt&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;DISPATCH_REQUESTOR&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt&gt;SADMIN&lt;/descriptionTxt&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;LEVEL_1&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt&gt;Troubleshoot&lt;/descriptionTxt&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;LEVEL_2&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt&gt;No Sync&lt;/descriptionTxt&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;LEVEL_3&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt&gt;Previously Worked&lt;/descriptionTxt&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;PARENT_IND&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt&gt;false&lt;/descriptionTxt&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;PATTERN_IND&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt&gt;false&lt;/descriptionTxt&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;REPEAT_INDICATOR&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt&gt;true&lt;/descriptionTxt&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;SEVERITY&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt&gt;LOW&lt;/descriptionTxt&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;SUSPENDED&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt&gt;false&lt;/descriptionTxt&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;TROUBLE_TYPE&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt&gt;HSIA&lt;/descriptionTxt&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+				&lt;/workOrderAttributeList&gt;&#xd;
+				&lt;workOrderDetailList&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;Activity&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt&gt;TroubleTicketActivityData: &#xd;
+  ActivityCreateDateTime: 20221213T185126&#xd;
+  ActivityTypeCode: Dispatch&#xd;
+  ActivityComments: Dispatch requested&#xd;
+TroubleTicketActivityData: &#xd;
+  ActivityCreateDateTime: 20221213T185114&#xd;
+  ActivityTypeCode: Route&#xd;
+  ActivityComments: RendezVous Self Serve: Automated dispatch due to customer rescheduling through self-serve  Dispatch requested&#xd;
+TroubleTicketActivityData: &#xd;
+  ActivityCreateDateTime: 20221213T185112&#xd;
+  ActivityTypeCode: Appointment&#xd;
+  ActivityComments: WFM Appointment selected by EXTERNAL CUSTOMER.---Appointment booked in WFM.&#xd;
+TroubleTicketActivityData: &#xd;
+  ActivityCreateDateTime: 20221212T232842&#xd;
+  ActivityTypeCode: Line Test Requested&#xd;
+  ActivityComments: HSIA - Troubleshoot - No Sync trouble type. Line test requested by LYNX Workflow.&#xd;
+TroubleTicketActivityData: &#xd;
+  ActivityCreateDateTime: 20221212T231913&#xd;
+  ActivityTypeCode: Email - Outbound&#xd;
+  ActivityComments: Customer notification request has been delivered to NotificationService.   Appointment is booked by  X201984.&#xd;
+TroubleTicketActivityData: &#xd;
+  ActivityCreateDateTime: 20221212T230318&#xd;
+  ActivityTypeCode: Dispatch&#xd;
+  ActivityComments: Dispatch requested&#xd;
+TroubleTicketActivityData: &#xd;
+  ActivityCreateDateTime: 20221212T230212&#xd;
+  ActivityTypeCode: Route&#xd;
+  ActivityComments: Proactive Assurance Outbound - Reliability Project. [Brand Minder - (LOOPBOND)]=&#xd;
+Comments: RELIABILITY PROJECT – Proactive customer contact. Confirmed (Initiative Purpose/issues experienced | Customer (confirmed/aware of next steps). Advised customer that it would still be technician discretion for the best resolution on the issue (replace equipment, rework wirings, etc)&#xd;
+TroubleTicketActivityData: &#xd;
+  ActivityCreateDateTime: 20221212T225849&#xd;
+  ActivityTypeCode: Appointment&#xd;
+  ActivityComments: WFM Appointment selected by X201984.---Appointment booked in WFM.&#xd;
+&lt;/descriptionTxt&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;Assignment&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt&gt;TroubleTicketFacilityData: &#xd;
+  LRN: &#xd;
+  LineEquipment: TCU036.0.05.00.1&#xd;
+  DSLBayUnitNumber: APA2314/0339&#xd;
+  ServiceAddress: &#xd;
+    ServiceAddressIndicator: Z&#xd;
+    Path: &#xd;
+      PathSequenceNumber: L00&#xd;
+      Cable: &#xd;
+        CableType: Terminal 1&#xd;
+        CableNumber: 10356&#xd;
+        CablePairNumber: 356&#xd;
+        CableBindingPost: BP#    56&#xd;
+        CableTerminalId: 5763&#xd;
+        CableTerminalAddress: 15328 100 AVE SURREY BC&#xd;
+      Cable: &#xd;
+        CableType: Feeder&#xd;
+        CableNumber: 42&#xd;
+        CablePairNumber: 3185&#xd;
+        CableBindingPost: BP#  1235&#xd;
+        CableTerminalId: 2314&#xd;
+        CableTerminalAddress: 1P S 100 AVE 152 ST SURREY BC&#xd;
+      Cable: &#xd;
+        CableType: Distribution&#xd;
+        CableNumber: 2314&#xd;
+        CablePairNumber: 2185&#xd;
+        CableBindingPost: BP#   385&#xd;
+        CableTerminalId: 10356&#xd;
+        CableTerminalAddress: UNDR GRND PARK 15238 100 AVE SURREY BC&#xd;
+      Device: &#xd;
+        ONTTypeCode: &#xd;
+        ONTRegistrationCode: &#xd;
+TroubleTicketFacilityData: &#xd;
+  LRN: &#xd;
+  LineEquipment: &#xd;
+  DSLBayUnitNumber: NA&#xd;
+  ServiceAddress: &#xd;
+    ServiceAddressIndicator: &#xd;
+    Path: &#xd;
+      PathSequenceNumber: B01&#xd;
+      Device: &#xd;
+        ONTTypeCode: &#xd;
+        ONTRegistrationCode: &#xd;
+TroubleTicketFacilityData: &#xd;
+  LRN: &#xd;
+  LineEquipment: &#xd;
+  DSLBayUnitNumber: &#xd;
+  ServiceAddress: &#xd;
+    ServiceAddressIndicator: &#xd;
+    Path: &#xd;
+      PathSequenceNumber: B02&#xd;
+      Device: &#xd;
+        ONTTypeCode: &#xd;
+        ONTRegistrationCode: &#xd;
+&lt;/descriptionTxt&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;Line_Test_Results&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt&gt;SummaryResult: NO RINGERS&#xd;
+OhmsShort: &#xd;
+Capacitance: Capacitance: Mutual =   Cable =&#xd;
+&lt;/descriptionTxt&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;Trouble&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt&gt;SourceTypeCode: CUSTOMER&#xd;
+ServiceTelephoneNumber: 6045893581&#xd;
+SeverityCode: 6 - LOW&#xd;
+SMCAlliance: &#xd;
+DotNetCustomerUserId: &#xd;
+StationField: &#xd;
+NonPubFlag: &#xd;
+TroubleClassification: &#xd;
+  LineOfBusinessCode: . NET&#xd;
+  TroubleTypeCode: HSIA&#xd;
+  Level1: Troubleshoot&#xd;
+  Level2: No Sync&#xd;
+  Level3: Previously Worked&#xd;
+PortAssignment: SRRYBCU0121DS01 1 3 39&#xd;
+PortAssignmentCategory: DSLAM&#xd;
+PortAssignmentType: Alcatel Telecom - A7330_ISAM&#xd;
+DispatchCustomerTier:  &#xd;
+CustomerSubscription: &#xd;
+  TerminalEquipmentSystem: &#xd;
+  TerminalEquipmentNotes: &#xd;
+  SubscriptionDescription: &#xd;
+  Product: &#xd;
+    ProductApplicationXref: &#xd;
+      ApplicationCode: CSS SERVICE DESIGNATION&#xd;
+      ApplicationProductName: ADSL&#xd;
+  SubscriptionDotNetParameter: &#xd;
+    DealName: [High Speed Pack]:High Speed 100|[Installing Party]:Self Installed|[Commitment Period]:2|[IP Address]:2|[IP Address Type]:Dynamic&#xd;
+    BroadbandType: Self Installed&#xd;
+  ProductType: broadband&#xd;
+PriorityIndex: &#xd;
+ContractData: &#xd;
+  ContractTypeCode: &#xd;
+RepairPONumber: &#xd;
+TerritoryCode: &#xd;
+&lt;/descriptionTxt&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;History&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt&gt;TroubleTicketHistoryData: &#xd;
+  TroubleTicket: &#xd;
+    LineOfBusinessCode: Voice&#xd;
+    SourceTypeCode: CUSTOMER&#xd;
+    TroubleTypeCode: HSIA&#xd;
+    Level1: Troubleshoot&#xd;
+    ConditionCode: In Service&#xd;
+    TTConditionCode: &#xd;
+    LastDispatchSystem: WFM&#xd;
+  ResolutionCode1: Outside Plant&#xd;
+  ResolutionCode2: Not jumpered&#xd;
+  ResolutionCode3: Not Required&#xd;
+  ActualCompleteDateTime: 20220107T010914&#xd;
+  ActivityComments: WFM Actual Complete Time (UTC): 20220107T010914.&#xd;
+&lt;/descriptionTxt&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+				&lt;/workOrderDetailList&gt;&#xd;
+				&lt;remarkList&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;FOR_TECHNICIAN&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt&gt;Description: *REPEAT* Proactive Assurance Outbound - Reliability Project. [Brand Minder - (LOOPBOND)]&#xd;
+Comments: #coconut00${__Random(11000,11500,)} &#xd;
+NAME:  cindy panduru      &#xd;
+STN:  6045893581&#xd;
+BAN:  601907371&#xd;
+CBR:  7787892783&#xd;
+BRAND MINDER:    loopbond&#xd;
+Address: 6 15332 100 AVE, SURREY, BC, CAN V3R 7T8&#xd;
+LYNX: 1059054143&#xd;
+&#xd;
+Proactive Initiative: Loop Bonding Issues &#xd;
+&#xd;
+Name of Customer Who You Spoke With: cindy panduru&#xd;
+Date of Dispatch Selected:  DEC 15 THUR 3-5PM.&#xd;
+Name of Individual Who Will Be Present for the Dispatch Visit: cindy panduru&#xd;
+&#xd;
+Used TechSee: Yes/No &#xd;
+&#xd;
+Type of Issue Confirmed: (Constant) &#xd;
+&#xd;
+What TS steps were performed? &#xd;
+&#xd;
+insight detects no sync on dsl2.&#xd;
+guide cx on physical check on the modem confirmed no sync on dsl2.&#xd;
+also guide cx on speedtest, confirmed only able to get around 26.9mbps.&#xd;
+already test check dsl2 reseat but its still the same.&#xd;
+cx accepted tech appt.&#xd;
+&#xd;
+TS Details: The customer has only 1 active line during the time of call (be specific which line is active), Instances that the line is inactive is it daily or weekly? what is the issue primary or secondary,l what did you observe on insight during the call). &#xd;
+&#xd;
+Proactive Assurance Outbound - Reliability Project. [Brand Minder - (LOOPBOND)]=&#xd;
+Comments: RELIABILITY PROJECT – Proactive customer contact. Confirmed (Initiative Purpose/issues experienced | Customer (confirmed/aware of next steps). Advised customer that it would still be technician discretion for the best resolution on the issue (replace equipment, rework wirings, etc)&#xd;
+SpecialInstructionComment: &#xd;
+AccessInformation: nocbr2&#xd;
+SLA Name: &#xd;
+RouteActivityComments:&#xd;
+20221213T185114  RendezVous Self Serve: Automated dispatch due to customer rescheduling through self-serve  Dispatch requested&#xd;
+&lt;/descriptionTxt&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;GENERAL&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt&gt;&lt;/descriptionTxt&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+				&lt;/remarkList&gt;&#xd;
+			&lt;/ns2:workOrder&gt;&#xd;
+		&lt;/ns2:updateWorkOrder&gt;&#xd;
+	&lt;/S:Body&gt;&#xd;
+&lt;/S:Envelope&gt;</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">apigw-soap-st.tsl.telus.com</stringProp>
+            <stringProp name="HTTPSampler.port">443</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">soap/is01/RMO/ProcessMgmt/FieldWorkAssignmentMgmtService_v3_0_RP</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">false</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <boolProp name="HTTPSampler.image_parser">true</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout">0</stringProp>
+            <stringProp name="HTTPSampler.response_timeout">0</stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Headers" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Authorization" elementType="Header">
+                  <stringProp name="Header.name">Authorization</stringProp>
+                  <stringProp name="Header.value">Basic QVBQX1JFTkRFWlZPVVM6c29hb3JnaWQ=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+            <DurationAssertion guiclass="DurationAssertionGui" testclass="DurationAssertion" testname="Timeout Check" enabled="true">
+              <stringProp name="DurationAssertion.duration">0</stringProp>
+            </DurationAssertion>
+            <hashTree/>
+            <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223PostProcessor" enabled="true">
+              <stringProp name="filename"></stringProp>
+              <stringProp name="script">vars.putObject(&apos;count&apos;, 0)</stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="scriptLanguage">groovy</stringProp>
+              <stringProp name="cacheKey">false</stringProp>
+            </JSR223PostProcessor>
+            <hashTree/>
+            <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223PostProcessor" enabled="true">
+              <stringProp name="filename"></stringProp>
+              <stringProp name="script">vars.put(&apos;authorizationValue&apos;, org.apache.jmeter.protocol.http.util.Base64Encoder.encode(&apos;APP_RENDEZVOUS&apos; + &apos;:&apos; + lr_decrypt))</stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="scriptLanguage">groovy</stringProp>
+              <stringProp name="cacheKey">false</stringProp>
+            </JSR223PostProcessor>
+            <hashTree/>
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="workOrderId" enabled="true">
+              <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+              <stringProp name="RegexExtractor.refname">workOrderId</stringProp>
+              <stringProp name="RegexExtractor.regex">&lt;workOrderId&gt;([^&quot;]+)&lt;/workOrderId&gt;</stringProp>
+              <stringProp name="RegexExtractor.template">$1$</stringProp>
+              <stringProp name="RegexExtractor.default"></stringProp>
+              <stringProp name="RegexExtractor.match_number">1</stringProp>
+              <boolProp name="RegexExtractor.default_empty_value">true</boolProp>
+            </RegexExtractor>
+            <hashTree/>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="106771359">ServiceAddress</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.custom_message"></stringProp>
+              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">2</intProp>
+              <stringProp name="Assertion.scope">all</stringProp>
+            </ResponseAssertion>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="SOAP Request" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">&lt;S:Envelope&#xd;
+	xmlns:env=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;&#xd;
+	xmlns:S=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;&gt;&#xd;
+	&lt;S:Header/&gt;&#xd;
+	&lt;S:Body&#xd;
+		xmlns:S=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;&#xd;
+		xmlns:wsu=&quot;http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd&quot; wsu:Id=&quot;body_a4663ca6-2ca7-480a-beee-368f959c7190&quot;&gt;&#xd;
+		&lt;ns2:updateWorkOrder&#xd;
+			xmlns:ns2=&quot;http://xmlschema.tmi.telus.com/srv/RMO/ProcessMgmt/FieldWorkAssignmentMgmtServiceRequestResponse_v3&quot;&gt;&#xd;
+			&lt;ns2:inputHeader&gt;&#xd;
+				&lt;systemSourceCd&gt;3259&lt;/systemSourceCd&gt;&#xd;
+				&lt;userId&gt;SADMIN&lt;/userId&gt;&#xd;
+				&lt;requestDate&gt;2023-03-07T18:51:27.000Z&lt;/requestDate&gt;&#xd;
+			&lt;/ns2:inputHeader&gt;&#xd;
+			&lt;ns2:workOrder&gt;&#xd;
+				&lt;workOrderId&gt;${workOrderID}&lt;/workOrderId&gt;&#xd;
+				&lt;originatingSystemId&gt;3259&lt;/originatingSystemId&gt;&#xd;
+				&lt;originatingSystemWorkOrderId&gt;${originatingSystemWorkOrderId}&lt;/originatingSystemWorkOrderId&gt;&#xd;
+				&lt;originatingSystemWorkOrderInternalId&gt;${originatingSystemWorkOrderInternalId}&lt;/originatingSystemWorkOrderInternalId&gt;&#xd;
+				&lt;classificationCd&gt;TROUBLE&lt;/classificationCd&gt;&#xd;
+				&lt;serviceClassCd&gt;R&lt;/serviceClassCd&gt;&#xd;
+				&lt;productCategoryCd&gt;POTS&lt;/productCategoryCd&gt;&#xd;
+				&lt;productTechnologyCd&gt;COPPER&lt;/productTechnologyCd&gt;&#xd;
+				&lt;workGroupCd&gt;TELUS TV&lt;/workGroupCd&gt;&#xd;
+				&lt;workOrderActionCd&gt;R&lt;/workOrderActionCd&gt;&#xd;
+				&lt;jobTypeCd&gt;VOICE&lt;/jobTypeCd&gt;&#xd;
+				&lt;outofServiceInd&gt;true&lt;/outofServiceInd&gt;&#xd;
+				&lt;serviceIdentification&gt;&#xd;
+					&lt;typeCd&gt;PHONE&lt;/typeCd&gt;&#xd;
+					&lt;descriptionTxt&gt;6045893581&lt;/descriptionTxt&gt;&#xd;
+				&lt;/serviceIdentification&gt;&#xd;
+				&lt;hostReadyForDispatchInd&gt;true&lt;/hostReadyForDispatchInd&gt;&#xd;
+				&lt;overrideInd&gt;false&lt;/overrideInd&gt;&#xd;
+				&lt;appointmentStartDate&gt;${appointmentStartDate}&lt;/appointmentStartDate&gt;&#xd;
+				&lt;appointmentEndDate&gt;${appointmentEndDate}&lt;/appointmentEndDate&gt;&#xd;
+				&lt;estimatedDurationNum&gt;1.75&lt;/estimatedDurationNum&gt;&#xd;
+				&lt;estimatedDurationUnitCd&gt;HOURS&lt;/estimatedDurationUnitCd&gt;&#xd;
+				&lt;location&gt;&#xd;
+						&lt;locationList&gt;&#xd;
+							&lt;typeCode&gt;SERVICE&lt;/typeCode&gt;&#xd;
+							&lt;dispatchLocationInd&gt;true&lt;/dispatchLocationInd&gt;&#xd;
+							&lt;locationAddress&gt;&#xd;
+								&lt;locationId&gt;${LocationId}&lt;/locationId&gt;&#xd;
+							&lt;/locationAddress&gt;&#xd;
+						&lt;/locationList&gt;&#xd;
+					&lt;/location&gt;&#xd;
+				&lt;customerName&gt;PANDURU CINDY&lt;/customerName&gt;&#xd;
+				&lt;customerRatingCd&gt;6&lt;/customerRatingCd&gt;&#xd;
+				&lt;customerTypeCd&gt;CUSTOMER&lt;/customerTypeCd&gt;&#xd;
+				&lt;contactList&gt;&#xd;
+					&lt;name&gt;cindy  &lt;/name&gt;&#xd;
+					&lt;typeCd&gt;CBR&lt;/typeCd&gt;&#xd;
+					&lt;phoneNumber&gt;7787892783&lt;/phoneNumber&gt;&#xd;
+					&lt;phoneLocationCd&gt;AUT&lt;/phoneLocationCd&gt;&#xd;
+				&lt;/contactList&gt;&#xd;
+				&lt;customerId&gt;41270047&lt;/customerId&gt;&#xd;
+				&lt;customerIdTypeCd&gt;CUSTOMER_ID&lt;/customerIdTypeCd&gt;&#xd;
+				&lt;originatingSystemCreateDate&gt;2022-12-13T18:51:11.000Z&lt;/originatingSystemCreateDate&gt;&#xd;
+				&lt;workOrderAttributeList&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;CHRONIC_INDICATOR&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt&gt;false&lt;/descriptionTxt&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;CREATE_DATE&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt&gt;20221212T225541&lt;/descriptionTxt&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;CRTC&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt&gt;false&lt;/descriptionTxt&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;DISPATCH_REQUESTOR&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt&gt;SADMIN&lt;/descriptionTxt&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;LEVEL_1&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt&gt;Troubleshoot&lt;/descriptionTxt&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;LEVEL_2&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt&gt;No Sync&lt;/descriptionTxt&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;LEVEL_3&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt&gt;Previously Worked&lt;/descriptionTxt&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;PARENT_IND&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt&gt;false&lt;/descriptionTxt&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;PATTERN_IND&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt&gt;false&lt;/descriptionTxt&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;REPEAT_INDICATOR&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt&gt;true&lt;/descriptionTxt&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;SEVERITY&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt&gt;LOW&lt;/descriptionTxt&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;SUSPENDED&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt&gt;false&lt;/descriptionTxt&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;TROUBLE_TYPE&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt&gt;HSIA&lt;/descriptionTxt&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+				&lt;/workOrderAttributeList&gt;&#xd;
+				&lt;workOrderDetailList&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;Activity&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt&gt;TroubleTicketActivityData: &#xd;
+  ActivityCreateDateTime: 20221213T185126&#xd;
+  ActivityTypeCode: Dispatch&#xd;
+  ActivityComments: Dispatch requested&#xd;
+TroubleTicketActivityData: &#xd;
+  ActivityCreateDateTime: 20221213T185114&#xd;
+  ActivityTypeCode: Route&#xd;
+  ActivityComments: RendezVous Self Serve: Automated dispatch due to customer rescheduling through self-serve  Dispatch requested&#xd;
+TroubleTicketActivityData: &#xd;
+  ActivityCreateDateTime: 20221213T185112&#xd;
+  ActivityTypeCode: Appointment&#xd;
+  ActivityComments: WFM Appointment selected by EXTERNAL CUSTOMER.---Appointment booked in WFM.&#xd;
+TroubleTicketActivityData: &#xd;
+  ActivityCreateDateTime: 20221212T232842&#xd;
+  ActivityTypeCode: Line Test Requested&#xd;
+  ActivityComments: HSIA - Troubleshoot - No Sync trouble type. Line test requested by LYNX Workflow.&#xd;
+TroubleTicketActivityData: &#xd;
+  ActivityCreateDateTime: 20221212T231913&#xd;
+  ActivityTypeCode: Email - Outbound&#xd;
+  ActivityComments: Customer notification request has been delivered to NotificationService.   Appointment is booked by  X201984.&#xd;
+TroubleTicketActivityData: &#xd;
+  ActivityCreateDateTime: 20221212T230318&#xd;
+  ActivityTypeCode: Dispatch&#xd;
+  ActivityComments: Dispatch requested&#xd;
+TroubleTicketActivityData: &#xd;
+  ActivityCreateDateTime: 20221212T230212&#xd;
+  ActivityTypeCode: Route&#xd;
+  ActivityComments: Proactive Assurance Outbound - Reliability Project. [Brand Minder - (LOOPBOND)]=&#xd;
+Comments: RELIABILITY PROJECT – Proactive customer contact. Confirmed (Initiative Purpose/issues experienced | Customer (confirmed/aware of next steps). Advised customer that it would still be technician discretion for the best resolution on the issue (replace equipment, rework wirings, etc)&#xd;
+TroubleTicketActivityData: &#xd;
+  ActivityCreateDateTime: 20221212T225849&#xd;
+  ActivityTypeCode: Appointment&#xd;
+  ActivityComments: WFM Appointment selected by X201984.---Appointment booked in WFM.&#xd;
+&lt;/descriptionTxt&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;Assignment&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt&gt;TroubleTicketFacilityData: &#xd;
+  LRN: &#xd;
+  LineEquipment: TCU036.0.05.00.1&#xd;
+  DSLBayUnitNumber: APA2314/0339&#xd;
+  ServiceAddress: &#xd;
+    ServiceAddressIndicator: Z&#xd;
+    Path: &#xd;
+      PathSequenceNumber: L00&#xd;
+      Cable: &#xd;
+        CableType: Terminal 1&#xd;
+        CableNumber: 10356&#xd;
+        CablePairNumber: 356&#xd;
+        CableBindingPost: BP#    56&#xd;
+        CableTerminalId: 5763&#xd;
+        CableTerminalAddress: 15328 100 AVE SURREY BC&#xd;
+      Cable: &#xd;
+        CableType: Feeder&#xd;
+        CableNumber: 42&#xd;
+        CablePairNumber: 3185&#xd;
+        CableBindingPost: BP#  1235&#xd;
+        CableTerminalId: 2314&#xd;
+        CableTerminalAddress: 1P S 100 AVE 152 ST SURREY BC&#xd;
+      Cable: &#xd;
+        CableType: Distribution&#xd;
+        CableNumber: 2314&#xd;
+        CablePairNumber: 2185&#xd;
+        CableBindingPost: BP#   385&#xd;
+        CableTerminalId: 10356&#xd;
+        CableTerminalAddress: UNDR GRND PARK 15238 100 AVE SURREY BC&#xd;
+      Device: &#xd;
+        ONTTypeCode: &#xd;
+        ONTRegistrationCode: &#xd;
+TroubleTicketFacilityData: &#xd;
+  LRN: &#xd;
+  LineEquipment: &#xd;
+  DSLBayUnitNumber: NA&#xd;
+  ServiceAddress: &#xd;
+    ServiceAddressIndicator: &#xd;
+    Path: &#xd;
+      PathSequenceNumber: B01&#xd;
+      Device: &#xd;
+        ONTTypeCode: &#xd;
+        ONTRegistrationCode: &#xd;
+TroubleTicketFacilityData: &#xd;
+  LRN: &#xd;
+  LineEquipment: &#xd;
+  DSLBayUnitNumber: &#xd;
+  ServiceAddress: &#xd;
+    ServiceAddressIndicator: &#xd;
+    Path: &#xd;
+      PathSequenceNumber: B02&#xd;
+      Device: &#xd;
+        ONTTypeCode: &#xd;
+        ONTRegistrationCode: &#xd;
+&lt;/descriptionTxt&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;Line_Test_Results&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt&gt;SummaryResult: NO RINGERS&#xd;
+OhmsShort: &#xd;
+Capacitance: Capacitance: Mutual =   Cable =&#xd;
+&lt;/descriptionTxt&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;Trouble&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt&gt;SourceTypeCode: CUSTOMER&#xd;
+ServiceTelephoneNumber: 6045893581&#xd;
+SeverityCode: 6 - LOW&#xd;
+SMCAlliance: &#xd;
+DotNetCustomerUserId: &#xd;
+StationField: &#xd;
+NonPubFlag: &#xd;
+TroubleClassification: &#xd;
+  LineOfBusinessCode: . NET&#xd;
+  TroubleTypeCode: HSIA&#xd;
+  Level1: Troubleshoot&#xd;
+  Level2: No Sync&#xd;
+  Level3: Previously Worked&#xd;
+PortAssignment: SRRYBCU0121DS01 1 3 39&#xd;
+PortAssignmentCategory: DSLAM&#xd;
+PortAssignmentType: Alcatel Telecom - A7330_ISAM&#xd;
+DispatchCustomerTier:  &#xd;
+CustomerSubscription: &#xd;
+  TerminalEquipmentSystem: &#xd;
+  TerminalEquipmentNotes: &#xd;
+  SubscriptionDescription: &#xd;
+  Product: &#xd;
+    ProductApplicationXref: &#xd;
+      ApplicationCode: CSS SERVICE DESIGNATION&#xd;
+      ApplicationProductName: ADSL&#xd;
+  SubscriptionDotNetParameter: &#xd;
+    DealName: [High Speed Pack]:High Speed 100|[Installing Party]:Self Installed|[Commitment Period]:2|[IP Address]:2|[IP Address Type]:Dynamic&#xd;
+    BroadbandType: Self Installed&#xd;
+  ProductType: broadband&#xd;
+PriorityIndex: &#xd;
+ContractData: &#xd;
+  ContractTypeCode: &#xd;
+RepairPONumber: &#xd;
+TerritoryCode: &#xd;
+&lt;/descriptionTxt&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;History&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt&gt;TroubleTicketHistoryData: &#xd;
+  TroubleTicket: &#xd;
+    LineOfBusinessCode: Voice&#xd;
+    SourceTypeCode: CUSTOMER&#xd;
+    TroubleTypeCode: HSIA&#xd;
+    Level1: Troubleshoot&#xd;
+    ConditionCode: In Service&#xd;
+    TTConditionCode: &#xd;
+    LastDispatchSystem: WFM&#xd;
+  ResolutionCode1: Outside Plant&#xd;
+  ResolutionCode2: Not jumpered&#xd;
+  ResolutionCode3: Not Required&#xd;
+  ActualCompleteDateTime: 20220107T010914&#xd;
+  ActivityComments: WFM Actual Complete Time (UTC): 20220107T010914.&#xd;
+&lt;/descriptionTxt&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+				&lt;/workOrderDetailList&gt;&#xd;
+				&lt;remarkList&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;FOR_TECHNICIAN&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt&gt;Description: *REPEAT* Proactive Assurance Outbound - Reliability Project. [Brand Minder - (LOOPBOND)]&#xd;
+Comments: #coconut00${__Random(11000,11500,)} &#xd;
+NAME:  cindy panduru      &#xd;
+STN:  6045893581&#xd;
+BAN:  601907371&#xd;
+CBR:  7787892783&#xd;
+BRAND MINDER:    loopbond&#xd;
+Address: 6 15332 100 AVE, SURREY, BC, CAN V3R 7T8&#xd;
+LYNX: 1059054143&#xd;
+&#xd;
+Proactive Initiative: Loop Bonding Issues &#xd;
+&#xd;
+Name of Customer Who You Spoke With: cindy panduru&#xd;
+Date of Dispatch Selected:  DEC 15 THUR 3-5PM.&#xd;
+Name of Individual Who Will Be Present for the Dispatch Visit: cindy panduru&#xd;
+&#xd;
+Used TechSee: Yes/No &#xd;
+&#xd;
+Type of Issue Confirmed: (Constant) &#xd;
+&#xd;
+What TS steps were performed? &#xd;
+&#xd;
+insight detects no sync on dsl2.&#xd;
+guide cx on physical check on the modem confirmed no sync on dsl2.&#xd;
+also guide cx on speedtest, confirmed only able to get around 26.9mbps.&#xd;
+already test check dsl2 reseat but its still the same.&#xd;
+cx accepted tech appt.&#xd;
+&#xd;
+TS Details: The customer has only 1 active line during the time of call (be specific which line is active), Instances that the line is inactive is it daily or weekly? what is the issue primary or secondary,l what did you observe on insight during the call). &#xd;
+&#xd;
+Proactive Assurance Outbound - Reliability Project. [Brand Minder - (LOOPBOND)]=&#xd;
+Comments: RELIABILITY PROJECT – Proactive customer contact. Confirmed (Initiative Purpose/issues experienced | Customer (confirmed/aware of next steps). Advised customer that it would still be technician discretion for the best resolution on the issue (replace equipment, rework wirings, etc)&#xd;
+SpecialInstructionComment: &#xd;
+AccessInformation: nocbr2&#xd;
+SLA Name: &#xd;
+RouteActivityComments:&#xd;
+20221213T185114  RendezVous Self Serve: Automated dispatch due to customer rescheduling through self-serve  Dispatch requested&#xd;
+&lt;/descriptionTxt&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+					&lt;typeCode&gt;&#xd;
+						&lt;typeCd&gt;GENERAL&lt;/typeCd&gt;&#xd;
+						&lt;descriptionTxt&gt;&lt;/descriptionTxt&gt;&#xd;
+					&lt;/typeCode&gt;&#xd;
+				&lt;/remarkList&gt;&#xd;
+			&lt;/ns2:workOrder&gt;&#xd;
+		&lt;/ns2:updateWorkOrder&gt;&#xd;
+	&lt;/S:Body&gt;&#xd;
+&lt;/S:Envelope&gt;</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">apigw-soap-st.tsl.telus.com</stringProp>
+            <stringProp name="HTTPSampler.port">443</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">soap/is01/RMO/ProcessMgmt/FieldWorkAssignmentMgmtService_v3_0_RP</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">false</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <boolProp name="HTTPSampler.image_parser">true</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout">0</stringProp>
+            <stringProp name="HTTPSampler.response_timeout">0</stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Headers" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Authorization" elementType="Header">
+                  <stringProp name="Header.name">Authorization</stringProp>
+                  <stringProp name="Header.value">Basic QVBQX1JFTkRFWlZPVVM6c29hb3JnaWQ=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+            <DurationAssertion guiclass="DurationAssertionGui" testclass="DurationAssertion" testname="Timeout Check" enabled="true">
+              <stringProp name="DurationAssertion.duration">0</stringProp>
+            </DurationAssertion>
+            <hashTree/>
+            <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223PostProcessor" enabled="true">
+              <stringProp name="filename"></stringProp>
+              <stringProp name="script">vars.putObject(&apos;count&apos;, 0)</stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="scriptLanguage">groovy</stringProp>
+              <stringProp name="cacheKey">false</stringProp>
+            </JSR223PostProcessor>
+            <hashTree/>
+            <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223PostProcessor" enabled="true">
+              <stringProp name="filename"></stringProp>
+              <stringProp name="script">vars.put(&apos;authorizationValue&apos;, org.apache.jmeter.protocol.http.util.Base64Encoder.encode(&apos;APP_RENDEZVOUS&apos; + &apos;:&apos; + lr_decrypt))</stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="scriptLanguage">groovy</stringProp>
+              <stringProp name="cacheKey">false</stringProp>
+            </JSR223PostProcessor>
+            <hashTree/>
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="workOrderId" enabled="true">
+              <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+              <stringProp name="RegexExtractor.refname">workOrderId</stringProp>
+              <stringProp name="RegexExtractor.regex">&lt;workOrderId&gt;([^&quot;]+)&lt;/workOrderId&gt;</stringProp>
+              <stringProp name="RegexExtractor.template">$1$</stringProp>
+              <stringProp name="RegexExtractor.default"></stringProp>
+              <stringProp name="RegexExtractor.match_number">1</stringProp>
+              <boolProp name="RegexExtractor.default_empty_value">true</boolProp>
+            </RegexExtractor>
+            <hashTree/>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="106771359">ServiceAddress</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.custom_message"></stringProp>
+              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">2</intProp>
+              <stringProp name="Assertion.scope">all</stringProp>
+            </ResponseAssertion>
+            <hashTree/>
+          </hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">X-dynaTrace</stringProp>
+                <stringProp name="Header.value">NA=WIL_Create_Trouble;PC=${__samplerName()};VU=-${__threadNum()};ID=${__time()}</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+        </hashTree>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+      </hashTree>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>

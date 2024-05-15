@@ -1,0 +1,571 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.5">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Token" enabled="true">
+          <boolProp name="TransactionController.includeTimers">false</boolProp>
+          <boolProp name="TransactionController.parent">true</boolProp>
+        </TransactionController>
+        <hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="token" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="grant_type" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">client_credentials</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  <stringProp name="Argument.name">grant_type</stringProp>
+                </elementProp>
+                <elementProp name="scope" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">2294</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  <stringProp name="Argument.name">scope</stringProp>
+                </elementProp>
+                <elementProp name="client_id" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">b6b33f24-798e-41d1-96c8-fa7403121fc5</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  <stringProp name="Argument.name">client_id</stringProp>
+                </elementProp>
+                <elementProp name="client_secret" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">5db8c6c3-9c8b-4d79-9536-9cc65326fdb909d5d5cf-4779-40a0-8c33-2701844000b3</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  <stringProp name="Argument.name">client_secret</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">apigw-st.tsl.telus.com</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/st/token</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor" enabled="true">
+              <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+              <stringProp name="RegexExtractor.refname">access_token</stringProp>
+              <stringProp name="RegexExtractor.regex">&quot;access_token&quot;:&quot;(.+?)&quot;</stringProp>
+              <stringProp name="RegexExtractor.template">$1$</stringProp>
+              <stringProp name="RegexExtractor.default">Novalue</stringProp>
+              <stringProp name="RegexExtractor.match_number">1</stringProp>
+              <stringProp name="Sample.scope">all</stringProp>
+            </RegexExtractor>
+            <hashTree/>
+          </hashTree>
+          <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="Get Start and End Time" enabled="true">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="script">def EndTime = new Date() 
+use(groovy.time.TimeCategory) {
+    def StartTime = EndTime + 240.seconds
+    vars.put(&quot;StartTime&quot;, StartTime.getTime() as String)
+    vars.put(&quot;EndTime&quot;, EndTime.getTime() as String)
+}</stringProp>
+          </JSR223Sampler>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+  &quot;sourceSystem&quot;: &quot;S&quot;,&#xd;
+  &quot;type&quot;: &quot;14&quot;,&#xd;
+  &quot;name&quot;: &quot;B&quot;,&#xd;
+  &quot;annotation&quot;: &quot;Pilot acct created for ACME Co&quot;,&#xd;
+  &quot;startDate&quot;: &quot;2019-08-25T23:20:50.520Z&quot;,&#xd;
+  &quot;taxingProvince&quot;: &quot;AB&quot;,&#xd;
+  &quot;targetBiller&quot;: &quot;119&quot;,&#xd;
+  &quot;taxExemption&quot;: [&#xd;
+    {&#xd;
+      &quot;issuingJurisdiction&quot;: &quot;Canada&quot;,&#xd;
+      &quot;validFor&quot;: {&#xd;
+        &quot;endDateTime&quot;: &quot;9999-01-01T23:20:50.520Z&quot;&#xd;
+      }&#xd;
+    },&#xd;
+    {&#xd;
+      &quot;issuingJurisdiction&quot;: &quot;AB&quot;,&#xd;
+      &quot;validFor&quot;: {&#xd;
+        &quot;endDateTime&quot;: &quot;9999-01-01T23:20:50.520Z&quot;&#xd;
+      }&#xd;
+&#xd;
+    }&#xd;
+  ],&#xd;
+  &quot;billStructure&quot;: {&#xd;
+    &quot;language&quot;: &quot;EN&quot;,&#xd;
+    &quot;presentationMedia&quot;: [&#xd;
+      {&#xd;
+        &quot;@type&quot;: &quot;AccountManagement/TelusCore_BillPresentationMediaRef&quot;,&#xd;
+        &quot;copyCount&quot;: &quot;0001&quot;&#xd;
+      }&#xd;
+    ],&#xd;
+    &quot;format&quot;: {&#xd;
+      &quot;id&quot;: &quot;01&quot;,&#xd;
+      &quot;name&quot;: &quot;Regular Format&quot;&#xd;
+    },&#xd;
+    &quot;cycleSpecification&quot;: {&#xd;
+      &quot;frequency&quot;: &quot;Monthly&quot;,&#xd;
+      &quot;name&quot;: &quot;07&quot;&#xd;
+    }&#xd;
+  },&#xd;
+  &quot;relatedParty&quot;: [&#xd;
+    {&#xd;
+      &quot;id&quot;: &quot;99422999&quot;,&#xd;
+      &quot;name&quot;: &quot;Company Party&quot;,&#xd;
+      &quot;role&quot;: &quot;Company&quot;,&#xd;
+      &quot;organization&quot;: {&#xd;
+        &quot;tradingName&quot;: &quot;Frnçois fosénumé&quot;,&#xd;
+        &quot;nameType&quot;: &quot;INC&quot;,&#xd;
+        &quot;characteristic&quot;: {&#xd;
+          &quot;name&quot;: &quot;Registration Jurisdiction&quot;,&#xd;
+          &quot;value&quot;: &quot;F&quot;&#xd;
+        },&#xd;
+        &quot;organizationIdentification&quot;: [&#xd;
+          {&#xd;
+            &quot;type&quot;: &quot;Incorporation Number&quot;,&#xd;
+            &quot;identificationId&quot;: &quot;255667789&quot;,&#xd;
+            &quot;issuingDate&quot;: &quot;2001-08-28&quot;&#xd;
+          },&#xd;
+          {&#xd;
+            &quot;type&quot;: &quot;CBUCID&quot;,&#xd;
+            &quot;identificationId&quot;: &quot;0006785980&quot;,&#xd;
+            &quot;issuingDate&quot;: &quot;2001-08-28&quot;&#xd;
+          },&#xd;
+          {&#xd;
+            &quot;type&quot;: &quot;RCID&quot;,&#xd;
+            &quot;identificationId&quot;: &quot;0002357078&quot;,&#xd;
+            &quot;issuingDate&quot;: &quot;2001-08-28&quot;&#xd;
+          }&#xd;
+        ]&#xd;
+      }&#xd;
+    },&#xd;
+    {&#xd;
+      &quot;role&quot;: &quot;Partner&quot;,&#xd;
+      &quot;individual&quot;: {&#xd;
+        &quot;fullName&quot;: &quot;Rosaleen Rosemarie R. Red&quot;,&#xd;
+        &quot;characteristic&quot;: [&#xd;
+          {&#xd;
+            &quot;name&quot;: &quot;Position&quot;,&#xd;
+            &quot;value&quot;: &quot;CEO&quot;&#xd;
+          }&#xd;
+        ],&#xd;
+        &quot;contactMedium&quot;: [&#xd;
+          {&#xd;
+            &quot;mediumType&quot;: &quot;Telecom&quot;,&#xd;
+            &quot;characteristic&quot;: {&#xd;
+              &quot;contactType&quot;: &quot;Daytime Phone Number&quot;,&#xd;
+              &quot;phoneNumber&quot;: &quot;6040000001&quot;&#xd;
+            }&#xd;
+          }&#xd;
+        ]&#xd;
+      }&#xd;
+    },&#xd;
+    {&#xd;
+      &quot;role&quot;: &quot;Partner&quot;,&#xd;
+      &quot;individual&quot;: {&#xd;
+        &quot;fullName&quot;: &quot;Graham Gregory G. Greenland&quot;,&#xd;
+        &quot;characteristic&quot;: [&#xd;
+          {&#xd;
+            &quot;name&quot;: &quot;Position&quot;,&#xd;
+            &quot;value&quot;: &quot;SVP&quot;&#xd;
+          }&#xd;
+        ],&#xd;
+        &quot;contactMedium&quot;: [&#xd;
+          {&#xd;
+            &quot;mediumType&quot;: &quot;Telecom&quot;,&#xd;
+            &quot;characteristic&quot;: {&#xd;
+              &quot;contactType&quot;: &quot;Daytime Phone Number&quot;,&#xd;
+              &quot;phoneNumber&quot;: &quot;6040000002&quot;&#xd;
+            }&#xd;
+          }&#xd;
+        ]&#xd;
+      }&#xd;
+    },&#xd;
+    {&#xd;
+      &quot;role&quot;: &quot;Partner&quot;,&#xd;
+      &quot;individual&quot;: {&#xd;
+        &quot;fullName1&quot;: &quot;Benjamin Bobby Bruce Bluemountain&quot;,&#xd;
+        &quot;characteristic&quot;: [&#xd;
+          {&#xd;
+            &quot;name&quot;: &quot;Position&quot;,&#xd;
+            &quot;value&quot;: &quot;EVP&quot;&#xd;
+          }&#xd;
+        ],&#xd;
+        &quot;contactMedium&quot;: [&#xd;
+          {&#xd;
+            &quot;mediumType&quot;: &quot;Telecom&quot;,&#xd;
+            &quot;characteristic&quot;: {&#xd;
+              &quot;contactType&quot;: &quot;Daytime Phone Number&quot;,&#xd;
+              &quot;phoneNumber&quot;: &quot;6040000003&quot;&#xd;
+            }&#xd;
+          }&#xd;
+        ]&#xd;
+      }&#xd;
+    },&#xd;
+    {&#xd;
+      &quot;role&quot;: &quot;Partner&quot;,&#xd;
+      &quot;individual&quot;: {&#xd;
+        &quot;fullName&quot;: &quot;Test partner 4&quot;,&#xd;
+        &quot;characteristic&quot;: [&#xd;
+          {&#xd;
+            &quot;name&quot;: &quot;Position&quot;,&#xd;
+            &quot;value&quot;: &quot;EVP&quot;&#xd;
+          }&#xd;
+        ],&#xd;
+        &quot;contactMedium&quot;: [&#xd;
+          {&#xd;
+            &quot;mediumType&quot;: &quot;Telecom&quot;,&#xd;
+            &quot;characteristic&quot;: {&#xd;
+              &quot;contactType&quot;: &quot;Daytime Phone Number&quot;,&#xd;
+              &quot;phoneNumber&quot;: &quot;6040000004&quot;&#xd;
+            }&#xd;
+          }&#xd;
+        ]&#xd;
+      }&#xd;
+    },&#xd;
+    {&#xd;
+      &quot;role&quot;: &quot;Partner5&quot;,&#xd;
+      &quot;individual&quot;: {&#xd;
+        &quot;fullName&quot;: &quot;Benjamin Bobby Bruce Bluemountain&quot;,&#xd;
+        &quot;characteristic&quot;: [&#xd;
+          {&#xd;
+            &quot;name&quot;: &quot;Position&quot;,&#xd;
+            &quot;value&quot;: &quot;EVP&quot;&#xd;
+          }&#xd;
+        ],&#xd;
+        &quot;contactMedium&quot;: [&#xd;
+          {&#xd;
+            &quot;mediumType&quot;: &quot;Telecom&quot;,&#xd;
+            &quot;medium&quot;: {&#xd;
+              &quot;characteristic&quot;: &quot;Daytime Phone Number&quot;,&#xd;
+              &quot;contactType&quot;: &quot;6040000005&quot;&#xd;
+            }&#xd;
+          }&#xd;
+        ]&#xd;
+      }&#xd;
+    },&#xd;
+    {&#xd;
+      &quot;id&quot;: &quot;?&quot;,&#xd;
+      &quot;name&quot;: &quot;Account creator&quot;,&#xd;
+      &quot;role&quot;: &quot;CSR&quot;,&#xd;
+      &quot;individual&quot;: {&#xd;
+        &quot;individualIdentification&quot;: [&#xd;
+          {&#xd;
+            &quot;type&quot;: &quot;TeamMemberID&quot;,&#xd;
+            &quot;identificationId&quot;: &quot;T555123&quot;&#xd;
+          }&#xd;
+        ],&#xd;
+        &quot;fullName&quot;: &quot;étendu Black&quot;,&#xd;
+        &quot;characteristic&quot;: [&#xd;
+          {&#xd;
+            &quot;name&quot;: &quot;initials&quot;,&#xd;
+            &quot;value&quot;: &quot;gâ&quot;&#xd;
+          },&#xd;
+          {&#xd;
+            &quot;name&quot;: &quot;nickName&quot;,&#xd;
+            &quot;value&quot;: &quot;grâce&quot;&#xd;
+          }&#xd;
+        ],&#xd;
+        &quot;contactMedium&quot;: [&#xd;
+          {&#xd;
+            &quot;mediumType&quot;: &quot;Telecom&quot;,&#xd;
+            &quot;characteristic&quot;: {&#xd;
+              &quot;contactType&quot;: &quot;Daytime Phone Number&quot;,&#xd;
+              &quot;phoneNumber&quot;: &quot;6046956502&quot;&#xd;
+            }&#xd;
+          }&#xd;
+        ]&#xd;
+      }&#xd;
+    },&#xd;
+    {&#xd;
+      &quot;id&quot;: &quot;?&quot;,&#xd;
+      &quot;name&quot;: &quot;Account guarantor&quot;,&#xd;
+      &quot;role&quot;: &quot;Guarantor&quot;,&#xd;
+      &quot;individual&quot;: {&#xd;
+        &quot;fullName&quot;: &quot;grâce White&quot;,&#xd;
+        &quot;characteristic&quot;: [&#xd;
+          {&#xd;
+            &quot;name&quot;: &quot;guaranteeAmount&quot;,&#xd;
+            &quot;value&quot;: &quot;123&quot;&#xd;
+          },&#xd;
+          {&#xd;
+            &quot;name&quot;: &quot;guaranteeExpiry&quot;,&#xd;
+            &quot;value&quot;: &quot;2021-08-29&quot;&#xd;
+          }&#xd;
+        ],&#xd;
+        &quot;contactMedium&quot;: [&#xd;
+          {&#xd;
+            &quot;mediumType&quot;: &quot;Telecom&quot;,&#xd;
+            &quot;characteristic&quot;: {&#xd;
+              &quot;contactType&quot;: &quot;Daytime Phone Number&quot;,&#xd;
+              &quot;phoneNumber&quot;: &quot;6045551234&quot;&#xd;
+            }&#xd;
+          }&#xd;
+        ]&#xd;
+      }&#xd;
+    },&#xd;
+    {&#xd;
+      &quot;id&quot;: &quot;?&quot;,&#xd;
+      &quot;name&quot;: &quot;Account reference&quot;,&#xd;
+      &quot;role&quot;: &quot;Reference&quot;,&#xd;
+      &quot;individual&quot;: {&#xd;
+        &quot;fullName&quot;: &quot;François Violet&quot;,&#xd;
+        &quot;contactMedium&quot;: [&#xd;
+          {&#xd;
+            &quot;mediumType&quot;: &quot;Telecom&quot;,&#xd;
+            &quot;characteristic&quot;: {&#xd;
+              &quot;contactType&quot;: &quot;Daytime Phone Number&quot;,&#xd;
+              &quot;phoneNumber&quot;: &quot;6045551234&quot;&#xd;
+            }&#xd;
+          }&#xd;
+        ],&#xd;
+        &quot;characteristic&quot;: [&#xd;
+          {&#xd;
+            &quot;name&quot;: &quot;relationshipType&quot;,&#xd;
+            &quot;value&quot;: &quot;Coworker&quot;&#xd;
+          }&#xd;
+        ]&#xd;
+      }&#xd;
+    },&#xd;
+    {&#xd;
+      &quot;id&quot;: &quot;?&quot;,&#xd;
+      &quot;name&quot;: &quot;Credit&quot;,&#xd;
+      &quot;role&quot;: &quot;Credit&quot;,&#xd;
+      &quot;individual&quot;: {&#xd;
+        &quot;individualIdentification&quot;: [&#xd;
+          {&#xd;
+            &quot;type&quot;: &quot;SIN&quot;,&#xd;
+            &quot;identificationId&quot;: &quot;111222333&quot;&#xd;
+          },&#xd;
+          {&#xd;
+            &quot;type&quot;: &quot;DRIV-LIC-NO&quot;,&#xd;
+            &quot;identificationId&quot;: &quot;123456789&quot;&#xd;
+          }&#xd;
+        ],&#xd;
+        &quot;birthDate&quot;: &quot;2000-08-27&quot;,&#xd;
+        &quot;fullName&quot;: &quot;Cathy fossé&quot;,&#xd;
+        &quot;contactMedium&quot;: [&#xd;
+          {&#xd;
+            &quot;mediumType&quot;: &quot;Telecom&quot;,&#xd;
+            &quot;characteristic&quot;: {&#xd;
+              &quot;contactType&quot;: &quot;Credit Phone Number&quot;,&#xd;
+              &quot;phoneNumber&quot;: &quot;6040000000&quot;&#xd;
+            }&#xd;
+          }&#xd;
+        ]&#xd;
+      },&#xd;
+      &quot;organization&quot;: {&#xd;
+          &quot;@type&quot;: &quot;PartyRole&quot;,&#xd;
+          &quot;name&quot;: &quot;Credit&quot;,&#xd;
+          &quot;type&quot;: &quot;CompanyCredit&quot;,&#xd;
+          &quot;creditProfile&quot;: [&#xd;
+            {&#xd;
+              &quot;@type&quot;: &quot;PartyRole/TelusCore_CreditProfile&quot;,&#xd;
+              &quot;coreOtherWorkingServiceNumber&quot;: [&#xd;
+                {&#xd;
+                  &quot;id&quot;: &quot;6045558901&quot;,&#xd;
+                  &quot;idType&quot;: &quot;Other Working Service&quot;&#xd;
+                }&#xd;
+              ],&#xd;
+              &quot;estimatedMonthlyCharges&quot;: &quot;12345&quot;,&#xd;
+              &quot;creditRiskRating&quot;: &quot;G&quot;&#xd;
+            }&#xd;
+          ]&#xd;
+      }&#xd;
+    }&#xd;
+  ],&#xd;
+  &quot;contact&quot;: [&#xd;
+    {&#xd;
+      &quot;contactName&quot;: &quot;Barb àÀÂçë&quot;,&#xd;
+      &quot;contactType&quot;: &quot;Primary&quot;,&#xd;
+      &quot;validFor&quot;: {&#xd;
+        &quot;startDateTime&quot;: &quot;2019-08-30T23:20:50.520Z&quot;&#xd;
+      },&#xd;
+      &quot;contactMedium&quot;: [&#xd;
+        {&#xd;
+          &quot;mediumType&quot;: &quot;Electronic&quot;,&#xd;
+          &quot;characteristic&quot;: {&#xd;
+            &quot;contactType&quot;: &quot;Email&quot;,&#xd;
+            &quot;emailAddress&quot;: &quot;grace.lou@telus.com&quot;&#xd;
+          }&#xd;
+        },&#xd;
+        {&#xd;
+          &quot;contactType&quot;: &quot;Telecom&quot;,&#xd;
+          &quot;characteristic&quot;: {&#xd;
+            &quot;contactType&quot;: &quot;Daytime Phone Number&quot;,&#xd;
+            &quot;phoneNumber&quot;: &quot;6045551234&quot;&#xd;
+          }&#xd;
+        }&#xd;
+      ]&#xd;
+    },&#xd;
+    {&#xd;
+      &quot;contactType&quot;: &quot;Billing Address&quot;,&#xd;
+      &quot;validFor&quot;: {&#xd;
+        &quot;startDateTime&quot;: &quot;2019-08-30T23:20:50.520Z&quot;&#xd;
+      },&#xd;
+      &quot;contactMedium&quot;: [&#xd;
+        {&#xd;
+          &quot;mediumType&quot;: &quot;Postal Address&quot;,&#xd;
+          &quot;characteristic&quot;: {&#xd;
+            &quot;@type&quot;: &quot;AccountManagement/TelusCore_MediumCharacteristic&quot;,&#xd;
+            &quot;city&quot;: &quot;Edmonton&quot;,&#xd;
+            &quot;stateOrProvince&quot;: &quot;AB&quot;,&#xd;
+            &quot;postCode&quot;: &quot;T5J0N5&quot;,&#xd;
+            &quot;street1&quot;: &quot;Frnçois fossé numé&quot;,&#xd;
+            &quot;subUnitNr&quot;: &quot;12345&quot;,&#xd;
+            &quot;streetNr&quot;: &quot;123456&quot;,&#xd;
+            &quot;streetSuffix&quot;: &quot;E&quot;&#xd;
+          }&#xd;
+        }&#xd;
+      ]&#xd;
+    },&#xd;
+    {&#xd;
+      &quot;contactType&quot;: &quot;Previous Address&quot;,&#xd;
+      &quot;validFor&quot;: {&#xd;
+        &quot;startDateTime&quot;: &quot;2019-08-30T23:20:50.520Z&quot;&#xd;
+      },&#xd;
+      &quot;contactMedium&quot;: [&#xd;
+        {&#xd;
+          &quot;mediumType&quot;: &quot;Postal Address&quot;,&#xd;
+          &quot;characteristic&quot;: {&#xd;
+            &quot;@type&quot;: &quot;AccountManagement/TelusCore_MediumCharacteristic&quot;,&#xd;
+            &quot;city&quot;: &quot;Edmonton&quot;,&#xd;
+            &quot;stateOrProvince&quot;: &quot;AB&quot;,&#xd;
+            &quot;postCode&quot;: &quot;T5J0N5&quot;,&#xd;
+            &quot;street1&quot;: &quot;Tĥïŝ ĩš â -NM&quot;,&#xd;
+            &quot;subUnitNr&quot;: &quot;12345&quot;,&#xd;
+            &quot;streetNr&quot;: &quot;123456&quot;,&#xd;
+            &quot;streetSuffix&quot;: &quot;W&quot;&#xd;
+          }&#xd;
+        },&#xd;
+        {&#xd;
+          &quot;mediumType&quot;: &quot;Telecom&quot;,&#xd;
+          &quot;characteristic&quot;: {&#xd;
+            &quot;contactType&quot;: &quot;Previous Phone Number&quot;,&#xd;
+            &quot;phoneNumber&quot;: &quot;6045551234&quot;&#xd;
+          }&#xd;
+        }&#xd;
+      ]&#xd;
+    }&#xd;
+  ]&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">apigw-private-nane-np-001.tsl.telus.com</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/customer/wirelinebillingaccount/v1/wirelineBillingAccount</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="Authorization" elementType="Header">
+                <stringProp name="Header.name">Authorization</stringProp>
+                <stringProp name="Header.value">Bearer ${access_token}</stringProp>
+              </elementProp>
+              <elementProp name="Content-Type" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json; charset=utf-8</stringProp>
+              </elementProp>
+              <elementProp name="env" elementType="Header">
+                <stringProp name="Header.name">env</stringProp>
+                <stringProp name="Header.value">it04</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+        </hashTree>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+      </hashTree>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>

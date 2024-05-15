@@ -1,0 +1,8 @@
+timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success,failureMessage,bytes,sentBytes,grpThreads,allThreads,URL,Latency,IdleTime,Connect
+1684495005962,4346,GET_Linked-Accnts_NorthStar,200,OK,CASA 1-1,text,true,,515,1606,1,1,https://casa-app-qa-casa-preproduction.apps.t-casa.h1i7.p2.openshiftapps.com/backend/billing-accounts/ffh/604565217/linked-accts,4345,0,284
+1684495010310,2825,GET_Auth-Portal-Info_NorthStar,200,OK,CASA 1-1,text,true,,632,1608,1,1,https://casa-app-qa-casa-preproduction.apps.t-casa.h1i7.p2.openshiftapps.com/backend/billing-accounts/ffh/2923/auth-portal-info,2825,0,273
+1684495013136,874,GET_ProductsSummary_NorthStar,200,OK,CASA 1-1,text,true,,1236,1612,1,1,https://casa-app-qa-casa-preproduction.apps.t-casa.h1i7.p2.openshiftapps.com/backend/billing-accounts/ffh/215317473/products-summary,873,0,0
+1684495014011,4158,POST_Notes_NorthStar,200,OK,CASA 1-1,text,true,,1154,1742,1,1,https://casa-app-qa-casa-preproduction.apps.t-casa.h1i7.p2.openshiftapps.com/backend/billing-accounts/notes,4157,0,276
+1684495018169,2108,GET_Summary_NorthStar,200,OK,CASA 1-1,text,true,,1143,1595,1,1,https://casa-app-qa-casa-preproduction.apps.t-casa.h1i7.p2.openshiftapps.com/backend/billing-accounts/ffh/215317473/summary,2107,0,0
+1684495020278,1717,GET_Qualification_NorthStar,200,OK,CASA 1-1,text,true,,504,1592,1,1,https://casa-app-qa-casa-preproduction.apps.t-casa.h1i7.p2.openshiftapps.com/backend/address/2554810/qualification,1717,0,274
+1684495021996,11418,GET_Monthly-Charge_NorthStar,200,OK,CASA 1-1,text,true,,561,1609,1,1,https://casa-app-qa-casa-preproduction.apps.t-casa.h1i7.p2.openshiftapps.com/backend/billing-accounts/ffh/208500428/monthly-charge,11417,0,0

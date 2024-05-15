@@ -1,0 +1,716 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.5">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Phone No" enabled="false">
+        <stringProp name="delimiter">,</stringProp>
+        <stringProp name="fileEncoding"></stringProp>
+        <stringProp name="filename">Phone No.csv</stringProp>
+        <boolProp name="ignoreFirstLine">false</boolProp>
+        <boolProp name="quotedData">false</boolProp>
+        <boolProp name="recycle">true</boolProp>
+        <stringProp name="shareMode">shareMode.all</stringProp>
+        <boolProp name="stopThread">false</boolProp>
+        <stringProp name="variableNames">ph_no</stringProp>
+      </CSVDataSet>
+      <hashTree/>
+      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="false">
+        <collectionProp name="Arguments.arguments">
+          <elementProp name="Pacing" elementType="Argument">
+            <stringProp name="Argument.name">Pacing</stringProp>
+            <stringProp name="Argument.value">${__P(propPIpacing,20)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+        </collectionProp>
+      </Arguments>
+      <hashTree/>
+      <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="false">
+        <stringProp name="delimiter">,</stringProp>
+        <stringProp name="fileEncoding"></stringProp>
+        <stringProp name="filename">Province.txt</stringProp>
+        <boolProp name="ignoreFirstLine">false</boolProp>
+        <boolProp name="quotedData">false</boolProp>
+        <boolProp name="recycle">true</boolProp>
+        <stringProp name="shareMode">shareMode.all</stringProp>
+        <boolProp name="stopThread">false</boolProp>
+        <stringProp name="variableNames">province,biller</stringProp>
+      </CSVDataSet>
+      <hashTree/>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Metranet" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="endTime" enabled="false">
+          <stringProp name="scriptLanguage">groovy</stringProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="filename"></stringProp>
+          <stringProp name="cacheKey">true</stringProp>
+          <stringProp name="script">def dateobj= new Date();
+def endTime = dateobj.getTime();
+vars.put(&quot;endTime&quot;,endTime.toString())
+log.info(&quot;Current date in the specified format: &quot; + endTime);
+SampleResult.setIgnore();
+</stringProp>
+        </JSR223Sampler>
+        <hashTree/>
+        <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If Controller" enabled="false">
+          <stringProp name="IfController.condition">&quot;${__jm__Metranet__idx}&quot; != &quot;0&quot;</stringProp>
+          <boolProp name="IfController.evaluateAll">false</boolProp>
+        </IfController>
+        <hashTree>
+          <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Pacing Timer" enabled="true">
+            <intProp name="ActionProcessor.action">1</intProp>
+            <intProp name="ActionProcessor.target">0</intProp>
+            <stringProp name="ActionProcessor.duration">${myDelay}</stringProp>
+          </TestAction>
+          <hashTree>
+            <JSR223Timer guiclass="TestBeanGUI" testclass="JSR223Timer" testname="JSR223 Timer" enabled="true">
+              <stringProp name="scriptLanguage">groovy</stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="script">Long pacingInput = Long.valueOf(vars.get(&apos;Pacing&apos;))*1000;
+Long elapsed = Long.valueOf(vars.get(&apos;endTime&apos;)) - Long.valueOf(vars.get(&apos;startTime&apos;))
+Long pacing = pacingInput-elapsed;
+if ( pacing &gt; 0 ) 
+{
+	vars.put(&quot;myDelay&quot;, String.valueOf(pacing));
+	return 0;
+}
+else 
+{
+	vars.put(&quot;myDelay&quot;, &quot;0&quot;);
+	return 0; 
+}
+</stringProp>
+            </JSR223Timer>
+            <hashTree/>
+          </hashTree>
+        </hashTree>
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="startTime" enabled="false">
+          <stringProp name="scriptLanguage">groovy</stringProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="filename"></stringProp>
+          <stringProp name="cacheKey">true</stringProp>
+          <stringProp name="script">def dateobj= new Date();
+def startTime = dateobj.getTime();
+log.info(&quot;Current date in the specified format: &quot; + startTime);
+vars.put(&quot;startTime&quot;,startTime.toString())
+SampleResult.setIgnore();</stringProp>
+        </JSR223Sampler>
+        <hashTree/>
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Token" enabled="true">
+          <boolProp name="TransactionController.includeTimers">false</boolProp>
+          <boolProp name="TransactionController.parent">true</boolProp>
+        </TransactionController>
+        <hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="token" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="grant_type" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">client_credentials</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  <stringProp name="Argument.name">grant_type</stringProp>
+                </elementProp>
+                <elementProp name="scope" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">952</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  <stringProp name="Argument.name">scope</stringProp>
+                </elementProp>
+                <elementProp name="client_id" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">b6b33f24-798e-41d1-96c8-fa7403121fc5</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  <stringProp name="Argument.name">client_id</stringProp>
+                </elementProp>
+                <elementProp name="client_secret" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">5db8c6c3-9c8b-4d79-9536-9cc65326fdb909d5d5cf-4779-40a0-8c33-2701844000b3</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  <stringProp name="Argument.name">client_secret</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">apigw-st.tsl.telus.com</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/st/token</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor" enabled="true">
+              <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+              <stringProp name="RegexExtractor.refname">access_token</stringProp>
+              <stringProp name="RegexExtractor.regex">&quot;access_token&quot;:&quot;(.+?)&quot;</stringProp>
+              <stringProp name="RegexExtractor.template">$1$</stringProp>
+              <stringProp name="RegexExtractor.default">Novalue</stringProp>
+              <stringProp name="RegexExtractor.match_number">1</stringProp>
+              <stringProp name="Sample.scope">all</stringProp>
+            </RegexExtractor>
+            <hashTree/>
+          </hashTree>
+        </hashTree>
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Create_Acount_01" enabled="false">
+          <boolProp name="TransactionController.includeTimers">false</boolProp>
+          <boolProp name="TransactionController.parent">true</boolProp>
+        </TransactionController>
+        <hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request" enabled="false">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&#xd;
+    &quot;@type&quot;: &quot;AccountManagement/TelusCore_BillingAccount_Create&quot;,&#xd;
+    &quot;sourceSystem&quot;: &quot;S&quot;,&#xd;
+    &quot;name&quot;: &quot;B&quot;,&#xd;
+    &quot;annotation&quot;: &quot;Pilot acct created for ACME Co1&quot;,&#xd;
+    &quot;startDate&quot;: &quot;2019-08-25&quot;,&#xd;
+    &quot;taxingProvince&quot;: &quot;${province}&quot;,&#xd;
+    &quot;targetBiller&quot;: &quot;${biller}&quot;,&#xd;
+    &quot;taxExemption&quot;: [&#xd;
+        {&#xd;
+            &quot;issuingJurisdiction&quot;: &quot;Canada&quot;,&#xd;
+            &quot;validFor&quot;: {&#xd;
+                &quot;endDateTime&quot;: &quot;9999-01-01&quot;&#xd;
+            }&#xd;
+        },&#xd;
+        {&#xd;
+            &quot;issuingJurisdiction&quot;: &quot;AB&quot;,&#xd;
+            &quot;validFor&quot;: {&#xd;
+                &quot;endDateTime&quot;: &quot;9999-01-01&quot;&#xd;
+            }&#xd;
+        }&#xd;
+    ],&#xd;
+    &quot;billStructure&quot;: {&#xd;
+        &quot;presentationMedia&quot;: [&#xd;
+            {&#xd;
+                &quot;@type&quot;: &quot;AccountManagement/TelusCore_BillPresentationMediaRef&quot;,&#xd;
+                &quot;copyCount&quot;: &quot;0001&quot;&#xd;
+            }&#xd;
+        ],&#xd;
+        &quot;format&quot;: {&#xd;
+            &quot;id&quot;: &quot;01&quot;,&#xd;
+            &quot;name&quot;: &quot;Regular Format&quot;&#xd;
+        },&#xd;
+        &quot;cycleSpecification&quot;: {&#xd;
+            &quot;frequency&quot;: &quot;Monthly&quot;,&#xd;
+            &quot;name&quot;: &quot;07&quot;&#xd;
+        }&#xd;
+    },&#xd;
+    &quot;relatedParty&quot;: [&#xd;
+        {&#xd;
+            &quot;@type&quot;: &quot;AccountManagement/TelusCore_RelatedPartyRef&quot;,&#xd;
+            &quot;id&quot;: &quot;99999999&quot;,&#xd;
+            &quot;name&quot;: &quot;Company Party&quot;,&#xd;
+            &quot;role&quot;: &quot;Company&quot;,&#xd;
+            &quot;organization&quot;: {&#xd;
+                &quot;tradingName&quot;: &quot;Frnois fosnum&quot;,&#xd;
+                &quot;nameType&quot;: &quot;INC&quot;,&#xd;
+                &quot;characteristic&quot;: {&#xd;
+                    &quot;name&quot;: &quot;Registration Jurisdiction&quot;,&#xd;
+                    &quot;value&quot;: &quot;F&quot;&#xd;
+                },&#xd;
+                &quot;organizationIdentification&quot;: [&#xd;
+                    {&#xd;
+                        &quot;type&quot;: &quot;Incorporation Number&quot;,&#xd;
+                        &quot;identificationId&quot;: &quot;255667789&quot;,&#xd;
+                        &quot;issuingDate&quot;: &quot;2001-08-28&quot;&#xd;
+                    }&#xd;
+                ]&#xd;
+            }&#xd;
+        },&#xd;
+        {&#xd;
+            &quot;role&quot;: &quot;Partner&quot;,&#xd;
+            &quot;individual&quot;: {&#xd;
+                &quot;fullName&quot;: &quot;Rosaleen Rosemarie R. Red&quot;,&#xd;
+                &quot;characteristic&quot;: [&#xd;
+                    {&#xd;
+                        &quot;name&quot;: &quot;Position&quot;,&#xd;
+                        &quot;value&quot;: &quot;CEO&quot;&#xd;
+                    }&#xd;
+                ],&#xd;
+                &quot;contactMedium&quot;: [&#xd;
+                    {&#xd;
+                        &quot;mediumType&quot;: &quot;Telecom&quot;,&#xd;
+                        &quot;characteristic&quot;: {&#xd;
+                            &quot;contactType&quot;: &quot;Daytime Phone Number&quot;,&#xd;
+                            &quot;phoneNumber&quot;: &quot;${ph_no}&quot;&#xd;
+                        }&#xd;
+                    }&#xd;
+                ]&#xd;
+            }&#xd;
+        },&#xd;
+        {&#xd;
+            &quot;role&quot;: &quot;Partner&quot;,&#xd;
+            &quot;individual&quot;: {&#xd;
+                &quot;fullName&quot;: &quot;Graham Gregory G. Greenland&quot;,&#xd;
+                &quot;characteristic&quot;: [&#xd;
+                    {&#xd;
+                        &quot;name&quot;: &quot;Position&quot;,&#xd;
+                        &quot;value&quot;: &quot;SVP&quot;&#xd;
+                    }&#xd;
+                ],&#xd;
+                &quot;contactMedium&quot;: [&#xd;
+                    {&#xd;
+                        &quot;mediumType&quot;: &quot;Telecom&quot;,&#xd;
+                        &quot;characteristic&quot;: {&#xd;
+                            &quot;contactType&quot;: &quot;Daytime Phone Number&quot;,&#xd;
+                            &quot;phoneNumber&quot;: &quot;6040000002&quot;&#xd;
+                        }&#xd;
+                    }&#xd;
+                ]&#xd;
+            }&#xd;
+        },&#xd;
+        {&#xd;
+            &quot;role&quot;: &quot;Partner&quot;,&#xd;
+            &quot;individual&quot;: {&#xd;
+                &quot;fullName1&quot;: &quot;Benjamin Bobby Bruce Bluemountain&quot;,&#xd;
+                &quot;characteristic&quot;: [&#xd;
+                    {&#xd;
+                        &quot;name&quot;: &quot;Position&quot;,&#xd;
+                        &quot;value&quot;: &quot;EVP&quot;&#xd;
+                    }&#xd;
+                ],&#xd;
+                &quot;contactMedium&quot;: [&#xd;
+                    {&#xd;
+                        &quot;mediumType&quot;: &quot;Telecom&quot;,&#xd;
+                        &quot;characteristic&quot;: {&#xd;
+                            &quot;contactType&quot;: &quot;Daytime Phone Number&quot;,&#xd;
+                            &quot;phoneNumber&quot;: &quot;6040000003&quot;&#xd;
+                        }&#xd;
+                    }&#xd;
+                ]&#xd;
+            }&#xd;
+        },&#xd;
+        {&#xd;
+            &quot;role&quot;: &quot;Partner&quot;,&#xd;
+            &quot;individual&quot;: {&#xd;
+                &quot;fullName&quot;: &quot;Test partner 4&quot;,&#xd;
+                &quot;characteristic&quot;: [&#xd;
+                    {&#xd;
+                        &quot;name&quot;: &quot;Position&quot;,&#xd;
+                        &quot;value&quot;: &quot;EVP&quot;&#xd;
+                    }&#xd;
+                ],&#xd;
+                &quot;contactMedium&quot;: [&#xd;
+                    {&#xd;
+                        &quot;mediumType&quot;: &quot;Telecom&quot;,&#xd;
+                        &quot;characteristic&quot;: {&#xd;
+                            &quot;contactType&quot;: &quot;Daytime Phone Number&quot;,&#xd;
+                            &quot;phoneNumber&quot;: &quot;6040000004&quot;&#xd;
+                        }&#xd;
+                    }&#xd;
+                ]&#xd;
+            }&#xd;
+        },&#xd;
+        {&#xd;
+            &quot;role&quot;: &quot;Partner5&quot;,&#xd;
+            &quot;individual&quot;: {&#xd;
+                &quot;fullName&quot;: &quot;Benjamin Bobby Bruce Bluemountain&quot;,&#xd;
+                &quot;characteristic&quot;: [&#xd;
+                    {&#xd;
+                        &quot;name&quot;: &quot;Position&quot;,&#xd;
+                        &quot;value&quot;: &quot;EVP&quot;&#xd;
+                    }&#xd;
+                ],&#xd;
+                &quot;contactMedium&quot;: [&#xd;
+                    {&#xd;
+                        &quot;mediumType&quot;: &quot;Telecom&quot;,&#xd;
+                        &quot;characteristic&quot;: {&#xd;
+                            &quot;contactType&quot;: &quot;Daytime Phone Number&quot;,&#xd;
+                            &quot;phoneNumber&quot;: &quot;6040000005&quot;&#xd;
+                        }&#xd;
+                    }&#xd;
+                ]&#xd;
+            }&#xd;
+        },&#xd;
+        {&#xd;
+            &quot;@type&quot;: &quot;AccountManagement/TelusCore_RelatedPartyRef&quot;,&#xd;
+            &quot;id&quot;: &quot;?&quot;,&#xd;
+            &quot;name&quot;: &quot;Account creator&quot;,&#xd;
+            &quot;role&quot;: &quot;CSR&quot;,&#xd;
+            &quot;individual&quot;: {&#xd;
+                &quot;individualIdentification&quot;: [&#xd;
+                    {&#xd;
+                        &quot;type&quot;: &quot;TeamMemberID&quot;,&#xd;
+                        &quot;identificationId&quot;: &quot;T555123&quot;&#xd;
+                    }&#xd;
+                ],&#xd;
+                &quot;fullName&quot;: &quot;Atendu Black&quot;,&#xd;
+                &quot;characteristic&quot;: [&#xd;
+                    {&#xd;
+                        &quot;name&quot;: &quot;initials&quot;,&#xd;
+                        &quot;value&quot;: &quot;ga&quot;&#xd;
+                    },&#xd;
+                    {&#xd;
+                        &quot;name&quot;: &quot;nickName&quot;,&#xd;
+                        &quot;value&quot;: &quot;grace&quot;&#xd;
+                    }&#xd;
+                ],&#xd;
+                &quot;contactMedium&quot;: [&#xd;
+                    {&#xd;
+                        &quot;mediumType&quot;: &quot;Telecom&quot;,&#xd;
+                        &quot;characteristic&quot;: {&#xd;
+                            &quot;contactType&quot;: &quot;Daytime Phone Number&quot;,&#xd;
+                            &quot;phoneNumber&quot;: &quot;6046956502&quot;&#xd;
+                        }&#xd;
+                    }&#xd;
+                ]&#xd;
+            }&#xd;
+        },&#xd;
+        {&#xd;
+            &quot;@type&quot;: &quot;AccountManagement/TelusCore_RelatedPartyRef&quot;,&#xd;
+            &quot;id&quot;: &quot;?&quot;,&#xd;
+            &quot;name&quot;: &quot;Account guarantor&quot;,&#xd;
+            &quot;role&quot;: &quot;Guarantor&quot;,&#xd;
+            &quot;individual&quot;: {&#xd;
+                &quot;fullName&quot;: &quot;grace White&quot;,&#xd;
+                &quot;characteristic&quot;: [&#xd;
+                    {&#xd;
+                        &quot;name&quot;: &quot;guaranteeAmount&quot;,&#xd;
+                        &quot;value&quot;: &quot;123&quot;&#xd;
+                    },&#xd;
+                    {&#xd;
+                        &quot;name&quot;: &quot;guaranteeExpiry&quot;,&#xd;
+                        &quot;value&quot;: &quot;2021-08-29&quot;&#xd;
+                    }&#xd;
+                ],&#xd;
+                &quot;contactMedium&quot;: [&#xd;
+                    {&#xd;
+                        &quot;mediumType&quot;: &quot;Telecom&quot;,&#xd;
+                        &quot;characteristic&quot;: {&#xd;
+                            &quot;contactType&quot;: &quot;Daytime Phone Number&quot;,&#xd;
+                            &quot;phoneNumber&quot;: &quot;6045551234&quot;&#xd;
+                        }&#xd;
+                    }&#xd;
+                ]&#xd;
+            }&#xd;
+        },&#xd;
+        {&#xd;
+            &quot;@type&quot;: &quot;AccountManagement/TelusCore_RelatedPartyRef&quot;,&#xd;
+            &quot;id&quot;: &quot;?&quot;,&#xd;
+            &quot;name&quot;: &quot;Account reference&quot;,&#xd;
+            &quot;role&quot;: &quot;Reference&quot;,&#xd;
+            &quot;individual&quot;: {&#xd;
+                &quot;fullName&quot;: &quot;Franois Violet&quot;,&#xd;
+                &quot;contactMedium&quot;: [&#xd;
+                    {&#xd;
+                        &quot;mediumType&quot;: &quot;Telecom&quot;,&#xd;
+                        &quot;characteristic&quot;: {&#xd;
+                            &quot;contactType&quot;: &quot;Daytime Phone Number&quot;,&#xd;
+                            &quot;phoneNumber&quot;: &quot;6045551234&quot;&#xd;
+                        }&#xd;
+                    }&#xd;
+                ],&#xd;
+                &quot;characteristic&quot;: [&#xd;
+                    {&#xd;
+                        &quot;name&quot;: &quot;relationshipType&quot;,&#xd;
+                        &quot;value&quot;: &quot;Coworker&quot;&#xd;
+                    }&#xd;
+                ]&#xd;
+            }&#xd;
+        },&#xd;
+        {&#xd;
+            &quot;@type&quot;: &quot;AccountManagement/TelusCore_RelatedPartyRef&quot;,&#xd;
+            &quot;id&quot;: &quot;?&quot;,&#xd;
+            &quot;name&quot;: &quot;Credit&quot;,&#xd;
+            &quot;role&quot;: &quot;Credit&quot;,&#xd;
+            &quot;individual&quot;: {&#xd;
+                &quot;individualIdentification&quot;: [&#xd;
+                    {&#xd;
+                        &quot;type&quot;: &quot;SIN&quot;,&#xd;
+                        &quot;identificationId&quot;: &quot;111222333&quot;&#xd;
+                    },&#xd;
+                    {&#xd;
+                        &quot;type&quot;: &quot;DRIV-LIC-NO&quot;,&#xd;
+                        &quot;identificationId&quot;: &quot;123456789&quot;&#xd;
+                    }&#xd;
+                ],&#xd;
+                &quot;birthDate&quot;: &quot;2000-08-27&quot;,&#xd;
+                &quot;fullName&quot;: &quot;Cathy foss&quot;,&#xd;
+                &quot;contactMedium&quot;: [&#xd;
+                    {&#xd;
+                        &quot;mediumType&quot;: &quot;Telecom&quot;,&#xd;
+                        &quot;characteristic&quot;: {&#xd;
+                            &quot;contactType&quot;: &quot;Credit Phone Number&quot;,&#xd;
+                            &quot;phoneNumber&quot;: &quot;6040000000&quot;&#xd;
+                        }&#xd;
+                    }&#xd;
+                ]&#xd;
+            },&#xd;
+            &quot;organization&quot;: {&#xd;
+                &quot;@type&quot;: &quot;PartyRole&quot;,&#xd;
+                &quot;name&quot;: &quot;Credit&quot;,&#xd;
+                &quot;type&quot;: &quot;CompanyCredit&quot;,&#xd;
+                &quot;creditProfile&quot;: [&#xd;
+                    {&#xd;
+                        &quot;@type&quot;: &quot;PartyRole/TelusCore_CreditProfile&quot;,&#xd;
+                        &quot;coreOtherWorkingServiceNumber&quot;: [&#xd;
+                            {&#xd;
+                                &quot;id&quot;: &quot;6045558901&quot;,&#xd;
+                                &quot;idType&quot;: &quot;Other Working Service&quot;&#xd;
+                            }&#xd;
+                        ],&#xd;
+                        &quot;estimatedMonthlyCharges&quot;: &quot;12345&quot;,&#xd;
+                        &quot;creditRiskRating&quot;: &quot;G&quot;&#xd;
+                    }&#xd;
+                ]&#xd;
+            }&#xd;
+        }&#xd;
+    ],&#xd;
+    &quot;contact&quot;: [&#xd;
+        {&#xd;
+            &quot;contactName&quot;: &quot;Barb&quot;,&#xd;
+            &quot;contactType&quot;: &quot;Primary&quot;,&#xd;
+            &quot;validFor&quot;: {&#xd;
+                &quot;startDateTime&quot;: &quot;2019-08-30&quot;&#xd;
+            },&#xd;
+            &quot;contactMedium&quot;: [&#xd;
+                {&#xd;
+                    &quot;characteristic&quot;: {&#xd;
+                        &quot;emailAddress&quot;: &quot;barb.smith@acme.com&quot;,&#xd;
+                        &quot;contactType&quot;: &quot;Email&quot;&#xd;
+                    },&#xd;
+                    &quot;mediumType&quot;: &quot;Electronic&quot;&#xd;
+                },&#xd;
+                {&#xd;
+                    &quot;characteristic&quot;: {&#xd;
+                        &quot;phoneNumber&quot;: &quot;6045551234&quot;,&#xd;
+                        &quot;contactType&quot;: &quot;Daytime Phone Number&quot;&#xd;
+                    },&#xd;
+                    &quot;mediumType&quot;: &quot;Telecom&quot;&#xd;
+                }&#xd;
+            ]&#xd;
+        },&#xd;
+        {&#xd;
+            &quot;contactType&quot;: &quot;Billing Address&quot;,&#xd;
+            &quot;validFor&quot;: {&#xd;
+                &quot;startDateTime&quot;: &quot;2019-08-30&quot;&#xd;
+            },&#xd;
+            &quot;contactMedium&quot;: [&#xd;
+                {&#xd;
+                    &quot;characteristic&quot;: {&#xd;
+                        &quot;@type&quot;: &quot;AccountManagement/TelusCore_MediumCharacteristic&quot;,&#xd;
+                        &quot;city&quot;: &quot;Edmonton&quot;,&#xd;
+                        &quot;stateOrProvince&quot;: &quot;AB&quot;,&#xd;
+                        &quot;postCode&quot;: &quot;T5J0N5&quot;,&#xd;
+                        &quot;street1&quot;: &quot;street1&quot;,&#xd;
+                        &quot;subUnitNr&quot;: &quot;12345&quot;,&#xd;
+                        &quot;streetNr&quot;: &quot;123456&quot;,&#xd;
+                        &quot;streetSuffix&quot;: &quot;E&quot;&#xd;
+                    },&#xd;
+                    &quot;mediumType&quot;: &quot;Postal Address&quot;&#xd;
+                }&#xd;
+            ]&#xd;
+        },&#xd;
+        {&#xd;
+            &quot;contactType&quot;: &quot;Previous Address&quot;,&#xd;
+            &quot;validFor&quot;: {&#xd;
+                &quot;startDateTime&quot;: &quot;2019-08-30&quot;&#xd;
+            },&#xd;
+            &quot;contactMedium&quot;: [&#xd;
+                {&#xd;
+                    &quot;characteristic&quot;: {&#xd;
+                        &quot;@type&quot;: &quot;AccountManagement/TelusCore_MediumCharacteristic&quot;,&#xd;
+                        &quot;city&quot;: &quot;Edmonton&quot;,&#xd;
+                        &quot;stateOrProvince&quot;: &quot;AB&quot;,&#xd;
+                        &quot;postCode&quot;: &quot;T5J0N5&quot;,&#xd;
+                        &quot;street1&quot;: &quot;street1&quot;,&#xd;
+                        &quot;subUnitNr&quot;: &quot;12345&quot;,&#xd;
+                        &quot;streetNr&quot;: &quot;123456&quot;,&#xd;
+                        &quot;streetSuffix&quot;: &quot;W&quot;&#xd;
+                    },&#xd;
+                    &quot;mediumType&quot;: &quot;Postal Address&quot;&#xd;
+                },&#xd;
+                {&#xd;
+                    &quot;characteristic&quot;: {&#xd;
+                        &quot;phoneNumber&quot;: &quot;6045551234&quot;,&#xd;
+                        &quot;contactType&quot;: &quot;Previous Phone Number&quot;&#xd;
+                    },&#xd;
+                    &quot;mediumType&quot;: &quot;Telecom&quot;&#xd;
+                }&#xd;
+            ]&#xd;
+        }&#xd;
+    ],&#xd;
+    &quot;accountType&quot;: &quot;14&quot;&#xd;
+}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">apigw-private-nane-np-001.tsl.telus.com</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/customer/wirelinebillingaccount/v1/wirelineBillingAccount</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Authorization" elementType="Header">
+                  <stringProp name="Header.name">Authorization</stringProp>
+                  <stringProp name="Header.value">Bearer ${access_token}</stringProp>
+                </elementProp>
+                <elementProp name="Content-Type" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+                <elementProp name="env" elementType="Header">
+                  <stringProp name="Header.name">env</stringProp>
+                  <stringProp name="Header.value">it04</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor" enabled="true">
+              <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+              <stringProp name="RegexExtractor.refname">act_no</stringProp>
+              <stringProp name="RegexExtractor.regex">customerAccountNumber&quot;:&quot;(.+?)&quot;,</stringProp>
+              <stringProp name="RegexExtractor.template">$1$</stringProp>
+              <stringProp name="RegexExtractor.default">Novalue</stringProp>
+              <stringProp name="RegexExtractor.match_number">1</stringProp>
+              <stringProp name="Sample.scope">all</stringProp>
+            </RegexExtractor>
+            <hashTree/>
+          </hashTree>
+        </hashTree>
+        <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Think Time" enabled="false">
+          <intProp name="ActionProcessor.action">1</intProp>
+          <intProp name="ActionProcessor.target">0</intProp>
+          <stringProp name="ActionProcessor.duration">8000</stringProp>
+        </TestAction>
+        <hashTree>
+          <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Pause" enabled="true">
+            <stringProp name="ConstantTimer.delay">1000</stringProp>
+            <stringProp name="RandomTimer.range">100</stringProp>
+          </UniformRandomTimer>
+          <hashTree/>
+        </hashTree>
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Get_Acount_02" enabled="false">
+          <boolProp name="TransactionController.includeTimers">false</boolProp>
+          <boolProp name="TransactionController.parent">true</boolProp>
+        </TransactionController>
+        <hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request" enabled="false">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">apigw-private-nane-np-001.tsl.telus.com</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/customer/wirelinebillingaccount/v1/wirelineBillingAccount/${act_no}</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Authorization" elementType="Header">
+                  <stringProp name="Header.name">Authorization</stringProp>
+                  <stringProp name="Header.value">Bearer ${access_token}</stringProp>
+                </elementProp>
+                <elementProp name="Content-Type" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+                <elementProp name="env" elementType="Header">
+                  <stringProp name="Header.name">env</stringProp>
+                  <stringProp name="Header.value">st01</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+        </hashTree>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+      </hashTree>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>
